@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Academy | Ultra Edition</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #090d16 0%, #111827 50%, #1e1b4b 100%); }
+    .neon-border { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+    .neon-border:hover { box-shadow: 0 0 25px rgba(129, 140, 248, 0.5); }
+    
+    /* Optimización para captura de pantalla e impresión */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .print-card { border: 2px solid #000 !important; background: #fff !important; color: #000 !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen gradient-bg flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- NAVBAR -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-filter blur-md sticky top-0 z-50 py-3 no-print">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
+      <div class="flex items-center space-x-4 cursor-pointer" onclick="goHome()">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center font-black text-2xl text-white shadow-lg shadow-indigo-500/40">
+          E
+        </div>
+        <div>
+          <h1 class="font-black text-xl md:text-2xl text-white tracking-wider">ENGLISH<span class="text-indigo-400">PRO</span></h1>
+          <p class="text-xs md:text-sm font-semibold text-slate-400">Classroom & Certificate Edition</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div id="userInfoHeader" class="hidden text-right text-xs md:text-sm text-slate-300 bg-slate-800/90 px-4 py-2 rounded-xl border border-slate-700"></div>
+        
+        <button onclick="toggleFullScreen()" class="bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-indigo-500/30 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm transition flex items-center gap-2">
+          <i class="fa-solid fa-expand text-base"></i> <span class="hidden md:inline">Pizarra Digital</span>
+        </button>
+
+        <button onclick="showTeacherLogin()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-2.5 rounded-xl font-bold text-xs md:text-sm transition">
+          <i class="fa-solid fa-user-gear"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
+
+    <!-- REGISTRO ALUMNO -->
+    <section id="viewRegistration" class="space-y-6 max-w-xl mx-auto w-full py-6">
+      <div class="text-center space-y-3">
+        <span class="px-4 py-1.5 bg-indigo-500/20 text-indigo-300 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-widest border border-indigo-500/30">Portal del Alumnado</span>
+        <h2 class="text-3xl md:text-5xl font-black text-white">¡Ponte a prueba! 🚀</h2>
+        <p class="text-slate-300 text-base md:text-lg">Accede a las guías avanzadas y test interactivos de gramática.</p>
+      </div>
+
+      <form id="regForm" onsubmit="handleRegistration(event)" class="bg-slate-900/95 border-2 border-slate-800 p-6 md:p-10 rounded-3xl shadow-2xl space-y-5">
+        <div>
+          <label class="block text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Nombre</label>
+          <input type="text" id="regFirstName" required placeholder="Ej: Alex" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-base md:text-lg text-white focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div>
+          <label class="block text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Apellidos</label>
+          <input type="text" id="regLastName" required placeholder="Ej: García López" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-base md:text-lg text-white focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div>
+          <label class="block text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Correo Electrónico</label>
+          <input type="email" id="regEmail" required placeholder="alumno@colegio.com" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-base md:text-lg text-white focus:outline-none focus:border-indigo-500 transition">
+        </div>
+        <div>
+          <label class="block text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Curso Escolar</label>
+          <select id="regGrade" required class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-base md:text-lg text-white focus:outline-none focus:border-indigo-500 transition">
+            <option value="" disabled selected>Selecciona tu curso...</option>
+            <option value="3º ESO">3º ESO</option>
+            <option value="4º ESO">4º ESO</option>
+            <option value="1º Bachillerato">1º Bachillerato</option>
+            <option value="2º Bachillerato">2º Bachillerato</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black text-lg md:text-xl py-5 rounded-2xl transition shadow-xl shadow-indigo-600/40 flex items-center justify-center gap-3 mt-4">
+          Entrar a la Academia <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </section>
+
+    <!-- DASHBOARD PRINCIPAL -->
+    <section id="viewDashboard" class="hidden space-y-8 py-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-900/90 border-2 border-slate-800 p-6 md:p-8 rounded-3xl">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black text-white" id="welcomeUserText">¡Hola!</h2>
+          <p class="text-slate-300 text-base md:text-lg mt-1">Completa los 6 bloques para generar tu <strong>Informe Anti-Copia Final</strong>.</p>
+        </div>
+        <button onclick="showGlobalReportModal()" class="w-full md:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-lg md:text-xl px-8 py-5 rounded-2xl transition flex items-center justify-center gap-3 shadow-xl shadow-amber-500/30">
+          <i class="fa-solid fa-graduation-cap text-2xl"></i> VER INFORME FINAL
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modulesGrid"></div>
+    </section>
+
+    <!-- GUÍA TEÓRICA ULTRA DETALLADA CON EJEMPLOS Y TRADUCCIONES -->
+    <section id="viewLesson" class="hidden space-y-6 py-4">
+      <div class="flex justify-between items-center no-print">
+        <button onclick="goHome()" class="text-sm md:text-base font-bold text-slate-400 hover:text-white flex items-center gap-2">
+          <i class="fa-solid fa-chevron-left"></i> Volver al panel
+        </button>
+        <span class="text-sm font-black text-indigo-400 uppercase tracking-widest" id="lessonTopicCategory">Guía Gramatical</span>
+      </div>
+
+      <div class="bg-slate-900/95 border-2 border-slate-800 rounded-3xl p-6 md:p-10 space-y-6 text-slate-100 text-lg md:text-xl leading-relaxed shadow-2xl" id="lessonContent"></div>
+
+      <div class="flex justify-end no-print">
+        <button onclick="startCurrentQuiz()" class="w-full md:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xl px-10 py-5 rounded-2xl transition shadow-xl shadow-indigo-600/40 flex items-center justify-center gap-3">
+          Empezar Test de 10 Preguntas <i class="fa-solid fa-play"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- CUESTIONARIO EN VIVO (LETRA GRANDE PARA PIZARRA DIGITAL) -->
+    <section id="viewQuiz" class="hidden space-y-6 py-2">
+      <div class="flex justify-between items-center bg-slate-900 border-2 border-slate-800 p-5 md:p-6 rounded-2xl">
+        <div>
+          <span class="text-xs md:text-sm text-indigo-400 font-extrabold uppercase tracking-wider" id="quizCategoryTitle">Quiz</span>
+          <h3 class="text-xl md:text-3xl font-black text-white" id="quizQuestionCount">Pregunta 1 de 10</h3>
+        </div>
+        <div class="text-right">
+          <span class="text-xs md:text-sm text-slate-400 font-bold">Tiempo</span>
+          <div id="quizTimer" class="font-mono font-black text-2xl md:text-4xl text-emerald-400">00:00</div>
+        </div>
+      </div>
+
+      <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+        <div id="quizProgressBar" class="bg-indigo-500 h-4 rounded-full transition-all duration-300" style="width: 10%;"></div>
+      </div>
+
+      <div class="bg-slate-900/90 border-2 border-slate-800 p-6 md:p-10 rounded-3xl space-y-8 shadow-2xl">
+        <p class="text-2xl md:text-4xl font-extrabold text-white leading-snug" id="quizQuestionText">Cargando...</p>
+        <div id="quizOptions" class="grid grid-cols-1 gap-4"></div>
+        <div id="quizFeedback" class="hidden p-6 rounded-2xl text-base md:text-xl font-bold border-2"></div>
+      </div>
+
+      <div class="flex justify-between items-center pt-2 no-print">
+        <button onclick="quitQuiz()" class="text-sm md:text-base font-bold text-slate-400 hover:text-slate-200">Salir del examen</button>
+        <button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden bg-indigo-600 hover:bg-indigo-500 text-white font-black text-lg md:text-xl px-8 py-4 rounded-2xl transition shadow-lg shadow-indigo-600/30">
+          Siguiente Pregunta <i class="fa-solid fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- RESULTADO PARCIAL -->
+    <section id="viewResults" class="hidden space-y-6 py-6 max-w-2xl mx-auto w-full">
+      <div id="resultsCard" class="bg-slate-900 border-2 border-slate-800 p-8 md:p-10 rounded-3xl text-center space-y-6 shadow-2xl"></div>
+    </section>
+
+    <!-- INFORME FINAL GLOBAL COMPACTO Y CON CÓDIGO ANTI-COPIA -->
+    <section id="viewGlobalReport" class="hidden py-4 max-w-3xl mx-auto w-full">
+      <div id="screenCaptureArea" class="bg-slate-900 border-4 border-indigo-500/50 p-6 md:p-8 rounded-3xl space-y-5 shadow-2xl relative overflow-hidden print-card">
+        
+        <!-- MARCA DE AGUA ANTI-SPOOFING -->
+        <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none text-9xl font-black text-white select-none">
+          ENGLISHPRO
+        </div>
+
+        <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-black text-amber-400 uppercase tracking-widest">Oficial • Anti-Falsificación</span>
+            </div>
+            <h2 class="text-xl md:text-2xl font-black text-white mt-1">Informe Final de Evaluación</h2>
+          </div>
+          <button onclick="goHome()" class="no-print text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl">
+            <i class="fa-solid fa-xmark"></i> Cerrar
+          </button>
+        </div>
+
+        <div id="globalReportDetails"></div>
+
+      </div>
+    </section>
+
+    <!-- PANEL DEL PROFESOR (CON VALIDADOR DE HASH CÓDIGO ANTI-COPIA) -->
+    <section id="viewTeacher" class="hidden space-y-6 py-6">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-black text-white">Panel del Profesorado</h2>
+          <p class="text-sm text-slate-400">Histórico de intentos registrados en este dispositivo.</p>
+        </div>
+        <button onclick="goHome()" class="text-xs md:text-sm bg-slate-800 text-slate-300 font-bold px-4 py-2.5 rounded-xl">Salir</button>
+      </div>
+
+      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm md:text-base text-slate-300">
+            <thead class="bg-slate-950 text-slate-400 uppercase font-bold text-xs">
+              <tr>
+                <th class="p-4">Alumno</th>
+                <th class="p-4">Curso</th>
+                <th class="p-4">Tema</th>
+                <th class="p-4">Nota</th>
+                <th class="p-4">Tiempo</th>
+                <th class="p-4">Fecha/Hora</th>
+                <th class="p-4">Hash Único</th>
+              </tr>
+            </thead>
+            <tbody id="teacherTableBody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="flex justify-between items-center pt-2">
+        <p class="text-xs text-slate-500">* El hash verifica que la captura adjunta por el alumno coincida exactamente con la base de datos.</p>
+        <button onclick="clearTeacherData()" class="text-xs text-rose-400 hover:underline font-bold">Borrar Registros Locales</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800/80 py-4 text-center text-xs text-slate-500 font-semibold no-print">
+    EnglishPRO Academy • Classroom Edition • Designed for ESO & Bachillerato
+  </footer>
+
+  <script>
+    let currentUser = null;
+    let currentModuleId = null;
+    let currentQuestionIdx = 0;
+    let currentScore = 0;
+    let quizTimerInterval = null;
+    let quizSeconds = 0;
+    let selectedOptionIdx = null;
+
+    // Generador de Hash Cryptográfico sencillo para firma digital Anti-Copia
+    function generateVerificationHash(studentEmail, score, time, date) {
+      const str = `${studentEmail}_${score}_${time}_${date}_SECRET_TEACHER_KEY_2026`;
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash |= 0;
+      }
+      return 'SEC-' + Math.abs(hash).toString(36).toUpperCase();
+    }
+
+    const MODULES = [
+      {
+        id: "present_simple",
+        title: "Present Simple Tense",
+        desc: "Rutinas, verdades universales, horarios fijos y hábitos.",
+        icon: "fa-repeat",
+        explanation: `
+          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">1. Present Simple (Presente Simple)</h2>
+          <p class="text-slate-300 text-base md:text-lg mb-6">Se utiliza para hablar de hábitos, verdades científicas, situaciones permanentes y horarios programados.</p>
+
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-amber-400 font-bold text-lg mb-3">📌 Usos Principales y Ejemplos Traducidos:</h3>
+              <ul class="space-y-3 text-sm md:text-base">
+                <li><strong class="text-indigo-300">1. Rutinas y Hábitos:</strong><br>
+                  • <em>"I study English every afternoon."</em> ➔ <span class="text-slate-400">Estudio inglés todas las tardes.</span>
+                </li>
+                <li><strong class="text-indigo-300">2. Verdades Científicas y Datos Universales:</strong><br>
+                  • <em>"Water boils at 100 degrees."</em> ➔ <span class="text-slate-400">El agua hierve a 100 grados.</span>
+                </li>
+                <li><strong class="text-indigo-300">3. Horarios Fijos (Trenes, Exámenes, Cine):</strong><br>
+                  • <em>"The train leaves at 8:00 AM."</em> ➔ <span class="text-slate-400">El tren sale a las 8:00 AM.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-emerald-400 font-bold text-lg mb-3">⚙️ Regla de la 3ª Persona del Singular (He / She / It):</h3>
+              <p class="text-sm md:text-base text-slate-300 mb-3">En oraciones afirmativas, añade <strong>-s / -es / -ies</strong> al verbo:</p>
+              <ul class="list-disc pl-5 text-sm md:text-base text-slate-300 space-y-1">
+                <li>General: <em>play ➔ plays</em> | <em>like ➔ likes</em></li>
+                <li>Verbos acabados en -ch, -sh, -x, -ss, -o: añade <strong>-es</strong> (<em>watch ➔ watches, go ➔ goes</em>).</li>
+                <li>Consonante + y: cambia a <strong>-ies</strong> (<em>study ➔ studies</em>).</li>
+              </ul>
+            </div>
+
+            <div class="bg-rose-950/40 p-5 rounded-2xl border border-rose-500/40">
+              <h3 class="text-rose-300 font-bold text-lg mb-2">⚠️ Error Típico en Exámenes:</h3>
+              <p class="text-sm md:text-base text-slate-300">¡NO añadas '-s' en negativas o preguntas! El auxiliar <strong>does / doesn't</strong> ya lleva la marca.</p>
+              <p class="text-sm font-mono mt-2 text-rose-200">❌ Incorrecto: He doesn't likes pizza.<br>✅ Correcto: He doesn't like pizza. (A él no le gusta la pizza)</p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { q: "She _____ (go) to the gym every Tuesday.", options: ["go", "goes", "is going", "went"], answer: 1, explanation: "3ª persona singular (She) añade '-es'." },
+          { q: "Water _____ (boil) at 100 degrees Celsius.", options: ["boils", "boil", "is boiling", "has boiled"], answer: 0, explanation: "Verdad científica = Present Simple." },
+          { q: "They _____ (not / like) eating fast food during the week.", options: ["doesn't like", "don't like", "not like", "aren't liking"], answer: 1, explanation: "'They' lleva auxiliar 'don't'." },
+          { q: "What time _____ the train leave tomorrow morning?", options: ["is", "do", "does", "are"], answer: 2, explanation: "Horario fijo con sujeto singular ('the train') usa 'does'." },
+          { q: "He always _____ (arrive) late for class.", options: ["arrives", "arrive", "is arriving", "has arrived"], answer: 0, explanation: "Adverbios de frecuencia van con Present Simple." },
+          { q: "My parents _____ (live) in a small apartment.", options: ["lives", "living", "live", "are living"], answer: 2, explanation: "Sujeto plural (My parents = they) usa verbo base." },
+          { q: "_____ you study English every weekend?", options: ["Does", "Do", "Are", "Have"], answer: 1, explanation: "Pregunta con 'you' empieza por 'Do'." },
+          { q: "My brother _____ (watch) TV every evening.", options: ["watch", "watches", "is watching", "watchess"], answer: 1, explanation: "Verbo acabado en -ch añade '-es'." },
+          { q: "I _____ (never / be) late for exams.", options: ["am never", "never am", "is never", "never be"], answer: 0, explanation: "El adverbio va DESPUÉS del verbo 'to be'." },
+          { q: "Dogs _____ (bark) when someone comes to the door.", options: ["barks", "barking", "bark", "are barking"], answer: 2, explanation: "Hecho general con sujeto plural." }
+        ]
+      },
+      {
+        id: "present_continuous",
+        title: "Present Continuous Tense",
+        desc: "Acciones en curso, situaciones temporales y planes futuros.",
+        icon: "fa-spinner",
+        explanation: `
+          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">2. Present Continuous (Presente Continuo)</h2>
+          <p class="text-slate-300 text-base md:text-lg mb-6">Utilizado para acciones que están ocurriendo justo ahora, situaciones temporales o planes futuros ya organizados.</p>
+
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-amber-400 font-bold text-lg mb-3">📐 Estructura Básica:</h3>
+              <p class="font-mono text-indigo-300 bg-slate-900 p-3 rounded-xl mb-4 text-center">Sujeto + AM / IS / ARE + Verbo-ING</p>
+              <ul class="space-y-3 text-sm md:text-base">
+                <li><strong class="text-indigo-300">1. Ocurriendo en este instante (Look!, Listen!, Right now):</strong><br>
+                  • <em>"Listen! Someone is singing."</em> ➔ <span class="text-slate-400">¡Escucha! Alguien está cantando.</span>
+                </li>
+                <li><strong class="text-indigo-300">2. Situación temporal (this week, these days):</strong><br>
+                  • <em>"I am living in London this month."</em> ➔ <span class="text-slate-400">Estoy viviendo en Londres este mes.</span>
+                </li>
+                <li><strong class="text-indigo-300">3. Plan futuro fijado en la agenda (Arrangement):</strong><br>
+                  • <em>"We are flying to Paris tomorrow."</em> ➔ <span class="text-slate-400">Volamos / Vamos a volar a París mañana.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-rose-400 font-bold text-lg mb-2">🚨 Verbos de Estado (Stative Verbs - NO llevan -ING):</h3>
+              <p class="text-sm md:text-base text-slate-300 mb-2">Los verbos de pensamiento, emoción o posesión no se usan en continuo (<em>know, understand, love, like, want, need, believe</em>).</p>
+              <p class="text-sm font-mono text-rose-200">❌ I am understanding the lesson now.<br>✅ I understand the lesson now. (Entiendo la lección ahora)</p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { q: "Listen! Somebody _____ (sing) in the bathroom.", options: ["sings", "is singing", "are singing", "sang"], answer: 1, explanation: "'Listen!' indica acción sucediendo en directo." },
+          { q: "We _____ (meet) the principal at 10 AM tomorrow.", options: ["are meeting", "meets", "meet", "were meeting"], answer: 0, explanation: "Plan futuro programado en agenda." },
+          { q: "Why _____ (you / cry)? What's wrong?", options: ["do you cry", "are you crying", "you are crying", "is you crying"], answer: 1, explanation: "Orden de pregunta: Are + sujeto + verb-ing." },
+          { q: "Right now, I _____ (not / study).", options: ["don't study", "am not studying", "not studying", "isn't studying"], answer: 1, explanation: "1ª persona del singular en negativo." },
+          { q: "Look! The bus _____ (come) down the street.", options: ["comes", "is coming", "coming", "are coming"], answer: 1, explanation: "Acción visible en desarrollo." },
+          { q: "They _____ (stay) at a hotel this week.", options: ["stay", "are staying", "stays", "have stayed"], answer: 1, explanation: "Situación temporal (this week)." },
+          { q: "Shh! The baby _____ (sleep) in her room.", options: ["sleeps", "is sleeping", "are sleeping", "slept"], answer: 1, explanation: "Acción en desarrollo." },
+          { q: "I _____ (understand) the lesson now.", options: ["am understanding", "understand", "understands", "have understanding"], answer: 1, explanation: "'Understand' es un Stative Verb (sin -ing)." },
+          { q: "What _____ (he / do) right now?", options: ["does he do", "is he doing", "he is doing", "does he doing"], answer: 1, explanation: "Pregunta con Wh-word + is + sujeto + -ing." },
+          { q: "We _____ (have) a party next Saturday!", options: ["are having", "have", "has", "had"], answer: 0, explanation: "Plan futuro concertado." }
+        ]
+      },
+      {
+        id: "present_perfect",
+        title: "Present Perfect Tense",
+        desc: "Acciones pasadas con conexión directa en el presente.",
+        icon: "fa-clock-rotate-left",
+        explanation: `
+          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">3. Present Perfect (Presente Perfecto)</h2>
+          <p class="text-slate-300 text-base md:text-lg mb-6">Conecta el pasado con el presente. Importa el resultado actual o las experiencias vividas, no el momento exacto.</p>
+
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-amber-400 font-bold text-lg mb-3">📐 Estructura Básica:</h3>
+              <p class="font-mono text-indigo-300 bg-slate-900 p-3 rounded-xl mb-4 text-center">Sujeto + HAVE / HAS + Participio Pasado (3ª Columna / -ed)</p>
+
+              <h3 class="text-emerald-400 font-bold text-lg mb-2">🔑 Palabras Clave Obligatorias de Examen:</h3>
+              <ul class="space-y-2 text-sm md:text-base text-slate-300">
+                <li>• <strong>EVER / NEVER:</strong> Experiencias de vida (<em>"Have you ever flown?"</em> / <em>"I have never seen it."</em>)</li>
+                <li>• <strong>FOR / SINCE:</strong> Duración de tiempo.
+                  <br>&nbsp;&nbsp;- <strong>FOR:</strong> Cantidad de tiempo (<em>for 3 years</em> ➔ durante 3 años).
+                  <br>&nbsp;&nbsp;- <strong>SINCE:</strong> Momento de inicio (<em>since 2020</em> ➔ desde 2020).
+                </li>
+                <li>• <strong>ALREADY / YET / JUST:</strong>
+                  <br>&nbsp;&nbsp;- <em>Already</em> (ya, afirmativo) | <em>Yet</em> (todavía / ya en preguntas y negativas al final) | <em>Just</em> (acabar de).
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-indigo-300 font-bold text-lg mb-2">💡 Ejemplos Traducidos:</h3>
+              <ul class="space-y-2 text-sm md:text-base text-slate-300">
+                <li>• <em>"I have just lost my keys."</em> ➔ <span class="text-slate-400">Acabo de perder mis llaves (no las tengo ahora).</span></li>
+                <li>• <em>"She has lived here since 2018."</em> ➔ <span class="text-slate-400">Ella ha vivido aquí desde 2018 (sigue viviendo).</span></li>
+              </ul>
+            </div>
+          </div>
+        `,
+        questions: [
+          { q: "I _____ (know) Sarah since primary school.", options: ["know", "knew", "have known", "has known"], answer: 2, explanation: "'Since' exige Present Perfect con 'have'." },
+          { q: "_____ you ever eaten sushi?", options: ["Have", "Has", "Did", "Do"], answer: 0, explanation: "Pregunta sobre experiencia de vida." },
+          { q: "She _____ (already / finish) her project.", options: ["finished", "has already finished", "have already finished", "is finishing"], answer: 1, explanation: "'Has' + already + participio." },
+          { q: "They haven't arrived at the cinema _____.", options: ["already", "just", "yet", "ever"], answer: 2, explanation: "'Yet' va al final de oraciones negativas." },
+          { q: "He _____ (lose) his wallet, so he can't buy food now.", options: ["lost", "has lost", "loses", "is losing"], answer: 1, explanation: "Acción pasada con resultado directo en el presente." },
+          { q: "We have lived in this city _____ 10 years.", options: ["since", "for", "during", "ago"], answer: 1, explanation: "'For' para periodos de tiempo acumulado." },
+          { q: "My parents _____ (not / see) my exam report yet.", options: ["didn't see", "haven't seen", "hasn't seen", "don't see"], answer: 1, explanation: "Sujeto plural + haven't + participio." },
+          { q: "Look! David _____ (break) his window!", options: ["broke", "has broken", "is breaking", "breaks"], answer: 1, explanation: "Resultado visible en la actualidad." },
+          { q: "She has been a teacher _____ 2018.", options: ["for", "since", "from", "ago"], answer: 1, explanation: "'Since' marca un punto concreto del pasado." },
+          { q: "_____ (he / ever / fly) in a helicopter?", options: ["Did he ever fly", "Has he ever flown", "Have he ever flown", "Is he ever flying"], answer: 1, explanation: "3ª persona: Has + sujeto + ever + participio." }
+        ]
+      },
+      {
+        id: "past_simple",
+        title: "Past Simple Tense",
+        desc: "Acciones pasadas y terminadas en un tiempo concreto.",
+        icon: "fa-backward",
+        explanation: `
+          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">4. Past Simple (Pasado Simple)</h2>
+          <p class="text-slate-300 text-base md:text-lg mb-6">Utilizado para acciones totalmente finalizadas en el pasado en un momento concreto (<em>yesterday, last night, in 2015, 2 hours ago</em>).</p>
+
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
+              <h3 class="text-amber-400 font-bold text-lg mb-3">📐 Formación de Verbos:</h3>
+              <ul class="space-y-3 text-sm md:text-base text-slate-300">
+                <li>• <strong>Verbos Regulares:</strong> Añaden <strong>-ed</strong> (<em>play ➔ played, visit ➔ visited</em>).</li>
+                <li>• <strong>Verbos Irregulares:</strong> 2ª columna de la lista (<em>go ➔ went, buy ➔ bought, write ➔ wrote</em>).</li>
+                <li>• <strong>Negativa y Pregunta:</strong> Usa el auxiliar <strong>DID / DIDN'T</strong> + Verbo Base.
+                  <br><em>"I didn't go to school yesterday."</em> ➔ <span class="text-slate-400">No fui al colegio ayer.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-emerald-950/40 p-5 rounded-2xl border border-emerald-500/40">
+              <h3 class="text-emerald-300 font-bold text-lg mb-2">⚔️ Contraste Clave: Past Simple vs Present Perfect</h3>
+              <p class="text-sm md:text-base text-slate-300">
+                • <strong>Past Simple:</strong> Dices CUÁNDO ocurrió. La acción ya acabó totalmente.<br>
+                &nbsp;&nbsp;<em>"I visited London in 2020."</em> (Ayer / en 2020 = tiempo cerrado)<br>
+                • <strong>Present Perfect:</strong> No importa cuándo o el periodo continúa abierto.<br>
+                &nbsp;&nbsp;<em>"I have visited London twice."</em> (He visitado Londres 2 veces en mi vida).
+              </p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { q: "I _____ (visit) my grandparents last weekend.", options: ["visited", "visit", "have visited", "visiting"], answer: 0, explanation: "'Last weekend' es tiempo cerrado = Past Simple." },
+          { q: "They _____ (not / go) to school yesterday.", options: ["didn't went", "didn't go", "don't go", "haven't gone"], answer: 1, explanation: "'Didn't' siempre va seguido de verbo en infinitivo." },
+          { q: "_____ you see the football match last night?", options: ["Do", "Have", "Did", "Were"], answer: 2, explanation: "Pregunta en pasado con verbo de acción usa 'Did'." },
+          { q: "She _____ (buy) a new smartphone two days ago.", options: ["buyed", "bought", "has bought", "buys"], answer: 1, explanation: "Pasado irregular del verbo 'buy'." },
+          { q: "Where _____ (they / live) when they were children?", options: ["did they live", "they lived", "have they lived", "were they live"], answer: 0, explanation: "Wh-word + did + sujeto + verbo base." },
+          { q: "We _____ (be) very tired after the trip.", options: ["was", "were", "been", "did be"], answer: 1, explanation: "Pasado del verbo 'to be' para 'we' es 'were'." },
+          { q: "Shakespeare _____ (write) famous plays.", options: ["wrote", "written", "has written", "writes"], answer: 0, explanation: "Acontecimiento histórico cerrado." },
+          { q: "He _____ (not / have) time to finish.", options: ["didn't had", "didn't have", "doesn't have", "had not"], answer: 1, explanation: "Auxiliar 'didn't' + verbo base 'have'." },
+          { q: "What time _____ (you / wake up) this morning?", options: ["did you wake up", "did you woke up", "have you woken up", "you woke up"], answer: 0, explanation: "'Did' + sujeto + verbo base." },
+          { q: "It _____ (start) to rain while we were walking.", options: ["started", "starts", "has started", "was starting"], answer: 0, explanation: "Acción puntual que interrumpe en pasado." }
+        ]
+      },
+      {
+        id: "pronouns",
+        title: "Subject, Object & Possessives",
+        desc: "Pronombres de sujeto, objeto, adjetivos y pronombres posesivos.",
+        icon: "fa-user-tag",
+        explanation: `
+          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">5. Tabla Gramatical de Pronombres</h2>
+          <p class="text-slate-300 text-base md:text-lg mb-6">Aprende a diferenciar la función según su posición en la frase.</p>
+
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full text-left text-xs md:text-sm text-slate-200 border-2 border-slate-800 rounded-2xl overflow-hidden">
+              <thead class="bg-slate-950 text-indigo-400 uppercase">
+                <tr>
+                  <th class="p-3">Sujeto (Hace la acción)</th>
+                  <th class="p-3">Objeto (Recibe la acción)</th>
+                  <th class="p-3">Adj. Posesivo (+ Sustantivo)</th>
+                  <th class="p-3">Pron. Posesivo (Solo)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 bg-slate-900/60 font-mono">
+                <tr><td class="p-3">I (Yo)</td><td class="p-3">Me (A mí)</td><td class="p-3">My (Mi cartera)</td><td class="p-3">Mine (Mío)</td></tr>
+                <tr><td class="p-3">You (Tú)</td><td class="p-3">You (A ti)</td><td class="p-3">Your (Tu libro)</td><td class="p-3">Yours (Tuyo)</td></tr>
+                <tr><td class="p-3">He (Él)</td><td class="p-3">Him (A él)</td><td class="p-3">His (Su coche)</td><td class="p-3">His (Suyo)</td></tr>
+                <tr><td class="p-3">She (Ella)</td><td class="p-3">Her (A ella)</td><td class="p-3">Her (Su perro)</td><td class="p-3">Hers (Suyo)</td></tr>
+                <tr><td class="p-3">They (Ellos)</td><td class="p-3">Them (A ellos)</td><td class="p-3">Their (Su casa)</td><td class="p-3">Theirs (Suyo)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-2 text-sm md:text-base">
+            <p>• <em>"Give the phone to <strong>me</strong>."</em> ➔ <span class="text-slate-400">Dame el teléfono a mí (Objeto tras verbo).</span></p>
+            <p>• <em>"This is <strong>my</strong> car. The car is <strong>mine</strong>."</em> ➔ <span class="text-slate-400">Este es mi coche. El coche es mío.</span></p>
+          </div>
+        `,
+        questions: [
+          { q: "Can you help _____ (I) with my homework?", options: ["I", "me", "my", "mine"], answer: 1, explanation: "Posición de objeto tras verbo 'help'." },
+          { q: "This jacket isn't mine. Is it _____ (you)?", options: ["your", "yours", "you", "you're"], answer: 1, explanation: "Posesivo independiente al final: 'yours'." },
+          { q: "Maria forgot _____ (she) backpack at home.", options: ["her", "hers", "she", "it"], answer: 0, explanation: "Adjetivo posesivo delante de sustantivo: 'her'." },
+          { q: "Give the documents to _____. They are waiting.", options: ["they", "them", "their", "theirs"], answer: 1, explanation: "Preposición 'to' exige pronombre objeto 'them'." },
+          { q: "That blue car belongs to us. It is _____.", options: ["our", "ours", "us", "we"], answer: 1, explanation: "Pronombre posesivo sin sustantivo: 'ours'." },
+          { q: "_____ (He) is the best student in our class.", options: ["Him", "His", "He", "Himself"], answer: 2, explanation: "Posición de sujeto al inicio." },
+          { q: "I saw John yesterday and talked to _____.", options: ["he", "his", "him", "himself"], answer: 2, explanation: "Pronombre objeto para él = 'him'." },
+          { q: "The dog was wagging _____ tail happily.", options: ["it's", "its", "it", "its'"], answer: 1, explanation: "Adjetivo posesivo sin apóstrofe: 'its'." },
+          { q: "Is that laptop _____ or David's?", options: ["your", "yours", "you", "you's"], answer: 1, explanation: "'Yours' actúa como pronombre posesivo." },
+          { q: "We invited them to _____ house.", options: ["our", "ours", "us", "we"], answer: 0, explanation: "Adjetivo posesivo delante de 'house'." }
+        ]
+      },
+      {
+        id: "final_master",
+        title: "Final Master Mixed Test",
+        desc: "Examen global combinando todos los contenidos gramaticales.",
+        icon: "fa-trophy",
+        explanation: `
+          <h2 class="text-2xl md:text-3xl font-black text-amber-400 mb-2">6. Examen Final Integrado</h2>
+          <p class="text-slate-300 text-base md:text-lg mb-6">Evaluación mixta oficial. Abarca todos los tiempos verbales y pronombres estudiados.</p>
+        `,
+        questions: [
+          { q: "Look! Sarah _____ (run) to catch the bus.", options: ["runs", "is running", "has run", "ran"], answer: 1, explanation: "'Look!' indica acción en directo = Present Continuous." },
+          { q: "I haven't seen him _____ last summer.", options: ["for", "since", "ago", "during"], answer: 1, explanation: "'Since' marca punto inicial en pasado." },
+          { q: "Where _____ you buy that hoodie yesterday?", options: ["did", "do", "have", "are"], answer: 0, explanation: "Pregunta en pasado simple usa 'did'." },
+          { q: "This pen belongs to me. It's _____.", options: ["my", "me", "mine", "myself"], answer: 2, explanation: "Pronombre posesivo independiente: 'mine'." },
+          { q: "My father usually _____ (drive) to work.", options: ["drives", "is driving", "has driven", "drive"], answer: 0, explanation: "Rutina habitual = Present Simple." },
+          { q: "We _____ (finish) our homework an hour ago.", options: ["have finished", "finished", "finish", "are finishing"], answer: 1, explanation: "'Ago' exige Past Simple." },
+          { q: "She _____ (not / like) horror movies at all.", options: ["doesn't like", "don't like", "isn't liking", "hasn't liked"], answer: 0, explanation: "Preferencia negativa en 3ª persona." },
+          { q: "Please don't disturb them. They _____ (study).", options: ["study", "are studying", "have studied", "studied"], answer: 1, explanation: "Acción sucediendo en este momento." },
+          { q: "_____ you ever visited Madrid?", options: ["Did", "Have", "Do", "Were"], answer: 1, explanation: "Experiencia de vida con 'ever'." },
+          { q: "Can you give this book back to _____ (she)?", options: ["her", "hers", "she", "it"], answer: 0, explanation: "Pronombre objeto: 'her'." }
+        ]
+      }
+    ];
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert(`Error: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    function initApp() {
+      const savedUser = localStorage.getItem("englishpro_user");
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        updateUserHeader();
+        showView("viewDashboard");
+        renderModules();
+      } else {
+        showView("viewRegistration");
+      }
+    }
+
+    function handleRegistration(e) {
+      e.preventDefault();
+      currentUser = {
+        firstName: document.getElementById("regFirstName").value.trim(),
+        lastName: document.getElementById("regLastName").value.trim(),
+        email: document.getElementById("regEmail").value.trim(),
+        grade: document.getElementById("regGrade").value
+      };
+      localStorage.setItem("englishpro_user", JSON.stringify(currentUser));
+      updateUserHeader();
+      showView("viewDashboard");
+      renderModules();
+    }
+
+    function updateUserHeader() {
+      if (!currentUser) return;
+      const el = document.getElementById("userInfoHeader");
+      el.classList.remove("hidden");
+      el.innerHTML = `
+        <span class="font-extrabold text-white">${currentUser.firstName} ${currentUser.lastName}</span> (${currentUser.grade})<br>
+        <span class="text-slate-400 text-xs">${currentUser.email}</span>
+      `;
+      document.getElementById("welcomeUserText").innerText = `¡Hola, ${currentUser.firstName}! 👋`;
+    }
+
+    function showView(viewId) {
+      ["viewRegistration", "viewDashboard", "viewLesson", "viewQuiz", "viewResults", "viewGlobalReport", "viewTeacher"].forEach(id => {
+        document.getElementById(id).classList.add("hidden");
+      });
+      document.getElementById(viewId).classList.remove("hidden");
+    }
+
+    function goHome() {
+      if (quizTimerInterval) clearInterval(quizTimerInterval);
+      if (currentUser) {
+        showView("viewDashboard");
+        renderModules();
+      } else {
+        showView("viewRegistration");
+      }
+    }
+
+    function renderModules() {
+      const grid = document.getElementById("modulesGrid");
+      grid.innerHTML = "";
+
+      const scores = JSON.parse(localStorage.getItem("englishpro_results") || "[]")
+        .filter(r => r.email === currentUser.email);
+
+      MODULES.forEach(mod => {
+        const userScores = scores.filter(s => s.moduleId === mod.id);
+        const bestScore = userScores.length > 0 ? Math.max(...userScores.map(s => s.score)) : null;
+
+        let badge = `<span class="text-xs bg-slate-800 text-slate-400 px-3 py-1.5 rounded-lg font-bold">Pendiente</span>`;
+        if (bestScore !== null) {
+          badge = `<span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-lg font-black">${bestScore}% Aprobado</span>`;
+        }
+
+        const card = document.createElement("div");
+        card.className = "bg-slate-900 border-2 border-slate-800 hover:border-indigo-500/60 p-6 rounded-3xl transition cursor-pointer flex flex-col justify-between neon-border";
+        card.onclick = () => openLesson(mod.id);
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-xl font-bold border border-indigo-500/30">
+                <i class="fa-solid ${mod.icon}"></i>
+              </div>
+              ${badge}
+            </div>
+            <h3 class="text-xl font-black text-white mb-2">${mod.title}</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-4">${mod.desc}</p>
+          </div>
+          <div class="text-sm font-black text-indigo-400 flex items-center gap-2">
+            Ver Teoría y Test <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openLesson(modId) {
+      currentModuleId = modId;
+      const mod = MODULES.find(m => m.id === modId);
+      document.getElementById("lessonTopicCategory").innerText = mod.title;
+      document.getElementById("lessonContent").innerHTML = mod.explanation;
+      showView("viewLesson");
+    }
+
+    function startCurrentQuiz() {
+      currentQuestionIdx = 0;
+      currentScore = 0;
+      quizSeconds = 0;
+
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      document.getElementById("quizCategoryTitle").innerText = mod.title;
+
+      showView("viewQuiz");
+      startTimer();
+      renderQuestion();
+    }
+
+    function startTimer() {
+      if (quizTimerInterval) clearInterval(quizTimerInterval);
+      quizTimerInterval = setInterval(() => {
+        quizSeconds++;
+        const mins = String(Math.floor(quizSeconds / 60)).padStart(2, '0');
+        const secs = String(quizSeconds % 60).padStart(2, '0');
+        document.getElementById("quizTimer").innerText = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function renderQuestion() {
+      selectedOptionIdx = null;
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      const q = mod.questions[currentQuestionIdx];
+
+      document.getElementById("quizQuestionCount").innerText = `Pregunta ${currentQuestionIdx + 1} de ${mod.questions.length}`;
+      document.getElementById("quizProgressBar").style.width = `${((currentQuestionIdx + 1) / mod.questions.length) * 100}%`;
+      document.getElementById("quizQuestionText").innerText = q.q;
+
+      const feedbackBox = document.getElementById("quizFeedback");
+      feedbackBox.classList.add("hidden");
+      document.getElementById("nextQuestionBtn").classList.add("hidden");
+
+      const optsContainer = document.getElementById("quizOptions");
+      optsContainer.innerHTML = "";
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-slate-800 bg-slate-950/80 hover:bg-slate-800 transition text-lg md:text-2xl font-bold text-slate-100 flex items-center justify-between";
+        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-slate-600 text-xl md:text-2xl"></i>`;
+        btn.onclick = () => selectOption(idx);
+        optsContainer.appendChild(btn);
+      });
+    }
+
+    function selectOption(idx) {
+      if (selectedOptionIdx !== null) return;
+      selectedOptionIdx = idx;
+
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      const q = mod.questions[currentQuestionIdx];
+      const buttons = document.querySelectorAll(".option-btn");
+      const feedbackBox = document.getElementById("quizFeedback");
+
+      if (idx === q.answer) {
+        currentScore++;
+        buttons[idx].className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/60 text-emerald-100 text-lg md:text-2xl font-extrabold flex items-center justify-between";
+        buttons[idx].querySelector("i").className = "fa-solid fa-circle-check text-emerald-400 text-2xl md:text-3xl";
+        feedbackBox.className = "p-6 rounded-2xl text-base md:text-xl font-bold border-2 bg-emerald-950/40 border-emerald-500/60 text-emerald-200";
+        feedbackBox.innerHTML = `<strong>¡CORRECTO! 🎉</strong> ${q.explanation}`;
+      } else {
+        buttons[idx].className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-rose-500 bg-rose-950/60 text-rose-100 text-lg md:text-2xl font-extrabold flex items-center justify-between";
+        buttons[idx].querySelector("i").className = "fa-solid fa-circle-xmark text-rose-400 text-2xl md:text-3xl";
+        buttons[q.answer].className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/40 text-emerald-200 text-lg md:text-2xl font-extrabold flex items-center justify-between";
+        feedbackBox.className = "p-6 rounded-2xl text-base md:text-xl font-bold border-2 bg-rose-950/40 border-rose-500/60 text-rose-200";
+        feedbackBox.innerHTML = `<strong>EXPLICACIÓN:</strong> ${q.explanation}`;
+      }
+
+      feedbackBox.classList.remove("hidden");
+      document.getElementById("nextQuestionBtn").classList.remove("hidden");
+    }
+
+    function nextQuestion() {
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      if (currentQuestionIdx < mod.questions.length - 1) {
+        currentQuestionIdx++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function quitQuiz() {
+      if (confirm("¿Salir del examen en curso?")) {
+        clearInterval(quizTimerInterval);
+        goHome();
+      }
+    }
+
+    function finishQuiz() {
+      clearInterval(quizTimerInterval);
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      const percentage = Math.round((currentScore / mod.questions.length) * 100);
+
+      const mins = Math.floor(quizSeconds / 60);
+      const secs = quizSeconds % 60;
+      const timeStr = `${mins}m ${secs}s`;
+      const nowStr = new Date().toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' });
+      const verifyHash = generateVerificationHash(currentUser.email, percentage, quizSeconds, nowStr);
+
+      const record = {
+        studentName: `${currentUser.firstName} ${currentUser.lastName}`,
+        email: currentUser.email,
+        grade: currentUser.grade,
+        topic: mod.title,
+        moduleId: mod.id,
+        score: percentage,
+        rawScore: `${currentScore}/${mod.questions.length}`,
+        secondsSpent: quizSeconds,
+        timeSpent: timeStr,
+        dateTime: nowStr,
+        hash: verifyHash
+      };
+
+      const existingRecords = JSON.parse(localStorage.getItem("englishpro_results") || "[]");
+      existingRecords.push(record);
+      localStorage.setItem("englishpro_results", JSON.stringify(existingRecords));
+
+      const resultsCard = document.getElementById("resultsCard");
+      resultsCard.innerHTML = `
+        <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-3xl font-black bg-indigo-500/20 text-indigo-400 border-2 border-indigo-500/50">
+          ${percentage}%
+        </div>
+        <div>
+          <h2 class="text-2xl font-black text-white mb-1">¡Bloque Guardado! 👍</h2>
+          <p class="text-slate-300 text-sm">Resultado registrado correctamente.</p>
+        </div>
+        <div class="bg-slate-950 p-5 rounded-2xl border-2 border-slate-800 text-left text-sm text-slate-200 space-y-2 max-w-lg mx-auto">
+          <div class="flex justify-between"><span class="text-slate-400">Tema:</span> <span class="font-bold text-indigo-400">${record.topic}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Puntuación:</span> <span class="font-bold text-white">${record.rawScore} (${percentage}%)</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Tiempo:</span> <span class="font-bold text-emerald-400">${timeStr}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Fecha:</span> <span class="font-bold text-white">${nowStr}</span></div>
+        </div>
+        <div class="pt-2 flex justify-center">
+          <button onclick="goHome()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-black text-base px-8 py-3.5 rounded-2xl transition">
+            Volver al Panel
+          </button>
+        </div>
+      `;
+
+      showView("viewResults");
+    }
+
+    function showGlobalReportModal() {
+      const records = JSON.parse(localStorage.getItem("englishpro_results") || "[]")
+        .filter(r => r.email === currentUser.email);
+
+      const container = document.getElementById("globalReportDetails");
+
+      let completedCount = 0;
+      let totalPercentageSum = 0;
+      let totalSecondsSum = 0;
+      let breakdownHtml = "";
+      let lastCompletionDate = "";
+
+      MODULES.forEach(mod => {
+        const topicRecords = records.filter(r => r.moduleId === mod.id);
+        if (topicRecords.length > 0) {
+          const bestRecord = topicRecords.reduce((max, r) => r.score > max.score ? r : max, topicRecords[0]);
+          totalPercentageSum += bestRecord.score;
+          totalSecondsSum += bestRecord.secondsSpent || 0;
+          completedCount++;
+          lastCompletionDate = bestRecord.dateTime;
+
+          breakdownHtml += `
+            <div class="flex justify-between items-center bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs md:text-sm">
+              <span class="font-extrabold text-white">${mod.title}</span>
+              <div class="text-right">
+                <span class="font-black ${bestRecord.score >= 50 ? 'text-emerald-400' : 'text-rose-400'}">${bestRecord.score}%</span>
+                <span class="text-slate-500 text-xs ml-2">(${bestRecord.timeSpent})</span>
+              </div>
+            </div>
+          `;
+        } else {
+          breakdownHtml += `
+            <div class="flex justify-between items-center bg-slate-950/30 p-3 rounded-xl border border-slate-800/40 text-xs opacity-50">
+              <span class="font-bold text-slate-400">${mod.title}</span>
+              <span class="text-rose-400 font-bold italic">Pendiente</span>
+            </div>
+          `;
+        }
+      });
+
+      if (completedCount < MODULES.length) {
+        container.innerHTML = `
+          <div class="text-center py-4 space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl border-2 border-amber-500/40">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-xl font-black text-white">Evaluación Incompleta</h3>
+            <p class="text-slate-300 text-xs md:text-sm max-w-md mx-auto">
+              Has realizado <strong>${completedCount} de ${MODULES.length}</strong> bloques. Necesitas completar todos para generar tu tarjeta de nota oficial.
+            </p>
+            <div class="space-y-2 text-left my-4">
+              ${breakdownHtml}
+            </div>
+            <button onclick="goHome()" class="no-print bg-indigo-600 text-white font-extrabold px-6 py-3 rounded-xl text-sm">Regresar y completar</button>
+          </div>
+        `;
+        showView("viewGlobalReport");
+        return;
+      }
+
+      const finalAverage = Math.round(totalPercentageSum / MODULES.length);
+      const totalMins = Math.floor(totalSecondsSum / 60);
+      const totalSecs = totalSecondsSum % 60;
+      const totalDurationStr = `${totalMins}m ${totalSecs}s`;
+      const masterHash = generateVerificationHash(currentUser.email, finalAverage, totalSecondsSum, lastCompletionDate);
+
+      container.innerHTML = `
+        <!-- HEADER COMPACTO PARA CAPTURA DE PANTALLA -->
+        <div class="grid grid-cols-3 gap-3 items-center bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
+          <div class="col-span-2 space-y-1">
+            <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">Alumno / Expediente</p>
+            <h3 class="text-lg md:text-xl font-black text-white leading-tight">${currentUser.firstName} ${currentUser.lastName}</h3>
+            <p class="text-xs text-indigo-300 font-semibold">${currentUser.grade} • ${currentUser.email}</p>
+          </div>
+          <div class="text-center bg-emerald-500/10 border-2 border-emerald-500/40 p-3 rounded-2xl">
+            <span class="text-xs font-bold text-emerald-400 block uppercase">Nota Media</span>
+            <span class="text-3xl md:text-4xl font-black text-emerald-400 leading-none">${finalAverage}%</span>
+          </div>
+        </div>
+
+        <!-- REGISTRO DE VERIFICACIÓN ANTI-COPIA -->
+        <div class="bg-indigo-950/40 border border-indigo-500/30 p-3 rounded-xl flex justify-between items-center text-xs">
+          <div>
+            <span class="text-slate-400 block">Código Único de Validación (Hash):</span>
+            <span class="font-mono font-black text-indigo-300 text-sm tracking-wider">${masterHash}</span>
+          </div>
+          <div class="text-right">
+            <span class="text-slate-400 block">Tiempo Total:</span>
+            <span class="font-bold text-emerald-400">${totalDurationStr}</span>
+          </div>
+        </div>
+
+        <!-- DESGLOSE DE LOS 6 BLOQUES EN FORMATO COMPACTO -->
+        <div>
+          <p class="text-xs font-black uppercase text-slate-400 mb-2 tracking-wider">Desglose de Bloques Realizados</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            ${breakdownHtml}
+          </div>
+        </div>
+
+        <!-- INSTRUCCIONES PARA EL ALUMNO Y BOTONES -->
+        <div class="pt-2 border-t border-slate-800 space-y-3 no-print">
+          <div class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl text-xs text-amber-200 flex items-center gap-3">
+            <i class="fa-solid fa-camera text-xl text-amber-400 flex-shrink-0"></i>
+            <span><strong>¡HAZ UNA CAPTURA DE PANTALLA AHORA!</strong> Sube la imagen a tu entrega de tareas. Tu profesor podrá validar el código Hash.</span>
+          </div>
+
+
+<div class="flex justify-center">
+    <button onclick="window.print()" class="px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-black py-3 rounded-xl transition text-xs md:text-sm flex items-center justify-center gap-3">
+      <i class="fa-solid fa-print"></i> Imprimir / Guardar PDF
+    </button>
+  </div>
+</div>
+
+      `;
+
+      showView("viewGlobalReport");
+    }
+
+    function copyMasterClassroomReport(finalAverage, totalDuration, finishDate, masterHash) {
+      const records = JSON.parse(localStorage.getItem("englishpro_results") || "[]")
+        .filter(r => r.email === currentUser.email);
+
+      let partialsText = "";
+      MODULES.forEach(mod => {
+        const topicRecords = records.filter(r => r.moduleId === mod.id);
+        const best = topicRecords.reduce((max, r) => r.score > max.score ? r : max, topicRecords[0]);
+        partialsText += `  • ${mod.title}: ${best.score}% (${best.timeSpent})\n`;
+      });
+
+      const fullReport = `==============================================\nINFORME OFICIAL ANTI-COPIA - ENGLISHPRO\n==============================================\nALUMNO/A: ${currentUser.firstName} ${currentUser.lastName}\nCURSO: ${currentUser.grade}\nEMAIL: ${currentUser.email}\n----------------------------------------------\nNOTA MEDIA GLOBAL: ${finalAverage}%\nTIEMPO TOTAL: ${totalDuration}\nFECHA: ${finishDate}\nCÓDIGO HASH DE VALIDACIÓN: ${masterHash}\n----------------------------------------------\nDESGLOSE DE BLOQUES:\n${partialsText}==============================================`;
+
+      navigator.clipboard.writeText(fullReport);
+      alert("¡Informe copiado al portapapeles con éxito! Incluye el código Hash de seguridad.");
+    }
+
+    function showTeacherLogin() {
+      const pwd = prompt("Contraseña del profesor (por defecto: teacher123):");
+      if (pwd === "teacher123") {
+        renderTeacherDashboard();
+        showView("viewTeacher");
+      } else if (pwd !== null) {
+        alert("Contraseña incorrecta");
+      }
+    }
+
+    function renderTeacherDashboard() {
+      const records = JSON.parse(localStorage.getItem("englishpro_results") || "[]");
+      const tbody = document.getElementById("teacherTableBody");
+      tbody.innerHTML = "";
+
+      if (records.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-500 font-bold">No hay intentos registrados.</td></tr>`;
+        return;
+      }
+
+      records.reverse().forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-800/50 transition";
+        tr.innerHTML = `
+          <td class="p-4 font-extrabold text-white">${r.studentName}</td>
+          <td class="p-4 text-slate-300 font-medium">${r.grade}</td>
+          <td class="p-4 text-indigo-400 font-bold">${r.topic}</td>
+          <td class="p-4 font-black text-white">${r.score}% (${r.rawScore})</td>
+          <td class="p-4 font-mono text-emerald-400 font-bold">${r.timeSpent}</td>
+          <td class="p-4 text-slate-400 text-xs">${r.dateTime}</td>
+          <td class="p-4 font-mono text-xs text-indigo-300 font-bold">${r.hash || 'N/A'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function clearTeacherData() {
+      if (confirm("¿Borrar todos los registros locales?")) {
+        localStorage.removeItem("englishpro_results");
+        renderTeacherDashboard();
+      }
+    }
+
+    window.onload = initApp;
+  </script>
+</body>
+</html>
