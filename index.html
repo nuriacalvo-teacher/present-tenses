@@ -20,10 +20,37 @@
       .print-card { border: 2px solid #000 !important; background: #fff !important; color: #000 !important; }
     }
   </style>
+
+  <!-- FIREBASE LIBRARIES (COMPAT) AÑADIDAS DE HABITS -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+  <script>
+    window.firebaseConfig = {
+      apiKey: "AIzaSyD1kMkporqrJFZNfEakmzQjFngkmF4detQ",
+      authDomain: "goya-english.firebaseapp.com",
+      databaseURL: "https://goya-english-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "goya-english",
+      storageBucket: "goya-english.firebasestorage.app",
+      messagingSenderId: "707378371042",
+      appId: "1:707378371042:web:a85b3c8d179156cc7a41bb",
+      measurementId: "G-9L8SR3268E"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(window.firebaseConfig);
+    }
+    const db = firebase.database();
+  </script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen gradient-bg flex flex-col selection:bg-indigo-500 selection:text-white">
 
-  <!-- NAVBAR -->
+  <!-- BOTÓN FLOTANTE PROFE AÑADIDO DE HABITS -->
+  <button onclick="showTeacherLogin()" style="position: fixed; top: 15px; right: 15px; z-index: 99999; padding: 10px 16px; background-color: #4f46e5; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" class="no-print">
+    ⚙️ Profe
+  </button>
+
+  <!-- NAVBAR DE PRESENT -->
   <header class="border-b border-slate-800 bg-slate-900/90 backdrop-filter blur-md sticky top-0 z-50 py-3 no-print">
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
       <div class="flex items-center space-x-4 cursor-pointer" onclick="goHome()">
@@ -53,7 +80,7 @@
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
 
-    <!-- REGISTRO ALUMNO -->
+    <!-- REGISTRO ALUMNO DE PRESENT -->
     <section id="viewRegistration" class="space-y-6 max-w-xl mx-auto w-full py-6">
       <div class="text-center space-y-3">
         <span class="px-4 py-1.5 bg-indigo-500/20 text-indigo-300 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-widest border border-indigo-500/30">Portal del Alumnado</span>
@@ -84,13 +111,21 @@
             <option value="2º Bachillerato">2º Bachillerato</option>
           </select>
         </div>
+        <!-- Selector de profesor importado de habits para el panel de control -->
+        <div>
+          <label class="block text-sm font-bold text-amber-400 uppercase tracking-wider mb-2">Profesora de Inglés</label>
+          <select id="regTeacher" required class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-indigo-500 transition">
+            <option value="" disabled selected>Selecciona tu profesora...</option>
+            <option value="Nuria Calvo">Nuria Calvo</option>
+          </select>
+        </div>
         <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black text-lg md:text-xl py-5 rounded-2xl transition shadow-xl shadow-indigo-600/40 flex items-center justify-center gap-3 mt-4">
           Entrar a la Academia <i class="fa-solid fa-arrow-right"></i>
         </button>
       </form>
     </section>
 
-    <!-- DASHBOARD PRINCIPAL -->
+    <!-- DASHBOARD PRINCIPAL DE PRESENT -->
     <section id="viewDashboard" class="hidden space-y-8 py-4">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-900/90 border-2 border-slate-800 p-6 md:p-8 rounded-3xl">
         <div>
@@ -101,11 +136,10 @@
           <i class="fa-solid fa-graduation-cap text-2xl"></i> VER INFORME FINAL
         </button>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modulesGrid"></div>
     </section>
 
-    <!-- GUÍA TEÓRICA ULTRA DETALLADA CON EJEMPLOS Y TRADUCCIONES -->
+    <!-- GUÍA TEÓRICA ULTRA DETALLADA -->
     <section id="viewLesson" class="hidden space-y-6 py-4">
       <div class="flex justify-between items-center no-print">
         <button onclick="goHome()" class="text-sm md:text-base font-bold text-slate-400 hover:text-white flex items-center gap-2">
@@ -123,7 +157,7 @@
       </div>
     </section>
 
-    <!-- CUESTIONARIO EN VIVO (LETRA GRANDE PARA PIZARRA DIGITAL) -->
+    <!-- CUESTIONARIO EN VIVO -->
     <section id="viewQuiz" class="hidden space-y-6 py-2">
       <div class="flex justify-between items-center bg-slate-900 border-2 border-slate-800 p-5 md:p-6 rounded-2xl">
         <div>
@@ -159,11 +193,9 @@
       <div id="resultsCard" class="bg-slate-900 border-2 border-slate-800 p-8 md:p-10 rounded-3xl text-center space-y-6 shadow-2xl"></div>
     </section>
 
-    <!-- INFORME FINAL GLOBAL COMPACTO Y CON CÓDIGO ANTI-COPIA -->
+    <!-- INFORME FINAL GLOBAL COMPACTO Y CON CÓDIGO ANTI-COPIA DE PRESENT -->
     <section id="viewGlobalReport" class="hidden py-4 max-w-3xl mx-auto w-full">
       <div id="screenCaptureArea" class="bg-slate-900 border-4 border-indigo-500/50 p-6 md:p-8 rounded-3xl space-y-5 shadow-2xl relative overflow-hidden print-card">
-        
-        <!-- MARCA DE AGUA ANTI-SPOOFING -->
         <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none text-9xl font-black text-white select-none">
           ENGLISHPRO
         </div>
@@ -172,62 +204,61 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span class="text-xs font-black text-amber-400 uppercase tracking-widest">Oficial • Anti-Falsificación</span>
+              <span class="text-xs font-black text-amber-400 uppercase tracking-widest">Oficial • Informe Anti-Copia</span>
             </div>
-            <h2 class="text-xl md:text-2xl font-black text-white mt-1">Informe Final de Evaluación</h2>
+            <h2 class="text-2xl md:text-3xl font-black text-white mt-1">Informe Final de Evaluación</h2>
           </div>
-          <button onclick="goHome()" class="no-print text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl">
+          <button onclick="goHome()" class="no-print text-sm bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-2 rounded-xl">
             <i class="fa-solid fa-xmark"></i> Cerrar
           </button>
         </div>
 
         <div id="globalReportDetails"></div>
-
       </div>
     </section>
 
-    <!-- PANEL DEL PROFESOR (CON VALIDADOR DE HASH CÓDIGO ANTI-COPIA) -->
+    <!-- PANEL DEL PROFESOR (AÑADIDO DE HABITS) -->
     <section id="viewTeacher" class="hidden space-y-6 py-6">
       <div class="flex justify-between items-center border-b border-slate-800 pb-4">
         <div>
-          <h2 class="text-2xl md:text-3xl font-black text-white">Panel del Profesorado</h2>
-          <p class="text-sm text-slate-400">Histórico de intentos registrados en este dispositivo.</p>
+          <h2 class="text-3xl md:text-4xl font-black text-white" id="teacherTitle">Panel del Profesorado</h2>
+          <p class="text-base text-slate-400">Una fila por alumno · datos en vivo desde Firebase.</p>
         </div>
-        <button onclick="goHome()" class="text-xs md:text-sm bg-slate-800 text-slate-300 font-bold px-4 py-2.5 rounded-xl">Salir</button>
+        <button onclick="goHome()" class="text-sm md:text-base bg-slate-800 text-slate-300 font-bold px-5 py-3 rounded-xl">Salir</button>
       </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="teacherStatsGrid"></div>
+
+      <div class="flex flex-col md:flex-row gap-3 md:items-center">
+        <input id="teacherSearchInput" type="text" placeholder="🔍 Buscar alumno por nombre o email..." oninput="filterTeacherTable(this.value)"
+          class="flex-1 bg-slate-900 border-2 border-slate-800 rounded-2xl px-5 py-3 text-base text-white focus:outline-none focus:border-indigo-500 transition">
+        <button id="teacherRefreshBtn" onclick="refreshTeacherDashboardNow()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-5 py-3 rounded-2xl transition flex items-center justify-center gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-arrows-rotate"></i> Actualizar
+        </button>
+      </div>
+      <p id="teacherLastRefreshed" class="text-xs text-slate-500 -mt-2">Cargando...</p>
 
       <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
         <div class="overflow-x-auto">
           <table class="w-full text-left text-sm md:text-base text-slate-300">
-            <thead class="bg-slate-950 text-slate-400 uppercase font-bold text-xs">
-              <tr>
-                <th class="p-4">Alumno</th>
-                <th class="p-4">Curso</th>
-                <th class="p-4">Tema</th>
-                <th class="p-4">Nota</th>
-                <th class="p-4">Tiempo</th>
-                <th class="p-4">Fecha/Hora</th>
-                <th class="p-4">Hash Único</th>
-              </tr>
-            </thead>
+            <thead class="bg-slate-950 text-slate-400 uppercase font-bold text-xs" id="teacherTableHead"></thead>
             <tbody id="teacherTableBody" class="divide-y divide-slate-800"></tbody>
           </table>
         </div>
-      </div>
-      <div class="flex justify-between items-center pt-2">
-        <p class="text-xs text-slate-500">* El hash verifica que la captura adjunta por el alumno coincida exactamente con la base de datos.</p>
-        <button onclick="clearTeacherData()" class="text-xs text-rose-400 hover:underline font-bold">Borrar Registros Locales</button>
       </div>
     </section>
 
   </main>
 
-  <footer class="border-t border-slate-800/80 py-4 text-center text-xs text-slate-500 font-semibold no-print">
-    EnglishPRO Academy • Classroom Edition • Designed for ESO & Bachillerato
+  <footer class="border-t border-slate-800/80 py-4 text-center text-sm text-slate-500 font-semibold no-print">
+    EnglishPRO Academy • Classroom & Certificate Edition
   </footer>
 
   <script>
+    const PASS_THRESHOLD = 80;
+
     let currentUser = null;
+    let currentTeacherLoggedIn = null;
     let currentModuleId = null;
     let currentQuestionIdx = 0;
     let currentScore = 0;
@@ -235,284 +266,15 @@
     let quizSeconds = 0;
     let selectedOptionIdx = null;
 
-    // Generador de Hash Cryptográfico sencillo para firma digital Anti-Copia
-    function generateVerificationHash(studentEmail, score, time, date) {
-      const str = `${studentEmail}_${score}_${time}_${date}_SECRET_TEACHER_KEY_2026`;
-      let hash = 0;
-      for (let i = 0; i < str.length; i++) {
-        const char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash |= 0;
-      }
-      return 'SEC-' + Math.abs(hash).toString(36).toUpperCase();
-    }
-
+    // =========================================================================
+    // ¡ATENCIÓN! PEGA AQUÍ TUS 6 MÓDULOS DE "PRESENT" 
+    // He dejado este bloque vacío para que pongas el contenido de tus ejercicios 
+    // y no sobrescribirlos con los de "habits".
+    // =========================================================================
     const MODULES = [
-      {
-        id: "present_simple",
-        title: "Present Simple Tense",
-        desc: "Rutinas, verdades universales, horarios fijos y hábitos.",
-        icon: "fa-repeat",
-        explanation: `
-          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">1. Present Simple (Presente Simple)</h2>
-          <p class="text-slate-300 text-base md:text-lg mb-6">Se utiliza para hablar de hábitos, verdades científicas, situaciones permanentes y horarios programados.</p>
-
-          <div class="space-y-6">
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-amber-400 font-bold text-lg mb-3">📌 Usos Principales y Ejemplos Traducidos:</h3>
-              <ul class="space-y-3 text-sm md:text-base">
-                <li><strong class="text-indigo-300">1. Rutinas y Hábitos:</strong><br>
-                  • <em>"I study English every afternoon."</em> ➔ <span class="text-slate-400">Estudio inglés todas las tardes.</span>
-                </li>
-                <li><strong class="text-indigo-300">2. Verdades Científicas y Datos Universales:</strong><br>
-                  • <em>"Water boils at 100 degrees."</em> ➔ <span class="text-slate-400">El agua hierve a 100 grados.</span>
-                </li>
-                <li><strong class="text-indigo-300">3. Horarios Fijos (Trenes, Exámenes, Cine):</strong><br>
-                  • <em>"The train leaves at 8:00 AM."</em> ➔ <span class="text-slate-400">El tren sale a las 8:00 AM.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-emerald-400 font-bold text-lg mb-3">⚙️ Regla de la 3ª Persona del Singular (He / She / It):</h3>
-              <p class="text-sm md:text-base text-slate-300 mb-3">En oraciones afirmativas, añade <strong>-s / -es / -ies</strong> al verbo:</p>
-              <ul class="list-disc pl-5 text-sm md:text-base text-slate-300 space-y-1">
-                <li>General: <em>play ➔ plays</em> | <em>like ➔ likes</em></li>
-                <li>Verbos acabados en -ch, -sh, -x, -ss, -o: añade <strong>-es</strong> (<em>watch ➔ watches, go ➔ goes</em>).</li>
-                <li>Consonante + y: cambia a <strong>-ies</strong> (<em>study ➔ studies</em>).</li>
-              </ul>
-            </div>
-
-            <div class="bg-rose-950/40 p-5 rounded-2xl border border-rose-500/40">
-              <h3 class="text-rose-300 font-bold text-lg mb-2">⚠️ Error Típico en Exámenes:</h3>
-              <p class="text-sm md:text-base text-slate-300">¡NO añadas '-s' en negativas o preguntas! El auxiliar <strong>does / doesn't</strong> ya lleva la marca.</p>
-              <p class="text-sm font-mono mt-2 text-rose-200">❌ Incorrecto: He doesn't likes pizza.<br>✅ Correcto: He doesn't like pizza. (A él no le gusta la pizza)</p>
-            </div>
-          </div>
-        `,
-        questions: [
-          { q: "She _____ (go) to the gym every Tuesday.", options: ["go", "goes", "is going", "went"], answer: 1, explanation: "3ª persona singular (She) añade '-es'." },
-          { q: "Water _____ (boil) at 100 degrees Celsius.", options: ["boils", "boil", "is boiling", "has boiled"], answer: 0, explanation: "Verdad científica = Present Simple." },
-          { q: "They _____ (not / like) eating fast food during the week.", options: ["doesn't like", "don't like", "not like", "aren't liking"], answer: 1, explanation: "'They' lleva auxiliar 'don't'." },
-          { q: "What time _____ the train leave tomorrow morning?", options: ["is", "do", "does", "are"], answer: 2, explanation: "Horario fijo con sujeto singular ('the train') usa 'does'." },
-          { q: "He always _____ (arrive) late for class.", options: ["arrives", "arrive", "is arriving", "has arrived"], answer: 0, explanation: "Adverbios de frecuencia van con Present Simple." },
-          { q: "My parents _____ (live) in a small apartment.", options: ["lives", "living", "live", "are living"], answer: 2, explanation: "Sujeto plural (My parents = they) usa verbo base." },
-          { q: "_____ you study English every weekend?", options: ["Does", "Do", "Are", "Have"], answer: 1, explanation: "Pregunta con 'you' empieza por 'Do'." },
-          { q: "My brother _____ (watch) TV every evening.", options: ["watch", "watches", "is watching", "watchess"], answer: 1, explanation: "Verbo acabado en -ch añade '-es'." },
-          { q: "I _____ (never / be) late for exams.", options: ["am never", "never am", "is never", "never be"], answer: 0, explanation: "El adverbio va DESPUÉS del verbo 'to be'." },
-          { q: "Dogs _____ (bark) when someone comes to the door.", options: ["barks", "barking", "bark", "are barking"], answer: 2, explanation: "Hecho general con sujeto plural." }
-        ]
-      },
-      {
-        id: "present_continuous",
-        title: "Present Continuous Tense",
-        desc: "Acciones en curso, situaciones temporales y planes futuros.",
-        icon: "fa-spinner",
-        explanation: `
-          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">2. Present Continuous (Presente Continuo)</h2>
-          <p class="text-slate-300 text-base md:text-lg mb-6">Utilizado para acciones que están ocurriendo justo ahora, situaciones temporales o planes futuros ya organizados.</p>
-
-          <div class="space-y-6">
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-amber-400 font-bold text-lg mb-3">📐 Estructura Básica:</h3>
-              <p class="font-mono text-indigo-300 bg-slate-900 p-3 rounded-xl mb-4 text-center">Sujeto + AM / IS / ARE + Verbo-ING</p>
-              <ul class="space-y-3 text-sm md:text-base">
-                <li><strong class="text-indigo-300">1. Ocurriendo en este instante (Look!, Listen!, Right now):</strong><br>
-                  • <em>"Listen! Someone is singing."</em> ➔ <span class="text-slate-400">¡Escucha! Alguien está cantando.</span>
-                </li>
-                <li><strong class="text-indigo-300">2. Situación temporal (this week, these days):</strong><br>
-                  • <em>"I am living in London this month."</em> ➔ <span class="text-slate-400">Estoy viviendo en Londres este mes.</span>
-                </li>
-                <li><strong class="text-indigo-300">3. Plan futuro fijado en la agenda (Arrangement):</strong><br>
-                  • <em>"We are flying to Paris tomorrow."</em> ➔ <span class="text-slate-400">Volamos / Vamos a volar a París mañana.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-rose-400 font-bold text-lg mb-2">🚨 Verbos de Estado (Stative Verbs - NO llevan -ING):</h3>
-              <p class="text-sm md:text-base text-slate-300 mb-2">Los verbos de pensamiento, emoción o posesión no se usan en continuo (<em>know, understand, love, like, want, need, believe</em>).</p>
-              <p class="text-sm font-mono text-rose-200">❌ I am understanding the lesson now.<br>✅ I understand the lesson now. (Entiendo la lección ahora)</p>
-            </div>
-          </div>
-        `,
-        questions: [
-          { q: "Listen! Somebody _____ (sing) in the bathroom.", options: ["sings", "is singing", "are singing", "sang"], answer: 1, explanation: "'Listen!' indica acción sucediendo en directo." },
-          { q: "We _____ (meet) the principal at 10 AM tomorrow.", options: ["are meeting", "meets", "meet", "were meeting"], answer: 0, explanation: "Plan futuro programado en agenda." },
-          { q: "Why _____ (you / cry)? What's wrong?", options: ["do you cry", "are you crying", "you are crying", "is you crying"], answer: 1, explanation: "Orden de pregunta: Are + sujeto + verb-ing." },
-          { q: "Right now, I _____ (not / study).", options: ["don't study", "am not studying", "not studying", "isn't studying"], answer: 1, explanation: "1ª persona del singular en negativo." },
-          { q: "Look! The bus _____ (come) down the street.", options: ["comes", "is coming", "coming", "are coming"], answer: 1, explanation: "Acción visible en desarrollo." },
-          { q: "They _____ (stay) at a hotel this week.", options: ["stay", "are staying", "stays", "have stayed"], answer: 1, explanation: "Situación temporal (this week)." },
-          { q: "Shh! The baby _____ (sleep) in her room.", options: ["sleeps", "is sleeping", "are sleeping", "slept"], answer: 1, explanation: "Acción en desarrollo." },
-          { q: "I _____ (understand) the lesson now.", options: ["am understanding", "understand", "understands", "have understanding"], answer: 1, explanation: "'Understand' es un Stative Verb (sin -ing)." },
-          { q: "What _____ (he / do) right now?", options: ["does he do", "is he doing", "he is doing", "does he doing"], answer: 1, explanation: "Pregunta con Wh-word + is + sujeto + -ing." },
-          { q: "We _____ (have) a party next Saturday!", options: ["are having", "have", "has", "had"], answer: 0, explanation: "Plan futuro concertado." }
-        ]
-      },
-      {
-        id: "present_perfect",
-        title: "Present Perfect Tense",
-        desc: "Acciones pasadas con conexión directa en el presente.",
-        icon: "fa-clock-rotate-left",
-        explanation: `
-          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">3. Present Perfect (Presente Perfecto)</h2>
-          <p class="text-slate-300 text-base md:text-lg mb-6">Conecta el pasado con el presente. Importa el resultado actual o las experiencias vividas, no el momento exacto.</p>
-
-          <div class="space-y-6">
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-amber-400 font-bold text-lg mb-3">📐 Estructura Básica:</h3>
-              <p class="font-mono text-indigo-300 bg-slate-900 p-3 rounded-xl mb-4 text-center">Sujeto + HAVE / HAS + Participio Pasado (3ª Columna / -ed)</p>
-
-              <h3 class="text-emerald-400 font-bold text-lg mb-2">🔑 Palabras Clave Obligatorias de Examen:</h3>
-              <ul class="space-y-2 text-sm md:text-base text-slate-300">
-                <li>• <strong>EVER / NEVER:</strong> Experiencias de vida (<em>"Have you ever flown?"</em> / <em>"I have never seen it."</em>)</li>
-                <li>• <strong>FOR / SINCE:</strong> Duración de tiempo.
-                  <br>&nbsp;&nbsp;- <strong>FOR:</strong> Cantidad de tiempo (<em>for 3 years</em> ➔ durante 3 años).
-                  <br>&nbsp;&nbsp;- <strong>SINCE:</strong> Momento de inicio (<em>since 2020</em> ➔ desde 2020).
-                </li>
-                <li>• <strong>ALREADY / YET / JUST:</strong>
-                  <br>&nbsp;&nbsp;- <em>Already</em> (ya, afirmativo) | <em>Yet</em> (todavía / ya en preguntas y negativas al final) | <em>Just</em> (acabar de).
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-indigo-300 font-bold text-lg mb-2">💡 Ejemplos Traducidos:</h3>
-              <ul class="space-y-2 text-sm md:text-base text-slate-300">
-                <li>• <em>"I have just lost my keys."</em> ➔ <span class="text-slate-400">Acabo de perder mis llaves (no las tengo ahora).</span></li>
-                <li>• <em>"She has lived here since 2018."</em> ➔ <span class="text-slate-400">Ella ha vivido aquí desde 2018 (sigue viviendo).</span></li>
-              </ul>
-            </div>
-          </div>
-        `,
-        questions: [
-          { q: "I _____ (know) Sarah since primary school.", options: ["know", "knew", "have known", "has known"], answer: 2, explanation: "'Since' exige Present Perfect con 'have'." },
-          { q: "_____ you ever eaten sushi?", options: ["Have", "Has", "Did", "Do"], answer: 0, explanation: "Pregunta sobre experiencia de vida." },
-          { q: "She _____ (already / finish) her project.", options: ["finished", "has already finished", "have already finished", "is finishing"], answer: 1, explanation: "'Has' + already + participio." },
-          { q: "They haven't arrived at the cinema _____.", options: ["already", "just", "yet", "ever"], answer: 2, explanation: "'Yet' va al final de oraciones negativas." },
-          { q: "He _____ (lose) his wallet, so he can't buy food now.", options: ["lost", "has lost", "loses", "is losing"], answer: 1, explanation: "Acción pasada con resultado directo en el presente." },
-          { q: "We have lived in this city _____ 10 years.", options: ["since", "for", "during", "ago"], answer: 1, explanation: "'For' para periodos de tiempo acumulado." },
-          { q: "My parents _____ (not / see) my exam report yet.", options: ["didn't see", "haven't seen", "hasn't seen", "don't see"], answer: 1, explanation: "Sujeto plural + haven't + participio." },
-          { q: "Look! David _____ (break) his window!", options: ["broke", "has broken", "is breaking", "breaks"], answer: 1, explanation: "Resultado visible en la actualidad." },
-          { q: "She has been a teacher _____ 2018.", options: ["for", "since", "from", "ago"], answer: 1, explanation: "'Since' marca un punto concreto del pasado." },
-          { q: "_____ (he / ever / fly) in a helicopter?", options: ["Did he ever fly", "Has he ever flown", "Have he ever flown", "Is he ever flying"], answer: 1, explanation: "3ª persona: Has + sujeto + ever + participio." }
-        ]
-      },
-      {
-        id: "past_simple",
-        title: "Past Simple Tense",
-        desc: "Acciones pasadas y terminadas en un tiempo concreto.",
-        icon: "fa-backward",
-        explanation: `
-          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">4. Past Simple (Pasado Simple)</h2>
-          <p class="text-slate-300 text-base md:text-lg mb-6">Utilizado para acciones totalmente finalizadas en el pasado en un momento concreto (<em>yesterday, last night, in 2015, 2 hours ago</em>).</p>
-
-          <div class="space-y-6">
-            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 class="text-amber-400 font-bold text-lg mb-3">📐 Formación de Verbos:</h3>
-              <ul class="space-y-3 text-sm md:text-base text-slate-300">
-                <li>• <strong>Verbos Regulares:</strong> Añaden <strong>-ed</strong> (<em>play ➔ played, visit ➔ visited</em>).</li>
-                <li>• <strong>Verbos Irregulares:</strong> 2ª columna de la lista (<em>go ➔ went, buy ➔ bought, write ➔ wrote</em>).</li>
-                <li>• <strong>Negativa y Pregunta:</strong> Usa el auxiliar <strong>DID / DIDN'T</strong> + Verbo Base.
-                  <br><em>"I didn't go to school yesterday."</em> ➔ <span class="text-slate-400">No fui al colegio ayer.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-emerald-950/40 p-5 rounded-2xl border border-emerald-500/40">
-              <h3 class="text-emerald-300 font-bold text-lg mb-2">⚔️ Contraste Clave: Past Simple vs Present Perfect</h3>
-              <p class="text-sm md:text-base text-slate-300">
-                • <strong>Past Simple:</strong> Dices CUÁNDO ocurrió. La acción ya acabó totalmente.<br>
-                &nbsp;&nbsp;<em>"I visited London in 2020."</em> (Ayer / en 2020 = tiempo cerrado)<br>
-                • <strong>Present Perfect:</strong> No importa cuándo o el periodo continúa abierto.<br>
-                &nbsp;&nbsp;<em>"I have visited London twice."</em> (He visitado Londres 2 veces en mi vida).
-              </p>
-            </div>
-          </div>
-        `,
-        questions: [
-          { q: "I _____ (visit) my grandparents last weekend.", options: ["visited", "visit", "have visited", "visiting"], answer: 0, explanation: "'Last weekend' es tiempo cerrado = Past Simple." },
-          { q: "They _____ (not / go) to school yesterday.", options: ["didn't went", "didn't go", "don't go", "haven't gone"], answer: 1, explanation: "'Didn't' siempre va seguido de verbo en infinitivo." },
-          { q: "_____ you see the football match last night?", options: ["Do", "Have", "Did", "Were"], answer: 2, explanation: "Pregunta en pasado con verbo de acción usa 'Did'." },
-          { q: "She _____ (buy) a new smartphone two days ago.", options: ["buyed", "bought", "has bought", "buys"], answer: 1, explanation: "Pasado irregular del verbo 'buy'." },
-          { q: "Where _____ (they / live) when they were children?", options: ["did they live", "they lived", "have they lived", "were they live"], answer: 0, explanation: "Wh-word + did + sujeto + verbo base." },
-          { q: "We _____ (be) very tired after the trip.", options: ["was", "were", "been", "did be"], answer: 1, explanation: "Pasado del verbo 'to be' para 'we' es 'were'." },
-          { q: "Shakespeare _____ (write) famous plays.", options: ["wrote", "written", "has written", "writes"], answer: 0, explanation: "Acontecimiento histórico cerrado." },
-          { q: "He _____ (not / have) time to finish.", options: ["didn't had", "didn't have", "doesn't have", "had not"], answer: 1, explanation: "Auxiliar 'didn't' + verbo base 'have'." },
-          { q: "What time _____ (you / wake up) this morning?", options: ["did you wake up", "did you woke up", "have you woken up", "you woke up"], answer: 0, explanation: "'Did' + sujeto + verbo base." },
-          { q: "It _____ (start) to rain while we were walking.", options: ["started", "starts", "has started", "was starting"], answer: 0, explanation: "Acción puntual que interrumpe en pasado." }
-        ]
-      },
-      {
-        id: "pronouns",
-        title: "Subject, Object & Possessives",
-        desc: "Pronombres de sujeto, objeto, adjetivos y pronombres posesivos.",
-        icon: "fa-user-tag",
-        explanation: `
-          <h2 class="text-2xl md:text-3xl font-black text-indigo-400 mb-2">5. Tabla Gramatical de Pronombres</h2>
-          <p class="text-slate-300 text-base md:text-lg mb-6">Aprende a diferenciar la función según su posición en la frase.</p>
-
-          <div class="overflow-x-auto mb-6">
-            <table class="w-full text-left text-xs md:text-sm text-slate-200 border-2 border-slate-800 rounded-2xl overflow-hidden">
-              <thead class="bg-slate-950 text-indigo-400 uppercase">
-                <tr>
-                  <th class="p-3">Sujeto (Hace la acción)</th>
-                  <th class="p-3">Objeto (Recibe la acción)</th>
-                  <th class="p-3">Adj. Posesivo (+ Sustantivo)</th>
-                  <th class="p-3">Pron. Posesivo (Solo)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-800 bg-slate-900/60 font-mono">
-                <tr><td class="p-3">I (Yo)</td><td class="p-3">Me (A mí)</td><td class="p-3">My (Mi cartera)</td><td class="p-3">Mine (Mío)</td></tr>
-                <tr><td class="p-3">You (Tú)</td><td class="p-3">You (A ti)</td><td class="p-3">Your (Tu libro)</td><td class="p-3">Yours (Tuyo)</td></tr>
-                <tr><td class="p-3">He (Él)</td><td class="p-3">Him (A él)</td><td class="p-3">His (Su coche)</td><td class="p-3">His (Suyo)</td></tr>
-                <tr><td class="p-3">She (Ella)</td><td class="p-3">Her (A ella)</td><td class="p-3">Her (Su perro)</td><td class="p-3">Hers (Suyo)</td></tr>
-                <tr><td class="p-3">They (Ellos)</td><td class="p-3">Them (A ellos)</td><td class="p-3">Their (Su casa)</td><td class="p-3">Theirs (Suyo)</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-2 text-sm md:text-base">
-            <p>• <em>"Give the phone to <strong>me</strong>."</em> ➔ <span class="text-slate-400">Dame el teléfono a mí (Objeto tras verbo).</span></p>
-            <p>• <em>"This is <strong>my</strong> car. The car is <strong>mine</strong>."</em> ➔ <span class="text-slate-400">Este es mi coche. El coche es mío.</span></p>
-          </div>
-        `,
-        questions: [
-          { q: "Can you help _____ (I) with my homework?", options: ["I", "me", "my", "mine"], answer: 1, explanation: "Posición de objeto tras verbo 'help'." },
-          { q: "This jacket isn't mine. Is it _____ (you)?", options: ["your", "yours", "you", "you're"], answer: 1, explanation: "Posesivo independiente al final: 'yours'." },
-          { q: "Maria forgot _____ (she) backpack at home.", options: ["her", "hers", "she", "it"], answer: 0, explanation: "Adjetivo posesivo delante de sustantivo: 'her'." },
-          { q: "Give the documents to _____. They are waiting.", options: ["they", "them", "their", "theirs"], answer: 1, explanation: "Preposición 'to' exige pronombre objeto 'them'." },
-          { q: "That blue car belongs to us. It is _____.", options: ["our", "ours", "us", "we"], answer: 1, explanation: "Pronombre posesivo sin sustantivo: 'ours'." },
-          { q: "_____ (He) is the best student in our class.", options: ["Him", "His", "He", "Himself"], answer: 2, explanation: "Posición de sujeto al inicio." },
-          { q: "I saw John yesterday and talked to _____.", options: ["he", "his", "him", "himself"], answer: 2, explanation: "Pronombre objeto para él = 'him'." },
-          { q: "The dog was wagging _____ tail happily.", options: ["it's", "its", "it", "its'"], answer: 1, explanation: "Adjetivo posesivo sin apóstrofe: 'its'." },
-          { q: "Is that laptop _____ or David's?", options: ["your", "yours", "you", "you's"], answer: 1, explanation: "'Yours' actúa como pronombre posesivo." },
-          { q: "We invited them to _____ house.", options: ["our", "ours", "us", "we"], answer: 0, explanation: "Adjetivo posesivo delante de 'house'." }
-        ]
-      },
-      {
-        id: "final_master",
-        title: "Final Master Mixed Test",
-        desc: "Examen global combinando todos los contenidos gramaticales.",
-        icon: "fa-trophy",
-        explanation: `
-          <h2 class="text-2xl md:text-3xl font-black text-amber-400 mb-2">6. Examen Final Integrado</h2>
-          <p class="text-slate-300 text-base md:text-lg mb-6">Evaluación mixta oficial. Abarca todos los tiempos verbales y pronombres estudiados.</p>
-        `,
-        questions: [
-          { q: "Look! Sarah _____ (run) to catch the bus.", options: ["runs", "is running", "has run", "ran"], answer: 1, explanation: "'Look!' indica acción en directo = Present Continuous." },
-          { q: "I haven't seen him _____ last summer.", options: ["for", "since", "ago", "during"], answer: 1, explanation: "'Since' marca punto inicial en pasado." },
-          { q: "Where _____ you buy that hoodie yesterday?", options: ["did", "do", "have", "are"], answer: 0, explanation: "Pregunta en pasado simple usa 'did'." },
-          { q: "This pen belongs to me. It's _____.", options: ["my", "me", "mine", "myself"], answer: 2, explanation: "Pronombre posesivo independiente: 'mine'." },
-          { q: "My father usually _____ (drive) to work.", options: ["drives", "is driving", "has driven", "drive"], answer: 0, explanation: "Rutina habitual = Present Simple." },
-          { q: "We _____ (finish) our homework an hour ago.", options: ["have finished", "finished", "finish", "are finishing"], answer: 1, explanation: "'Ago' exige Past Simple." },
-          { q: "She _____ (not / like) horror movies at all.", options: ["doesn't like", "don't like", "isn't liking", "hasn't liked"], answer: 0, explanation: "Preferencia negativa en 3ª persona." },
-          { q: "Please don't disturb them. They _____ (study).", options: ["study", "are studying", "have studied", "studied"], answer: 1, explanation: "Acción sucediendo en este momento." },
-          { q: "_____ you ever visited Madrid?", options: ["Did", "Have", "Do", "Were"], answer: 1, explanation: "Experiencia de vida con 'ever'." },
-          { q: "Can you give this book back to _____ (she)?", options: ["her", "hers", "she", "it"], answer: 0, explanation: "Pronombre objeto: 'her'." }
-        ]
-      }
+      /* PEGA AQUÍ EL ARRAY DE TUS MÓDULOS DE PRESENT.HTML */
     ];
+    // =========================================================================
 
     function toggleFullScreen() {
       if (!document.fullscreenElement) {
@@ -527,7 +289,7 @@
     }
 
     function initApp() {
-      const savedUser = localStorage.getItem("englishpro_user");
+      const savedUser = localStorage.getItem("englishpro_present_user");
       if (savedUser) {
         currentUser = JSON.parse(savedUser);
         updateUserHeader();
@@ -544,9 +306,10 @@
         firstName: document.getElementById("regFirstName").value.trim(),
         lastName: document.getElementById("regLastName").value.trim(),
         email: document.getElementById("regEmail").value.trim(),
-        grade: document.getElementById("regGrade").value
+        grade: document.getElementById("regGrade").value,
+        teacher: document.getElementById("regTeacher").value
       };
-      localStorage.setItem("englishpro_user", JSON.stringify(currentUser));
+      localStorage.setItem("englishpro_present_user", JSON.stringify(currentUser));
       updateUserHeader();
       showView("viewDashboard");
       renderModules();
@@ -558,7 +321,7 @@
       el.classList.remove("hidden");
       el.innerHTML = `
         <span class="font-extrabold text-white">${currentUser.firstName} ${currentUser.lastName}</span> (${currentUser.grade})<br>
-        <span class="text-slate-400 text-xs">${currentUser.email}</span>
+        <span class="text-amber-400 font-bold text-xs"><i class="fa-solid fa-chalkboard-user"></i> Prof: ${currentUser.teacher}</span>
       `;
       document.getElementById("welcomeUserText").innerText = `¡Hola, ${currentUser.firstName}! 👋`;
     }
@@ -584,37 +347,43 @@
       const grid = document.getElementById("modulesGrid");
       grid.innerHTML = "";
 
-      const scores = JSON.parse(localStorage.getItem("englishpro_results") || "[]")
-        .filter(r => r.email === currentUser.email);
+      db.ref("results_present").orderByChild("email").equalTo(currentUser.email).once("value", (snapshot) => {
+        const scores = [];
+        snapshot.forEach(childSnap => {
+          scores.push(childSnap.val());
+        });
 
-      MODULES.forEach(mod => {
-        const userScores = scores.filter(s => s.moduleId === mod.id);
-        const bestScore = userScores.length > 0 ? Math.max(...userScores.map(s => s.score)) : null;
+        MODULES.forEach(mod => {
+          const userScores = scores.filter(s => s.moduleId === mod.id);
+          const bestScore = userScores.length > 0 ? Math.max(...userScores.map(s => s.score)) : null;
 
-        let badge = `<span class="text-xs bg-slate-800 text-slate-400 px-3 py-1.5 rounded-lg font-bold">Pendiente</span>`;
-        if (bestScore !== null) {
-          badge = `<span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-lg font-black">${bestScore}% Aprobado</span>`;
-        }
+          let badge = `<span class="text-sm bg-slate-800 text-slate-400 px-4 py-2 rounded-xl font-bold">Pendiente</span>`;
+          if (bestScore !== null) {
+            badge = (bestScore >= PASS_THRESHOLD)
+              ? `<span class="text-sm bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-4 py-2 rounded-xl font-black">✅ ${bestScore}% Superado</span>`
+              : `<span class="text-sm bg-rose-500/20 text-rose-400 border border-rose-500/40 px-4 py-2 rounded-xl font-black">${bestScore}% · Repetir</span>`;
+          }
 
-        const card = document.createElement("div");
-        card.className = "bg-slate-900 border-2 border-slate-800 hover:border-indigo-500/60 p-6 rounded-3xl transition cursor-pointer flex flex-col justify-between neon-border";
-        card.onclick = () => openLesson(mod.id);
-        card.innerHTML = `
-          <div>
-            <div class="flex justify-between items-start mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-xl font-bold border border-indigo-500/30">
-                <i class="fa-solid ${mod.icon}"></i>
+          const card = document.createElement("div");
+          card.className = "bg-slate-900 border-2 border-slate-800 hover:border-indigo-500/60 p-8 rounded-3xl transition cursor-pointer flex flex-col justify-between neon-border";
+          card.onclick = () => openLesson(mod.id);
+          card.innerHTML = `
+            <div>
+              <div class="flex justify-between items-start mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-2xl font-bold border border-indigo-500/30">
+                  <i class="fa-solid ${mod.icon || 'fa-book'}"></i>
+                </div>
+                ${badge}
               </div>
-              ${badge}
+              <h3 class="text-2xl md:text-3xl font-black text-white mb-3">${mod.title}</h3>
+              <p class="text-base md:text-lg text-slate-300 leading-relaxed mb-6">${mod.desc}</p>
             </div>
-            <h3 class="text-xl font-black text-white mb-2">${mod.title}</h3>
-            <p class="text-sm text-slate-300 leading-relaxed mb-4">${mod.desc}</p>
-          </div>
-          <div class="text-sm font-black text-indigo-400 flex items-center gap-2">
-            Ver Teoría y Test <i class="fa-solid fa-arrow-right"></i>
-          </div>
-        `;
-        grid.appendChild(card);
+            <div class="text-base md:text-lg font-black text-indigo-400 flex items-center gap-2">
+              Ver Teoría y Test <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
       });
     }
 
@@ -649,6 +418,17 @@
       }, 1000);
     }
 
+    // RANDOMIZER AÑADIDO DESDE HABITS
+    let currentOptionOrder = [];
+    function shuffleArray(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+      }
+      return a;
+    }
+
     function renderQuestion() {
       selectedOptionIdx = null;
       const mod = MODULES.find(m => m.id === currentModuleId);
@@ -665,34 +445,40 @@
       const optsContainer = document.getElementById("quizOptions");
       optsContainer.innerHTML = "";
 
-      q.options.forEach((opt, idx) => {
+      currentOptionOrder = shuffleArray(q.options.map((_, i) => i));
+
+      currentOptionOrder.forEach((originalIdx, displayIdx) => {
+        const opt = q.options[originalIdx];
         const btn = document.createElement("button");
-        btn.className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-slate-800 bg-slate-950/80 hover:bg-slate-800 transition text-lg md:text-2xl font-bold text-slate-100 flex items-center justify-between";
-        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-slate-600 text-xl md:text-2xl"></i>`;
-        btn.onclick = () => selectOption(idx);
+        btn.className = "option-btn w-full text-left p-6 md:p-8 rounded-2xl border-2 border-slate-800 bg-slate-950/80 hover:bg-slate-800 transition text-xl md:text-3xl font-bold text-slate-100 flex items-center justify-between";
+        btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-slate-600 text-2xl md:text-3xl"></i>`;
+        btn.onclick = () => selectOption(displayIdx);
         optsContainer.appendChild(btn);
       });
     }
 
-    function selectOption(idx) {
+    function selectOption(displayIdx) {
       if (selectedOptionIdx !== null) return;
-      selectedOptionIdx = idx;
+      selectedOptionIdx = displayIdx;
 
       const mod = MODULES.find(m => m.id === currentModuleId);
       const q = mod.questions[currentQuestionIdx];
       const buttons = document.querySelectorAll(".option-btn");
       const feedbackBox = document.getElementById("quizFeedback");
 
-      if (idx === q.answer) {
+      const chosenOriginalIdx = currentOptionOrder[displayIdx];
+      const correctDisplayIdx = currentOptionOrder.indexOf(q.answer);
+
+      if (chosenOriginalIdx === q.answer) {
         currentScore++;
-        buttons[idx].className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/60 text-emerald-100 text-lg md:text-2xl font-extrabold flex items-center justify-between";
-        buttons[idx].querySelector("i").className = "fa-solid fa-circle-check text-emerald-400 text-2xl md:text-3xl";
+        buttons[displayIdx].className = "option-btn w-full text-left p-6 md:p-8 rounded-2xl border-2 border-emerald-500 bg-emerald-950/60 text-emerald-100 text-xl md:text-3xl font-extrabold flex items-center justify-between";
+        buttons[displayIdx].querySelector("i").className = "fa-solid fa-circle-check text-emerald-400 text-3xl md:text-4xl";
         feedbackBox.className = "p-6 rounded-2xl text-base md:text-xl font-bold border-2 bg-emerald-950/40 border-emerald-500/60 text-emerald-200";
         feedbackBox.innerHTML = `<strong>¡CORRECTO! 🎉</strong> ${q.explanation}`;
       } else {
-        buttons[idx].className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-rose-500 bg-rose-950/60 text-rose-100 text-lg md:text-2xl font-extrabold flex items-center justify-between";
-        buttons[idx].querySelector("i").className = "fa-solid fa-circle-xmark text-rose-400 text-2xl md:text-3xl";
-        buttons[q.answer].className = "option-btn w-full text-left p-5 md:p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/40 text-emerald-200 text-lg md:text-2xl font-extrabold flex items-center justify-between";
+        buttons[displayIdx].className = "option-btn w-full text-left p-6 md:p-8 rounded-2xl border-2 border-rose-500 bg-rose-950/60 text-rose-100 text-xl md:text-3xl font-extrabold flex items-center justify-between";
+        buttons[displayIdx].querySelector("i").className = "fa-solid fa-circle-xmark text-rose-400 text-3xl md:text-4xl";
+        buttons[correctDisplayIdx].className = "option-btn w-full text-left p-6 md:p-8 rounded-2xl border-2 border-emerald-500 bg-emerald-950/40 text-emerald-200 text-xl md:text-3xl font-extrabold flex items-center justify-between";
         feedbackBox.className = "p-6 rounded-2xl text-base md:text-xl font-bold border-2 bg-rose-950/40 border-rose-500/60 text-rose-200";
         feedbackBox.innerHTML = `<strong>EXPLICACIÓN:</strong> ${q.explanation}`;
       }
@@ -727,12 +513,12 @@
       const secs = quizSeconds % 60;
       const timeStr = `${mins}m ${secs}s`;
       const nowStr = new Date().toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' });
-      const verifyHash = generateVerificationHash(currentUser.email, percentage, quizSeconds, nowStr);
 
       const record = {
         studentName: `${currentUser.firstName} ${currentUser.lastName}`,
         email: currentUser.email,
         grade: currentUser.grade,
+        teacher: currentUser.teacher,
         topic: mod.title,
         moduleId: mod.id,
         score: percentage,
@@ -740,178 +526,188 @@
         secondsSpent: quizSeconds,
         timeSpent: timeStr,
         dateTime: nowStr,
-        hash: verifyHash
+        timestamp: Date.now()
       };
 
-      const existingRecords = JSON.parse(localStorage.getItem("englishpro_results") || "[]");
-      existingRecords.push(record);
-      localStorage.setItem("englishpro_results", JSON.stringify(existingRecords));
+      const passed = percentage >= PASS_THRESHOLD;
 
       const resultsCard = document.getElementById("resultsCard");
       resultsCard.innerHTML = `
-        <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-3xl font-black bg-indigo-500/20 text-indigo-400 border-2 border-indigo-500/50">
+        <div class="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-4xl font-black ${passed ? 'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500/50' : 'bg-rose-500/20 text-rose-400 border-2 border-rose-500/50'}">
           ${percentage}%
         </div>
         <div>
-          <h2 class="text-2xl font-black text-white mb-1">¡Bloque Guardado! 👍</h2>
-          <p class="text-slate-300 text-sm">Resultado registrado correctamente.</p>
+          <h2 class="text-3xl font-black text-white mb-2">${passed ? '¡Nivel alcanzado! 🎉' : 'Todavía no has alcanzado el nivel'}</h2>
+          <p class="text-slate-300 text-lg">${passed ? 'Gran trabajo, ¡sigue así!' : `Necesitas un ${PASS_THRESHOLD}% para superar este bloque. ¡Vuelve a intentarlo!`}</p>
         </div>
-        <div class="bg-slate-950 p-5 rounded-2xl border-2 border-slate-800 text-left text-sm text-slate-200 space-y-2 max-w-lg mx-auto">
+        <div class="bg-slate-950 p-6 rounded-2xl border-2 border-slate-800 text-left text-base md:text-xl text-slate-200 space-y-3 max-w-lg mx-auto">
           <div class="flex justify-between"><span class="text-slate-400">Tema:</span> <span class="font-bold text-indigo-400">${record.topic}</span></div>
           <div class="flex justify-between"><span class="text-slate-400">Puntuación:</span> <span class="font-bold text-white">${record.rawScore} (${percentage}%)</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Resultado:</span> <span class="font-bold ${passed ? 'text-emerald-400' : 'text-rose-400'}">${passed ? '✅ Nivel alcanzado' : '⚠️ Nivel no alcanzado (mínimo ' + PASS_THRESHOLD + '%)'}</span></div>
           <div class="flex justify-between"><span class="text-slate-400">Tiempo:</span> <span class="font-bold text-emerald-400">${timeStr}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Profesor/a:</span> <span class="font-bold text-amber-400">${record.teacher}</span></div>
           <div class="flex justify-between"><span class="text-slate-400">Fecha:</span> <span class="font-bold text-white">${nowStr}</span></div>
         </div>
-        <div class="pt-2 flex justify-center">
-          <button onclick="goHome()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-black text-base px-8 py-3.5 rounded-2xl transition">
+        <div id="saveStatusLine" class="text-xs font-bold text-slate-500 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Guardando en la nube...
+        </div>
+        <div class="pt-4 flex flex-col md:flex-row gap-3 justify-center">
+          ${!passed ? `<button onclick="startCurrentQuiz()" class="bg-rose-600 hover:bg-rose-500 text-white font-black text-lg px-8 py-4 rounded-2xl transition order-first">🔁 Repetir este bloque</button>` : ''}
+          <button onclick="goHome()" class="${passed ? 'bg-indigo-600 hover:bg-indigo-500' : 'bg-slate-800 hover:bg-slate-700'} text-white font-black text-lg px-8 py-4 rounded-2xl transition">
             Volver al Panel
           </button>
         </div>
       `;
-
       showView("viewResults");
+
+      saveResultToFirebase(record);
     }
 
-    function showGlobalReportModal() {
-      const records = JSON.parse(localStorage.getItem("englishpro_results") || "[]")
-        .filter(r => r.email === currentUser.email);
-
-      const container = document.getElementById("globalReportDetails");
-
-      let completedCount = 0;
-      let totalPercentageSum = 0;
-      let totalSecondsSum = 0;
-      let breakdownHtml = "";
-      let lastCompletionDate = "";
-
-      MODULES.forEach(mod => {
-        const topicRecords = records.filter(r => r.moduleId === mod.id);
-        if (topicRecords.length > 0) {
-          const bestRecord = topicRecords.reduce((max, r) => r.score > max.score ? r : max, topicRecords[0]);
-          totalPercentageSum += bestRecord.score;
-          totalSecondsSum += bestRecord.secondsSpent || 0;
-          completedCount++;
-          lastCompletionDate = bestRecord.dateTime;
-
-          breakdownHtml += `
-            <div class="flex justify-between items-center bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs md:text-sm">
-              <span class="font-extrabold text-white">${mod.title}</span>
-              <div class="text-right">
-                <span class="font-black ${bestRecord.score >= 50 ? 'text-emerald-400' : 'text-rose-400'}">${bestRecord.score}%</span>
-                <span class="text-slate-500 text-xs ml-2">(${bestRecord.timeSpent})</span>
-              </div>
-            </div>
-          `;
+    function saveResultToFirebase(record, isRetry) {
+      db.ref("results_present").push(record).then(() => {
+        const line = document.getElementById("saveStatusLine");
+        if (line) line.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> <span class="text-emerald-400">Guardado en la nube</span>`;
+      }).catch(err => {
+        console.error("Error al guardar en Firebase:", err);
+        if (!isRetry) {
+          setTimeout(() => saveResultToFirebase(record, true), 2500);
         } else {
-          breakdownHtml += `
-            <div class="flex justify-between items-center bg-slate-950/30 p-3 rounded-xl border border-slate-800/40 text-xs opacity-50">
-              <span class="font-bold text-slate-400">${mod.title}</span>
-              <span class="text-rose-400 font-bold italic">Pendiente</span>
-            </div>
-          `;
+          const line = document.getElementById("saveStatusLine");
+          if (line) line.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-400"></i> <span class="text-amber-400">No se pudo guardar. Avisa a tu profesor/a de este resultado.</span>`;
         }
       });
+    }
 
-      if (completedCount < MODULES.length) {
-        container.innerHTML = `
-          <div class="text-center py-4 space-y-3">
-            <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl border-2 border-amber-500/40">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </div>
-            <h3 class="text-xl font-black text-white">Evaluación Incompleta</h3>
-            <p class="text-slate-300 text-xs md:text-sm max-w-md mx-auto">
-              Has realizado <strong>${completedCount} de ${MODULES.length}</strong> bloques. Necesitas completar todos para generar tu tarjeta de nota oficial.
-            </p>
-            <div class="space-y-2 text-left my-4">
-              ${breakdownHtml}
-            </div>
-            <button onclick="goHome()" class="no-print bg-indigo-600 text-white font-extrabold px-6 py-3 rounded-xl text-sm">Regresar y completar</button>
-          </div>
-        `;
-        showView("viewGlobalReport");
-        return;
-      }
-
-      const finalAverage = Math.round(totalPercentageSum / MODULES.length);
-      const totalMins = Math.floor(totalSecondsSum / 60);
-      const totalSecs = totalSecondsSum % 60;
-      const totalDurationStr = `${totalMins}m ${totalSecs}s`;
-      const masterHash = generateVerificationHash(currentUser.email, finalAverage, totalSecondsSum, lastCompletionDate);
-
-      container.innerHTML = `
-        <!-- HEADER COMPACTO PARA CAPTURA DE PANTALLA -->
-        <div class="grid grid-cols-3 gap-3 items-center bg-slate-950/80 p-4 rounded-2xl border border-slate-800">
-          <div class="col-span-2 space-y-1">
-            <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">Alumno / Expediente</p>
-            <h3 class="text-lg md:text-xl font-black text-white leading-tight">${currentUser.firstName} ${currentUser.lastName}</h3>
-            <p class="text-xs text-indigo-300 font-semibold">${currentUser.grade} • ${currentUser.email}</p>
-          </div>
-          <div class="text-center bg-emerald-500/10 border-2 border-emerald-500/40 p-3 rounded-2xl">
-            <span class="text-xs font-bold text-emerald-400 block uppercase">Nota Media</span>
-            <span class="text-3xl md:text-4xl font-black text-emerald-400 leading-none">${finalAverage}%</span>
-          </div>
+    // GENERADOR DE INFORME ADAPTADO A "PRESENT" (Anti-Copia y 6 Bloques)
+    function showGlobalReportModal() {
+      showView("viewGlobalReport");
+      document.getElementById("globalReportDetails").innerHTML = `
+        <div class="text-center py-10 text-slate-400 font-bold">
+          <i class="fa-solid fa-spinner fa-spin text-2xl mb-3"></i><br>Cargando tu informe...
         </div>
-
-        <!-- REGISTRO DE VERIFICACIÓN ANTI-COPIA -->
-        <div class="bg-indigo-950/40 border border-indigo-500/30 p-3 rounded-xl flex justify-between items-center text-xs">
-          <div>
-            <span class="text-slate-400 block">Código Único de Validación (Hash):</span>
-            <span class="font-mono font-black text-indigo-300 text-sm tracking-wider">${masterHash}</span>
-          </div>
-          <div class="text-right">
-            <span class="text-slate-400 block">Tiempo Total:</span>
-            <span class="font-bold text-emerald-400">${totalDurationStr}</span>
-          </div>
-        </div>
-
-        <!-- DESGLOSE DE LOS 6 BLOQUES EN FORMATO COMPACTO -->
-        <div>
-          <p class="text-xs font-black uppercase text-slate-400 mb-2 tracking-wider">Desglose de Bloques Realizados</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            ${breakdownHtml}
-          </div>
-        </div>
-
-        <!-- INSTRUCCIONES PARA EL ALUMNO Y BOTONES -->
-        <div class="pt-2 border-t border-slate-800 space-y-3 no-print">
-          <div class="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl text-xs text-amber-200 flex items-center gap-3">
-            <i class="fa-solid fa-camera text-xl text-amber-400 flex-shrink-0"></i>
-            <span><strong>¡HAZ UNA CAPTURA DE PANTALLA AHORA!</strong> Sube la imagen a tu entrega de tareas. Tu profesor podrá validar el código Hash.</span>
-          </div>
-
-
-<div class="flex justify-center">
-    <button onclick="window.print()" class="px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-black py-3 rounded-xl transition text-xs md:text-sm flex items-center justify-center gap-3">
-      <i class="fa-solid fa-print"></i> Imprimir / Guardar PDF
-    </button>
-  </div>
-</div>
-
       `;
 
-      showView("viewGlobalReport");
-    }
+      db.ref("results_present").orderByChild("email").equalTo(currentUser.email).once("value", (snapshot) => {
+        const records = [];
+        snapshot.forEach(childSnap => {
+          records.push(childSnap.val());
+        });
 
-    function copyMasterClassroomReport(finalAverage, totalDuration, finishDate, masterHash) {
-      const records = JSON.parse(localStorage.getItem("englishpro_results") || "[]")
-        .filter(r => r.email === currentUser.email);
+        const container = document.getElementById("globalReportDetails");
 
-      let partialsText = "";
-      MODULES.forEach(mod => {
-        const topicRecords = records.filter(r => r.moduleId === mod.id);
-        const best = topicRecords.reduce((max, r) => r.score > max.score ? r : max, topicRecords[0]);
-        partialsText += `  • ${mod.title}: ${best.score}% (${best.timeSpent})\n`;
+        let completedCount = 0;
+        let totalPercentageSum = 0;
+        let totalSecondsSum = 0;
+        let breakdownHtml = "";
+
+        MODULES.forEach(mod => {
+          const topicRecords = records.filter(r => r.moduleId === mod.id);
+          if (topicRecords.length > 0) {
+            const bestRecord = topicRecords.reduce((max, r) => r.score > max.score ? r : max, topicRecords[0]);
+            totalPercentageSum += bestRecord.score;
+            totalSecondsSum += bestRecord.secondsSpent || 0;
+            completedCount++;
+
+            breakdownHtml += `
+              <div class="flex justify-between items-center bg-slate-950/80 p-4 rounded-xl border border-slate-800 text-sm md:text-base">
+                <span class="font-extrabold text-white">${mod.title}</span>
+                <div class="text-right">
+                  <span class="font-black ${bestRecord.score >= PASS_THRESHOLD ? 'text-emerald-400' : 'text-rose-400'}">${bestRecord.score}%</span>
+                  <span class="text-slate-500 text-xs ml-2">(${bestRecord.timeSpent})</span>
+                </div>
+              </div>
+            `;
+          } else {
+            breakdownHtml += `
+              <div class="flex justify-between items-center bg-slate-950/30 p-4 rounded-xl border border-slate-800/40 text-sm opacity-50">
+                <span class="font-bold text-slate-400">${mod.title}</span>
+                <span class="text-rose-400 font-bold italic">Pendiente</span>
+              </div>
+            `;
+          }
+        });
+
+        if (completedCount < MODULES.length) {
+          container.innerHTML = `
+            <div class="text-center py-6 space-y-4">
+              <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl border-2 border-amber-500/40">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h3 class="text-2xl font-black text-white">Evaluación Incompleta</h3>
+              <p class="text-slate-300 text-base md:text-lg max-w-md mx-auto">
+                Has realizado <strong>${completedCount} de ${MODULES.length}</strong> bloques. Necesitas completar todos para generar tu <strong>Informe Anti-Copia Final</strong>.
+              </p>
+              <div class="space-y-2 text-left my-4">
+                ${breakdownHtml}
+              </div>
+              <button onclick="goHome()" class="no-print bg-indigo-600 text-white font-extrabold px-8 py-4 rounded-2xl text-base">Regresar y completar</button>
+            </div>
+          `;
+          showView("viewGlobalReport");
+          return;
+        }
+
+        const finalAverage = Math.round(totalPercentageSum / MODULES.length);
+        const levelReached = finalAverage >= PASS_THRESHOLD;
+        const totalMins = Math.floor(totalSecondsSum / 60);
+        const totalSecs = totalSecondsSum % 60;
+        const totalDurationStr = `${totalMins}m ${totalSecs}s`;
+        
+        // Hash Anti-Copia 
+        const cheatCodeHash = btoa(currentUser.email + "-" + Date.now()).substring(0, 10).toUpperCase();
+
+        container.innerHTML = `
+          <div class="grid grid-cols-3 gap-4 items-center bg-slate-950/80 p-5 rounded-2xl border border-slate-800">
+            <div class="col-span-2 space-y-1">
+              <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">Alumno / Expediente</p>
+              <h3 class="text-xl md:text-2xl font-black text-white leading-tight">${currentUser.firstName} ${currentUser.lastName}</h3>
+              <p class="text-sm text-indigo-300 font-semibold">${currentUser.grade} • ${currentUser.email}</p>
+              <p class="text-xs text-amber-400 font-extrabold mt-1">Profesor/a: ${currentUser.teacher}</p>
+            </div>
+            <div class="text-center ${levelReached ? 'bg-emerald-500/10 border-2 border-emerald-500/40' : 'bg-rose-500/10 border-2 border-rose-500/40'} p-4 rounded-2xl">
+              <span class="text-xs font-bold ${levelReached ? 'text-emerald-400' : 'text-rose-400'} block uppercase">Nota Media</span>
+              <span class="text-4xl md:text-5xl font-black ${levelReached ? 'text-emerald-400' : 'text-rose-400'} leading-none">${finalAverage}%</span>
+              <span class="block text-[11px] md:text-xs font-black mt-1 ${levelReached ? 'text-emerald-300' : 'text-rose-300'}">${levelReached ? '✅ Nivel alcanzado' : '⚠️ Nivel no alcanzado'}</span>
+            </div>
+          </div>
+
+          <div class="bg-indigo-950/40 border border-indigo-500/30 p-4 rounded-xl flex justify-between items-center text-sm md:text-base">
+            <span class="text-slate-400">Tiempo Total de Evaluación:</span>
+            <span class="font-bold text-emerald-400">${totalDurationStr}</span>
+          </div>
+
+          <div>
+            <p class="text-xs font-black uppercase text-slate-400 mb-3 tracking-wider">Desglose de Bloques Realizados</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              ${breakdownHtml}
+            </div>
+          </div>
+          
+          <div class="bg-slate-950/50 border border-slate-800 p-3 rounded-lg text-center">
+            <span class="text-xs text-slate-500 uppercase font-bold">Hash Anti-Copia de Seguridad: </span>
+            <span class="text-sm font-mono font-black text-amber-500 tracking-widest">${cheatCodeHash}</span>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 space-y-3 no-print">
+            <div class="flex justify-center">
+              <button onclick="window.print()" class="px-8 bg-indigo-600 hover:bg-indigo-500 text-white font-black py-4 rounded-2xl transition text-base md:text-lg flex items-center justify-center gap-3">
+                <i class="fa-solid fa-print"></i> Imprimir / Guardar PDF
+              </button>
+            </div>
+          </div>
+        `;
+
+        showView("viewGlobalReport");
       });
-
-      const fullReport = `==============================================\nINFORME OFICIAL ANTI-COPIA - ENGLISHPRO\n==============================================\nALUMNO/A: ${currentUser.firstName} ${currentUser.lastName}\nCURSO: ${currentUser.grade}\nEMAIL: ${currentUser.email}\n----------------------------------------------\nNOTA MEDIA GLOBAL: ${finalAverage}%\nTIEMPO TOTAL: ${totalDuration}\nFECHA: ${finishDate}\nCÓDIGO HASH DE VALIDACIÓN: ${masterHash}\n----------------------------------------------\nDESGLOSE DE BLOQUES:\n${partialsText}==============================================`;
-
-      navigator.clipboard.writeText(fullReport);
-      alert("¡Informe copiado al portapapeles con éxito! Incluye el código Hash de seguridad.");
     }
 
+    // =========================================================
+    // PANEL DE PROFESORADO INCORPORADO DE HABITS
+    // =========================================================
     function showTeacherLogin() {
-      const pwd = prompt("Contraseña del profesor (por defecto: teacher123):");
-      if (pwd === "teacher123") {
+      const pwd = prompt("Introduce tu contraseña de profesora:\n(Nuria Calvo: nuria123)");
+      if (pwd === "nuria123") {
+        currentTeacherLoggedIn = "Nuria Calvo";
         renderTeacherDashboard();
         showView("viewTeacher");
       } else if (pwd !== null) {
@@ -919,37 +715,252 @@
       }
     }
 
-    function renderTeacherDashboard() {
-      const records = JSON.parse(localStorage.getItem("englishpro_results") || "[]");
-      const tbody = document.getElementById("teacherTableBody");
-      tbody.innerHTML = "";
+    let teacherAllRecords = [];
+    let teacherSearchTerm = "";
+    let teacherResultsRef = null; 
 
-      if (records.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-500 font-bold">No hay intentos registrados.</td></tr>`;
-        return;
+    function normalizeTeacherName(s) {
+      return (s || "")
+        .toString()
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function renderTeacherDashboard() {
+      document.getElementById("teacherTitle").innerText = `Panel de ${currentTeacherLoggedIn}`;
+      renderTeacherTableHead();
+
+      teacherSearchTerm = "";
+      const searchInput = document.getElementById("teacherSearchInput");
+      if (searchInput) searchInput.value = "";
+
+      const tbody = document.getElementById("teacherTableBody");
+      const TEACHER_COLSPAN = 5 + MODULES.length;
+      tbody.innerHTML = `<tr><td colspan="${TEACHER_COLSPAN}" class="p-6 text-center text-slate-400 font-bold">Cargando datos desde la nube...</td></tr>`;
+
+      if (teacherResultsRef) {
+        teacherResultsRef.off("value");
       }
 
-      records.reverse().forEach(r => {
-        const tr = document.createElement("tr");
-        tr.className = "hover:bg-slate-800/50 transition";
-        tr.innerHTML = `
-          <td class="p-4 font-extrabold text-white">${r.studentName}</td>
-          <td class="p-4 text-slate-300 font-medium">${r.grade}</td>
-          <td class="p-4 text-indigo-400 font-bold">${r.topic}</td>
-          <td class="p-4 font-black text-white">${r.score}% (${r.rawScore})</td>
-          <td class="p-4 font-mono text-emerald-400 font-bold">${r.timeSpent}</td>
-          <td class="p-4 text-slate-400 text-xs">${r.dateTime}</td>
-          <td class="p-4 font-mono text-xs text-indigo-300 font-bold">${r.hash || 'N/A'}</td>
-        `;
-        tbody.appendChild(tr);
+      teacherResultsRef = db.ref("results_present");
+      teacherResultsRef.on("value", (snapshot) => {
+        const all = [];
+        snapshot.forEach(childSnap => {
+          if (childSnap.val()) all.push(childSnap.val());
+        });
+
+        const wanted = normalizeTeacherName(currentTeacherLoggedIn);
+        
+        teacherAllRecords = all.filter(r => {
+          if (!r) return false;
+          const t = normalizeTeacherName(r.teacher);
+          return !t || t === wanted || t.includes(wanted) || wanted.includes(t);
+        });
+
+        paintTeacherTable();
+        updateTeacherLastRefreshed();
+      }, (err) => {
+        console.error("Error leyendo resultados de Firebase:", err);
+        tbody.innerHTML = `<tr><td colspan="${TEACHER_COLSPAN}" class="p-6 text-center text-rose-400 font-bold">
+          ⚠️ No se han podido cargar los datos (${err.message}).
+        </td></tr>`;
       });
     }
 
-    function clearTeacherData() {
-      if (confirm("¿Borrar todos los registros locales?")) {
-        localStorage.removeItem("englishpro_results");
-        renderTeacherDashboard();
+    function refreshTeacherDashboardNow() {
+      const tbody = document.getElementById("teacherTableBody");
+      const btn = document.getElementById("teacherRefreshBtn");
+      if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Actualizando...`; }
+
+      db.ref("results_present").once("value").then((snapshot) => {
+        const all = [];
+        snapshot.forEach(childSnap => {
+          if (childSnap.val()) all.push(childSnap.val());
+        });
+        const wanted = normalizeTeacherName(currentTeacherLoggedIn);
+        teacherAllRecords = all.filter(r => {
+          if (!r) return false;
+          const t = normalizeTeacherName(r.teacher);
+          return !t || t === wanted || t.includes(wanted) || wanted.includes(t);
+        });
+        paintTeacherTable();
+        updateTeacherLastRefreshed();
+      }).catch((err) => {
+        console.error("Error al actualizar:", err);
+        alert("No se ha podido actualizar: " + err.message);
+      }).finally(() => {
+        if (btn) { btn.disabled = false; btn.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Actualizar`; }
+      });
+    }
+
+    function updateTeacherLastRefreshed() {
+      const el = document.getElementById("teacherLastRefreshed");
+      if (!el) return;
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, "0");
+      const mm = String(now.getMinutes()).padStart(2, "0");
+      const ss = String(now.getSeconds()).padStart(2, "0");
+      el.innerText = `Última actualización: ${hh}:${mm}:${ss}`;
+    }
+
+    function renderTeacherTableHead() {
+      const thead = document.getElementById("teacherTableHead");
+      thead.innerHTML = `
+        <tr>
+          <th class="p-3">Alumno</th>
+          <th class="p-3">Curso</th>
+          ${MODULES.map(m => `<th class="p-3 text-center">${m.short || m.title}</th>`).join("")}
+          <th class="p-3 text-center">Progreso</th>
+          <th class="p-3 text-center">Nivel</th>
+          <th class="p-3">Última actividad</th>
+        </tr>
+      `;
+    }
+
+    function buildStudentSummaries(records) {
+      const byStudent = {};
+      records.forEach(r => {
+        if (!r) return;
+        const rawKey = r.email || r.studentName || "sin_nombre";
+        const key = rawKey.toString().trim().toLowerCase();
+
+        if (!byStudent[key]) {
+          byStudent[key] = { 
+            key, 
+            studentName: r.studentName || "Alumno", 
+            grade: r.grade || "—", 
+            email: r.email || "", 
+            attempts: [], 
+            lastTimestamp: 0, 
+            lastDateTime: "" 
+          };
+        }
+        const s = byStudent[key];
+        s.attempts.push(r);
+
+        const ts = Number(r.timestamp) || 0;
+        if (ts >= s.lastTimestamp || !s.lastDateTime) {
+          s.lastTimestamp = ts;
+          s.lastDateTime = r.dateTime || "";
+          if (r.studentName) s.studentName = r.studentName;
+          if (r.grade) s.grade = r.grade;
+        }
+      });
+
+      return Object.values(byStudent).map(s => {
+        const moduleScores = MODULES.map(mod => {
+          const attemptsForMod = s.attempts.filter(a => 
+            a.moduleId === mod.id || 
+            (a.topic && (a.topic.includes(mod.short) || a.topic.includes(mod.title)))
+          );
+          if (attemptsForMod.length === 0) return null;
+          const scores = attemptsForMod.map(a => Number(a.score) || 0);
+          return Math.max(...scores);
+        });
+
+        const completedCount = moduleScores.filter(sc => sc !== null).length;
+        const sumScores = moduleScores.reduce((acc, sc) => acc + (sc || 0), 0);
+        const allDone = completedCount === MODULES.length;
+        const finalAverage = allDone ? Math.round(sumScores / MODULES.length) : null;
+        const levelReached = allDone ? finalAverage >= PASS_THRESHOLD : null;
+
+        return Object.assign({}, s, { moduleScores, completedCount, finalAverage, levelReached, allDone });
+      });
+    }
+
+    function computeTeacherStats(students) {
+      const total = students.length;
+      const completedAll = students.filter(s => s.allDone);
+      const levelReached = completedAll.filter(s => s.levelReached);
+      const avg = completedAll.length ? Math.round(completedAll.reduce((a, s) => a + s.finalAverage, 0) / completedAll.length) : 0;
+      return { total, completedAll: completedAll.length, levelReached: levelReached.length, avg };
+    }
+
+    function renderTeacherStats(students) {
+      const stats = computeTeacherStats(students);
+      const grid = document.getElementById("teacherStatsGrid");
+      if (!grid) return;
+      grid.innerHTML = `
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-white">${stats.total}</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Alumnos</div>
+        </div>
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-indigo-400">${stats.completedAll}/${stats.total || 0}</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Han hecho todo</div>
+        </div>
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-emerald-400">${stats.levelReached}</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Nivel alcanzado</div>
+        </div>
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-amber-400">${stats.avg}%</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Media del grupo</div>
+        </div>
+      `;
+    }
+
+    function filterTeacherTable(term) {
+      teacherSearchTerm = term || "";
+      paintTeacherTable();
+    }
+
+    function paintTeacherTable() {
+      const tbody = document.getElementById("teacherTableBody");
+      let students = buildStudentSummaries(teacherAllRecords);
+      const TEACHER_COLSPAN = 5 + MODULES.length;
+      renderTeacherStats(students);
+
+      const term = teacherSearchTerm.trim().toLowerCase();
+      if (term) {
+        students = students.filter(s =>
+          (s.studentName || "").toLowerCase().includes(term) ||
+          (s.email || "").toLowerCase().includes(term)
+        );
       }
+
+      if (students.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="${TEACHER_COLSPAN}" class="p-6 text-center text-slate-500 font-bold">
+          ${teacherAllRecords.length === 0 ? "No hay intentos registrados." : "Ningún alumno coincide."}
+        </td></tr>`;
+        return;
+      }
+
+      students.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || "", "es"));
+
+      tbody.innerHTML = "";
+      students.forEach(s => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-800/50 transition";
+
+        const moduleCells = s.moduleScores.map(score => {
+          if (score === null) return `<td class="p-3 text-center text-slate-600">—</td>`;
+          const cls = score >= PASS_THRESHOLD ? "bg-emerald-500/15 text-emerald-400" : "bg-rose-500/15 text-rose-400";
+          return `<td class="p-3 text-center"><span class="inline-block px-2 py-1 rounded-lg font-black text-xs ${cls}">${score}%</span></td>`;
+        }).join("");
+
+        const progressCell = s.allDone
+          ? `<span class="font-black text-white">${s.finalAverage}%</span>`
+          : `<span class="font-bold text-slate-400">${s.completedCount}/${MODULES.length}</span>`;
+
+        const levelCell = !s.allDone
+          ? `<span class="text-xs font-bold text-slate-500">En curso</span>`
+          : (s.levelReached
+              ? `<span class="text-xs font-black text-emerald-400">✅ Alcanzado</span>`
+              : `<span class="text-xs font-black text-rose-400">⚠️ No alcanzado</span>`);
+
+        tr.innerHTML = `
+          <td class="p-3 font-extrabold text-white">${s.studentName}</td>
+          <td class="p-3 text-slate-300 font-medium">${s.grade || "—"}</td>
+          ${moduleCells}
+          <td class="p-3 text-center">${progressCell}</td>
+          <td class="p-3 text-center">${levelCell}</td>
+          <td class="p-3 text-slate-400 text-xs">${s.lastDateTime || "—"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
 
     window.onload = initApp;
