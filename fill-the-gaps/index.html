@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Academy | Present Tenses · Fill in the Gaps</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #090d16 0%, #111827 50%, #14532d 100%); }
+    .neon-border { box-shadow: 0 0 15px rgba(16, 185, 129, 0.15); }
+    .neon-border:hover { box-shadow: 0 0 25px rgba(52, 211, 153, 0.45); }
+
+    .gap-input {
+      background: #020617;
+      border: none;
+      border-bottom: 3px solid #475569;
+      color: #fff;
+      font-weight: 800;
+      text-align: center;
+      padding: 2px 10px;
+      margin: 0 4px;
+      border-radius: 6px 6px 0 0;
+      outline: none;
+      transition: all .15s ease;
+      display: inline-block;
+      min-width: 7ch;
+      max-width: 100%;
+      margin-bottom: 6px;
+    }
+    .gap-input:focus { border-bottom-color: #34d399; background: #0b1220; }
+    .gap-ok { border-bottom-color: #10b981 !important; color: #6ee7b7 !important; background: rgba(6,78,59,.45) !important; }
+    .gap-ko { border-bottom-color: #f43f5e !important; color: #fda4af !important; background: rgba(76,5,25,.45) !important; text-decoration: line-through; }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .print-card { border: 2px solid #000 !important; background: #fff !important; color: #000 !important; }
+    }
+  </style>
+
+<!-- 1. Carga de librerías de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+<script>
+  // 2. Configuración segura (usa window para evitar 'already declared')
+  window.firebaseConfig = {
+    apiKey: "AIzaSyD1kMkporqrJFZNfEakmzQjFngkmF4detQ",
+    authDomain: "goya-english.firebaseapp.com",
+    databaseURL: "https://goya-english-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "goya-english",
+    storageBucket: "goya-english.firebasestorage.app",
+    messagingSenderId: "707378371042",
+    appId: "1:707378371042:web:a85b3c8d179156cc7a41bb",
+    measurementId: "G-9L8SR3268E"
+  };
+
+  // 3. Inicialización segura de Firebase
+  if (!firebase.apps.length) {
+    firebase.initializeApp(window.firebaseConfig);
+  }
+  const db = firebase.database();
+
+  // Nodo propio para esta app (no se mezcla con el test de opción múltiple)
+  const RESULTS_NODE = "results_fill";
+</script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen gradient-bg flex flex-col selection:bg-emerald-500 selection:text-white">
+
+<!-- BOTÓN FLOTANTE PROFE -->
+<button onclick="showTeacherLogin()" style="position: fixed; top: 15px; right: 15px; z-index: 99999; padding: 10px 16px; background-color: #059669; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" class="no-print">
+  ⚙️ Profe
+</button>
+
+  <!-- NAVBAR -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-filter blur-md sticky top-0 z-50 py-4 no-print">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
+      <div class="flex items-center space-x-4 cursor-pointer" onclick="goHome()">
+        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-emerald-600 flex items-center justify-center font-black text-2xl md:text-3xl text-white shadow-lg shadow-emerald-500/40">
+          E
+        </div>
+        <div>
+          <h1 class="font-black text-2xl md:text-3xl text-white tracking-wider">ENGLISH<span class="text-emerald-400">PRO</span></h1>
+          <p class="text-sm font-semibold text-slate-400">Present Tenses · Fill in the Gaps</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div id="userInfoHeader" class="hidden text-right text-sm md:text-base text-slate-300 bg-slate-800/90 px-4 py-2 rounded-xl border border-slate-700"></div>
+
+        <button onclick="toggleFullScreen()" class="bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400 px-5 py-3 rounded-2xl font-black text-sm md:text-base transition flex items-center gap-2 shadow-lg shadow-emerald-600/30">
+          <i class="fa-solid fa-expand text-lg"></i> <span class="hidden md:inline">Pizarra Digital</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
+
+    <!-- REGISTRO ALUMNO -->
+    <section id="viewRegistration" class="space-y-6 max-w-xl mx-auto w-full py-6">
+      <div class="text-center space-y-3">
+        <span class="px-4 py-1.5 bg-emerald-500/20 text-emerald-300 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-widest border border-emerald-500/30">Portal del Alumnado</span>
+        <h2 class="text-3xl md:text-5xl font-black text-white">¡Rellena los huecos! ✍️</h2>
+        <p class="text-slate-300 text-base md:text-xl">Escribe tú la forma correcta del verbo: afirmativa, negativa e interrogativa. Sin opciones. Como en el examen.</p>
+      </div>
+
+      <form id="regForm" onsubmit="handleRegistration(event)" class="bg-slate-900/95 border-2 border-slate-800 p-6 md:p-10 rounded-3xl shadow-2xl space-y-5">
+        <div>
+          <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Nombre</label>
+          <input type="text" id="regFirstName" required placeholder="Ej: Alex" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-emerald-500 transition">
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Apellidos</label>
+          <input type="text" id="regLastName" required placeholder="Ej: García López" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-emerald-500 transition">
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Correo Electrónico</label>
+          <input type="email" id="regEmail" required placeholder="alumno@colegio.com" class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-emerald-500 transition">
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2">Curso Escolar</label>
+          <select id="regGrade" required class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-emerald-500 transition">
+            <option value="" disabled selected>Selecciona tu curso...</option>
+            <option value="3º ESO">3º ESO</option>
+            <option value="4º ESO">4º ESO</option>
+            <option value="1º Bachillerato">1º Bachillerato</option>
+            <option value="2º Bachillerato">2º Bachillerato</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-amber-400 uppercase tracking-wider mb-2">Profesora de Inglés</label>
+          <select id="regTeacher" required class="w-full bg-slate-950 border-2 border-slate-800 rounded-2xl px-5 py-4 text-lg md:text-xl text-white focus:outline-none focus:border-emerald-500 transition">
+            <option value="" disabled selected>Selecciona tu profesora...</option>
+            <option value="Nuria Calvo">Nuria Calvo</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl md:text-2xl py-5 rounded-2xl transition shadow-xl shadow-emerald-600/40 flex items-center justify-center gap-3 mt-4">
+          Entrar a la Academia <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </section>
+
+    <!-- DASHBOARD PRINCIPAL -->
+    <section id="viewDashboard" class="hidden space-y-8 py-4">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-slate-900/90 border-2 border-slate-800 p-6 md:p-8 rounded-3xl">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-black text-white" id="welcomeUserText">¡Hola!</h2>
+          <p class="text-slate-300 text-lg md:text-xl mt-1">Completa los 6 bloques de huecos para generar tu <strong>Informe Final de Evaluación</strong>.</p>
+        </div>
+        <button onclick="showGlobalReportModal()" class="w-full md:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-lg md:text-xl px-8 py-5 rounded-2xl transition flex items-center justify-center gap-3 shadow-xl shadow-amber-500/30">
+          <i class="fa-solid fa-graduation-cap text-2xl"></i> VER INFORME FINAL
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modulesGrid"></div>
+    </section>
+
+    <!-- GUÍA TEÓRICA DETALLADA -->
+    <section id="viewLesson" class="hidden space-y-6 py-4">
+      <div class="flex justify-between items-center no-print">
+        <button onclick="goHome()" class="text-base md:text-lg font-bold text-slate-400 hover:text-white flex items-center gap-2">
+          <i class="fa-solid fa-chevron-left"></i> Volver al panel
+        </button>
+        <span class="text-base font-black text-emerald-400 uppercase tracking-widest" id="lessonTopicCategory">Guía Gramatical</span>
+      </div>
+
+      <div class="bg-slate-900/95 border-2 border-slate-800 rounded-3xl p-6 md:p-10 space-y-8 text-slate-100 text-xl md:text-2xl leading-relaxed shadow-2xl" id="lessonContent"></div>
+
+      <!-- INSTRUCCIONES DE LOS HUECOS -->
+      <div class="bg-emerald-950/40 border-2 border-emerald-500/40 rounded-3xl p-6 md:p-8 space-y-3">
+        <h3 class="text-emerald-300 font-black text-xl md:text-2xl flex items-center gap-3"><i class="fa-solid fa-pen-to-square"></i> Cómo se rellenan los huecos</h3>
+        <ul class="text-base md:text-xl text-slate-200 space-y-2 list-disc list-inside">
+          <li>Escribe <strong>solo las palabras que faltan</strong> en el hueco (verbo, auxiliar, sujeto si está entre paréntesis).</li>
+          <li>El verbo aparece <strong>en infinitivo entre paréntesis</strong>: <span class="font-mono text-amber-400">(go)</span>, <span class="font-mono text-amber-400">(not / like)</span>, <span class="font-mono text-amber-400">(you / study)</span>.</li>
+          <li>Se aceptan formas <strong>contraídas y completas</strong>: <em>don't</em> = <em>do not</em>, <em>haven't</em> = <em>have not</em>.</li>
+          <li>No importan las mayúsculas, pero <strong>sí los apóstrofos</strong> y la ortografía.</li>
+        </ul>
+      </div>
+
+      <div class="flex justify-end no-print">
+        <button onclick="startCurrentQuiz()" class="w-full md:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl md:text-2xl px-10 py-5 rounded-2xl transition shadow-xl shadow-emerald-600/40 flex items-center justify-center gap-3">
+          Empezar los 10 Ejercicios <i class="fa-solid fa-play"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- EJERCICIOS EN VIVO -->
+    <section id="viewQuiz" class="hidden space-y-6 py-2">
+      <div class="flex justify-between items-center bg-slate-900 border-2 border-slate-800 p-5 md:p-6 rounded-2xl">
+        <div>
+          <span class="text-sm md:text-base text-emerald-400 font-extrabold uppercase tracking-wider" id="quizCategoryTitle">Ejercicios</span>
+          <h3 class="text-2xl md:text-4xl font-black text-white" id="quizQuestionCount">Ejercicio 1 de 10</h3>
+        </div>
+        <div class="text-right">
+          <span class="text-sm md:text-base text-slate-400 font-bold">Tiempo</span>
+          <div id="quizTimer" class="font-mono font-black text-3xl md:text-5xl text-emerald-400">00:00</div>
+        </div>
+      </div>
+
+      <div class="w-full bg-slate-800 rounded-full h-4 overflow-hidden">
+        <div id="quizProgressBar" class="bg-emerald-500 h-4 rounded-full transition-all duration-300" style="width: 10%;"></div>
+      </div>
+
+      <div class="bg-slate-900/90 border-2 border-slate-800 p-6 md:p-10 rounded-3xl space-y-8 shadow-2xl">
+        <div id="quizTypeBadge"></div>
+        <p class="text-2xl md:text-4xl font-extrabold text-white leading-relaxed" id="quizSentence">Cargando...</p>
+        <div id="quizFeedback" class="hidden p-6 md:p-8 rounded-2xl text-lg md:text-2xl font-bold border-2"></div>
+        <div class="flex justify-end no-print">
+          <button id="checkAnswerBtn" onclick="checkExercise()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl md:text-2xl px-8 py-4 rounded-2xl transition shadow-lg shadow-emerald-600/30">
+            <i class="fa-solid fa-check mr-2"></i> Comprobar
+          </button>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-2 no-print">
+        <button onclick="quitQuiz()" class="text-base md:text-lg font-bold text-slate-400 hover:text-slate-200">Salir del examen</button>
+        <button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xl md:text-2xl px-8 py-4 rounded-2xl transition shadow-lg shadow-emerald-600/30">
+          Siguiente Ejercicio <i class="fa-solid fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- RESULTADO PARCIAL -->
+    <section id="viewResults" class="hidden space-y-6 py-6 max-w-3xl mx-auto w-full">
+      <div id="resultsCard" class="bg-slate-900 border-2 border-slate-800 p-8 md:p-10 rounded-3xl text-center space-y-6 shadow-2xl"></div>
+      <div id="reviewCard" class="bg-slate-900 border-2 border-slate-800 p-6 md:p-8 rounded-3xl space-y-3 shadow-2xl"></div>
+    </section>
+
+    <!-- INFORME FINAL GLOBAL -->
+    <section id="viewGlobalReport" class="hidden py-4 max-w-3xl mx-auto w-full">
+      <div id="screenCaptureArea" class="bg-slate-900 border-4 border-emerald-500/50 p-6 md:p-8 rounded-3xl space-y-5 shadow-2xl relative overflow-hidden print-card">
+        <div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none text-9xl font-black text-white select-none">
+          ENGLISHPRO
+        </div>
+
+        <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-black text-amber-400 uppercase tracking-widest">Oficial • Present Tenses · Fill in the Gaps</span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-black text-white mt-1">Informe Final de Evaluación</h2>
+          </div>
+          <button onclick="goHome()" class="no-print text-sm bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-2 rounded-xl">
+            <i class="fa-solid fa-xmark"></i> Cerrar
+          </button>
+        </div>
+
+        <div id="globalReportDetails"></div>
+      </div>
+    </section>
+
+    <!-- PANEL DEL PROFESOR -->
+    <section id="viewTeacher" class="hidden space-y-6 py-6">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black text-white" id="teacherTitle">Panel del Profesorado</h2>
+          <p class="text-base text-slate-400">Una fila por alumno · resultados de los ejercicios de huecos.</p>
+        </div>
+        <button onclick="goHome()" class="text-sm md:text-base bg-slate-800 text-slate-300 font-bold px-5 py-3 rounded-xl">Salir</button>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="teacherStatsGrid"></div>
+
+      <div class="flex flex-col md:flex-row gap-3 md:items-center">
+        <input id="teacherSearchInput" type="text" placeholder="🔍 Buscar alumno por nombre o email..." oninput="filterTeacherTable(this.value)"
+          class="flex-1 bg-slate-900 border-2 border-slate-800 rounded-2xl px-5 py-3 text-base text-white focus:outline-none focus:border-emerald-500 transition">
+        <button id="teacherRefreshBtn" onclick="refreshTeacherDashboardNow()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-5 py-3 rounded-2xl transition flex items-center justify-center gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-arrows-rotate"></i> Actualizar
+        </button>
+      </div>
+      <p id="teacherLastRefreshed" class="text-xs text-slate-500 -mt-2">Cargando...</p>
+
+      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm md:text-base text-slate-300">
+            <thead class="bg-slate-950 text-slate-400 uppercase font-bold text-xs" id="teacherTableHead"></thead>
+            <tbody id="teacherTableBody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800/80 py-4 text-center text-sm text-slate-500 font-semibold no-print">
+    EnglishPRO Academy • Present Tenses · Fill in the Gaps • Designed for ESO &amp; Bachillerato
+  </footer>
+
+  <script>
+
+    const PASS_THRESHOLD = 80;
+
+    let currentUser = null;
+    let currentTeacherLoggedIn = null;
+    let currentModuleId = null;
+    let currentQuestionIdx = 0;
+    let currentScore = 0;
+    let quizTimerInterval = null;
+    let quizSeconds = 0;
+    let answered = false;
+    let attemptLog = [];
+
+    const TYPE_LABELS = {
+      aff: { label: "Afirmativa", cls: "bg-emerald-500/15 text-emerald-300 border-emerald-500/40", icon: "fa-plus" },
+      neg: { label: "Negativa", cls: "bg-rose-500/15 text-rose-300 border-rose-500/40", icon: "fa-minus" },
+      int: { label: "Interrogativa", cls: "bg-sky-500/15 text-sky-300 border-sky-500/40", icon: "fa-question" }
+    };
+
+    // BLOQUES DE PRESENT TENSES · EJERCICIOS DE HUECOS
+    const MODULES = [
+      {
+        id: "present_simple",
+        title: "1. Present Simple",
+        short: "Pr. Simple",
+        desc: "Rutinas, verdades universales, horarios fijos y hábitos.",
+        icon: "fa-repeat",
+        explanation: `
+          <h2 class="text-3xl md:text-4xl font-black text-emerald-400 mb-3">1. Present Simple</h2>
+          <p class="text-slate-200 text-lg md:text-2xl mb-8 leading-relaxed">
+            Se utiliza para hablar de hábitos, verdades científicas, situaciones permanentes y horarios programados.
+          </p>
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">📐 Las tres formas:</h3>
+              <ul class="space-y-4 text-lg md:text-2xl">
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-emerald-300 block mb-1">Afirmativa:</strong>
+                  <span class="text-slate-300">Sujeto + verbo (+ <strong>-s/-es/-ies</strong> con he/she/it) ➔ <em>She works here.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-rose-300 block mb-1">Negativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>don't / doesn't</strong> + verbo base ➔ <em>She doesn't work here.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-sky-300 block mb-1">Interrogativa:</strong>
+                  <span class="text-slate-300"><strong>Do / Does</strong> + sujeto + verbo base ➔ <em>Does she work here?</em></span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">📌 Usos principales:</h3>
+              <ul class="space-y-3 text-lg md:text-2xl text-slate-300">
+                <li>• <strong>Rutinas y hábitos:</strong> <em>I study English every afternoon.</em></li>
+                <li>• <strong>Verdades científicas:</strong> <em>Water boils at 100 degrees.</em></li>
+                <li>• <strong>Horarios fijos:</strong> <em>The train leaves at 8:00 AM.</em></li>
+              </ul>
+            </div>
+            <div class="bg-rose-950/50 p-6 md:p-8 rounded-3xl border-2 border-rose-500/50">
+              <h3 class="text-rose-300 font-black text-xl md:text-2xl mb-3">⚠️ Error típico:</h3>
+              <p class="text-lg md:text-2xl text-slate-200">
+                ¡NO añadas '-s' en negativas ni en preguntas! El auxiliar <strong>does / doesn't</strong> ya lleva la marca.
+                <br><span class="text-rose-400">❌ She doesn't works.</span> <span class="text-emerald-400">✅ She doesn't work.</span>
+              </p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { type: "aff", text: "My sister ___ (get) up at seven o'clock every morning.", gaps: [["gets"]], explanation: "Rutina diaria con 3ª persona singular ('My sister' = she): verbo + -s." },
+          { type: "neg", text: "We ___ (not / work) on Sundays.", gaps: [["do not work"]], explanation: "Negativa con 'we': don't / do not + verbo base (sin -s)." },
+          { type: "int", text: "___ (your father / speak) three languages?", gaps: [["Does your father speak"]], explanation: "Pregunta con sujeto en 3ª persona singular: Does + sujeto + verbo base." },
+          { type: "aff", text: "The museum ___ (open) at nine o'clock every day.", gaps: [["opens"]], explanation: "Horario fijo y repetido: Present Simple con -s ('The museum' = it)." },
+          { type: "neg", text: "Tom ___ (not / study) French; he studies German.", gaps: [["does not study"]], explanation: "3ª persona singular en negativa: doesn't / does not + verbo base." },
+          { type: "int", text: "Where ___ (your cousins / live)?", gaps: [["do your cousins live"]], explanation: "Wh- + do + sujeto plural + verbo base. La palabra interrogativa va delante del auxiliar." },
+          { type: "aff", text: "Ice ___ (melt) when the temperature rises.", gaps: [["melts"]], explanation: "Verdad científica general: Present Simple ('Ice' = it, añade -s)." },
+          { type: "neg", text: "I ___ (not / be) very good at maths.", gaps: [["am not"]], explanation: "El verbo 'be' no usa auxiliar 'do': se niega directamente (I am not / I'm not)." },
+          { type: "int", text: "___ (you / usually / have) breakfast at home?", gaps: [["Do you usually have"]], explanation: "El adverbio de frecuencia va entre el sujeto y el verbo principal: Do you usually have...?" },
+          { type: "aff", text: "Sarah always ___ (carry) an umbrella in winter.", gaps: [["carries"]], explanation: "Verbo terminado en consonante + y: carry ➔ carries. 'Always' indica hábito." }
+        ]
+      },
+      {
+        id: "present_continuous",
+        title: "2. Present Continuous",
+        short: "Pr. Cont.",
+        desc: "Acciones en curso, situaciones temporales y planes futuros.",
+        icon: "fa-spinner",
+        explanation: `
+          <h2 class="text-3xl md:text-4xl font-black text-emerald-400 mb-3">2. Present Continuous</h2>
+          <p class="text-slate-200 text-lg md:text-2xl mb-8 leading-relaxed">
+            Se utiliza para acciones que ocurren justo ahora, situaciones temporales o planes futuros ya organizados.
+          </p>
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">📐 Las tres formas:</h3>
+              <ul class="space-y-4 text-lg md:text-2xl">
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-emerald-300 block mb-1">Afirmativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>am / is / are</strong> + verbo-ING ➔ <em>She is working.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-rose-300 block mb-1">Negativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>am not / isn't / aren't</strong> + verbo-ING ➔ <em>She isn't working.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-sky-300 block mb-1">Interrogativa:</strong>
+                  <span class="text-slate-300"><strong>Am / Is / Are</strong> + sujeto + verbo-ING ➔ <em>Is she working?</em></span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">📌 Usos principales:</h3>
+              <ul class="space-y-3 text-lg md:text-2xl text-slate-300">
+                <li>• <strong>En este instante</strong> (Look!, Listen!, right now): <em>Listen! Someone is singing.</em></li>
+                <li>• <strong>Situación temporal</strong> (this week, these days): <em>I am living in London this month.</em></li>
+                <li>• <strong>Plan futuro cerrado</strong> (arrangement): <em>We are flying to Paris tomorrow.</em></li>
+              </ul>
+            </div>
+            <div class="bg-rose-950/50 p-6 md:p-8 rounded-3xl border-2 border-rose-500/50">
+              <h3 class="text-rose-300 font-black text-xl md:text-2xl mb-3">🚨 Verbos de estado (Stative Verbs):</h3>
+              <p class="text-lg md:text-2xl text-slate-200">
+                Los verbos de pensamiento, emoción o posesión NO se usan en continuo (<em>know, understand, love, like, want, need, believe</em>).
+              </p>
+              <p class="mt-4 p-4 bg-black/40 rounded-2xl font-mono text-lg space-y-1">
+                <span class="text-rose-400">❌ I am understanding the lesson now.</span><br>
+                <span class="text-emerald-400">✅ I understand the lesson now.</span>
+              </p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { type: "aff", text: "Listen! The neighbours ___ (play) loud music again.", gaps: [["are playing"]], explanation: "'Listen!' indica acción en directo. Sujeto plural ➔ are + -ing." },
+          { type: "neg", text: "I ___ (not / wear) my uniform today because it's Saturday.", gaps: [["am not wearing"]], explanation: "Negativa en 1ª persona: I am not / I'm not + verbo-ING." },
+          { type: "int", text: "___ (your brother / study) for his exam at the moment?", gaps: [["Is your brother studying"]], explanation: "Pregunta: Is + sujeto singular + verbo-ING. 'At the moment' marca continuo." },
+          { type: "aff", text: "We ___ (fly) to Dublin next Friday; we already have the tickets.", gaps: [["are flying"]], explanation: "Plan futuro ya organizado (tenemos los billetes) ➔ Present Continuous." },
+          { type: "neg", text: "They ___ (not / live) with their parents this year.", gaps: [["are not living"]], explanation: "Situación temporal ('this year') en negativa: aren't / are not + living." },
+          { type: "int", text: "What ___ (you / cook)? It smells delicious!", gaps: [["are you cooking"]], explanation: "Wh- + are + sujeto + verbo-ING. Acción ocurriendo ahora mismo." },
+          { type: "aff", text: "Look! It ___ (snow) in the mountains.", gaps: [["is snowing"]], explanation: "'Look!' señala algo que está sucediendo ahora. 'It' ➔ is + snowing." },
+          { type: "neg", text: "The printer ___ (not / work) right now.", gaps: [["is not working"]], explanation: "'Right now' + negativa en 3ª persona singular: isn't / is not working." },
+          { type: "int", text: "Why ___ (those children / shout) in the corridor?", gaps: [["are those children shouting"]], explanation: "Sujeto plural en pregunta: Why + are + those children + shouting?" },
+          { type: "aff", text: "My grandmother ___ (stay) with us these days.", gaps: [["is staying"]], explanation: "'These days' indica situación temporal, no permanente ➔ Continuous." }
+        ]
+      },
+      {
+        id: "present_perfect",
+        title: "3. Present Perfect",
+        short: "Pr. Perfect",
+        desc: "Acciones pasadas con conexión directa en el presente.",
+        icon: "fa-clock-rotate-left",
+        explanation: `
+          <h2 class="text-3xl md:text-4xl font-black text-emerald-400 mb-3">3. Present Perfect</h2>
+          <p class="text-slate-200 text-lg md:text-2xl mb-8 leading-relaxed">
+            Conecta el pasado con el presente. Importa el resultado actual o las experiencias vividas, no el momento exacto.
+          </p>
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">📐 Las tres formas:</h3>
+              <ul class="space-y-4 text-lg md:text-2xl">
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-emerald-300 block mb-1">Afirmativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>have / has</strong> + participio ➔ <em>She has finished.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-rose-300 block mb-1">Negativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>haven't / hasn't</strong> + participio ➔ <em>She hasn't finished.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-sky-300 block mb-1">Interrogativa:</strong>
+                  <span class="text-slate-300"><strong>Have / Has</strong> + sujeto + participio ➔ <em>Has she finished?</em></span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-emerald-400 font-black text-xl md:text-2xl mb-3">🔑 Palabras clave:</h3>
+              <ul class="space-y-3 text-lg md:text-2xl text-slate-300">
+                <li>• <strong>EVER / NEVER:</strong> experiencias de vida (<em>Have you ever flown?</em>).</li>
+                <li>• <strong>FOR / SINCE:</strong> duración (for 3 years / since 2020).</li>
+                <li>• <strong>ALREADY / YET / JUST:</strong> ya (afirmativa) / todavía (neg. e int.) / acabar de.</li>
+              </ul>
+              <p class="mt-4 text-base md:text-xl text-slate-400">Colocación: <em>have</em> + <strong>already/just/never</strong> + participio. <em>Yet</em> va al final de la frase.</p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { type: "aff", text: "We ___ (know) each other since 2015.", gaps: [["have known"]], explanation: "'Since' + situación que continúa hasta hoy ➔ have + participio (know ➔ known)." },
+          { type: "neg", text: "She ___ (not / finish) her project yet.", gaps: [["has not finished"]], explanation: "'Yet' en negativa + 3ª persona singular: hasn't / has not + participio." },
+          { type: "int", text: "___ (you / ever / visit) Scotland?", gaps: [["Have you ever visited"]], explanation: "Experiencia de vida: Have + sujeto + ever + participio." },
+          { type: "aff", text: "The teacher ___ (just / correct) our exams.", gaps: [["has just corrected"]], explanation: "'Just' se coloca entre el auxiliar HAS y el participio." },
+          { type: "neg", text: "I ___ (never / try) Japanese food.", gaps: [["have never tried"]], explanation: "'Never' ya es negativo: have + never + participio (nunca 'haven't never')." },
+          { type: "int", text: "How long ___ (your parents / be) married?", gaps: [["have your parents been"]], explanation: "'How long' + Present Perfect. Participio de 'be' = been." },
+          { type: "aff", text: "They ___ (already / book) the hotel for the trip.", gaps: [["have already booked"]], explanation: "'Already' va entre HAVE y el participio en frases afirmativas." },
+          { type: "neg", text: "My cousins ___ (not / arrive) yet.", gaps: [["have not arrived"]], explanation: "Sujeto plural + negativa: haven't / have not + participio." },
+          { type: "int", text: "___ (Peter / write) the email already?", gaps: [["Has Peter written"]], explanation: "Pregunta en 3ª persona singular: Has + sujeto + participio irregular (write ➔ written)." },
+          { type: "aff", text: "I ___ (lose) my keys, so I can't open the door.", gaps: [["have lost"]], explanation: "Acción pasada con resultado visible ahora (no puedo abrir) ➔ Present Perfect." }
+        ]
+      },
+      {
+        id: "present_perfect_cont",
+        title: "4. Present Perf. Continuous",
+        short: "Pr. Perf. Cont",
+        desc: "Acciones que empezaron en el pasado y continúan ahora (énfasis en la duración).",
+        icon: "fa-hourglass-half",
+        explanation: `
+          <h2 class="text-3xl md:text-4xl font-black text-emerald-400 mb-3">4. Present Perfect Continuous</h2>
+          <p class="text-slate-200 text-lg md:text-2xl mb-8 leading-relaxed">
+            Enfatiza la <strong>duración</strong> de una acción que comenzó en el pasado y todavía está en progreso (o acaba de terminar y se notan sus efectos).
+          </p>
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">📐 Las tres formas:</h3>
+              <ul class="space-y-4 text-lg md:text-2xl">
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-emerald-300 block mb-1">Afirmativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>have / has been</strong> + verbo-ING ➔ <em>She has been working.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-rose-300 block mb-1">Negativa:</strong>
+                  <span class="text-slate-300">Sujeto + <strong>haven't / hasn't been</strong> + verbo-ING ➔ <em>She hasn't been working.</em></span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-sky-300 block mb-1">Interrogativa:</strong>
+                  <span class="text-slate-300"><strong>Have / Has</strong> + sujeto + <strong>been</strong> + verbo-ING ➔ <em>Has she been working?</em></span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-3">⚖️ Contraste clave:</h3>
+              <p class="text-lg md:text-2xl text-slate-200">
+                <strong>Perfect Simple</strong> ➔ enfoca el <em>resultado</em>: <em>I have read the book</em> (terminado).<br>
+                <strong>Perfect Continuous</strong> ➔ enfoca la <em>actividad y su duración</em>: <em>I have been reading the book</em> (sigo en ello).
+              </p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { type: "aff", text: "They ___ (wait) for the bus for twenty minutes.", gaps: [["have been waiting"]], explanation: "Duración de una actividad en curso ('for twenty minutes') ➔ have been + -ing." },
+          { type: "neg", text: "I ___ (not / sleep) well lately.", gaps: [["have not been sleeping"]], explanation: "Negativa: haven't / have not + been + verbo-ING. 'Lately' marca periodo reciente." },
+          { type: "int", text: "How long ___ (you / learn) English?", gaps: [["have you been learning"]], explanation: "'How long' + Have + sujeto + been + verbo-ING." },
+          { type: "aff", text: "My eyes hurt because I ___ (look) at the screen all day.", gaps: [["have been looking"]], explanation: "Actividad prolongada con efecto visible ahora (me duelen los ojos)." },
+          { type: "neg", text: "He ___ (not / train) enough for the marathon.", gaps: [["has not been training"]], explanation: "3ª persona singular: hasn't / has not + been + training." },
+          { type: "int", text: "___ (it / rain) all afternoon?", gaps: [["Has it been raining"]], explanation: "Pregunta con 'it': Has + it + been + verbo-ING." },
+          { type: "aff", text: "Ana ___ (work) in that company since January.", gaps: [["has been working"]], explanation: "'Since' + actividad continua hasta el presente ➔ has been + working." },
+          { type: "neg", text: "We ___ (not / live) here for long.", gaps: [["have not been living"]], explanation: "Negativa con sujeto plural: haven't / have not + been + living." },
+          { type: "int", text: "Why ___ (your sister / cry)? Her eyes are red.", gaps: [["has your sister been crying"]], explanation: "Efecto visible de una actividad reciente: Why + has + sujeto + been + crying?" },
+          { type: "aff", text: "The students ___ (practise) the dialogue for an hour.", gaps: [["have been practising", "have been practicing"]], explanation: "Duración con 'for an hour'. Se acepta la grafía británica (practising) y la americana (practicing)." }
+        ]
+      },
+      {
+        id: "simple_vs_cont",
+        title: "5. Simple vs Continuous",
+        short: "Simp vs Cont",
+        desc: "Diferencia entre hábitos permanentes y acciones temporales o en curso.",
+        icon: "fa-code-compare",
+        explanation: `
+          <h2 class="text-3xl md:text-4xl font-black text-emerald-400 mb-3">5. Simple vs Continuous</h2>
+          <p class="text-slate-200 text-lg md:text-2xl mb-8 leading-relaxed">
+            Aprende a elegir entre lo permanente y habitual (Simple) y lo temporal o en curso (Continuous).
+          </p>
+          <div class="space-y-6">
+            <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+              <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">⚖️ La regla de oro:</h3>
+              <ul class="space-y-5 text-lg md:text-2xl">
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-emerald-400 block mb-1">Present Simple (siempre / normalmente):</strong>
+                  <span class="text-slate-300">• <em>"I usually wear jeans."</em> (hábito general)</span>
+                </li>
+                <li class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                  <strong class="text-sky-300 block mb-1">Present Continuous (hoy / ahora mismo):</strong>
+                  <span class="text-slate-300">• <em>"But today I am wearing a suit."</em> (excepción temporal)</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-rose-950/50 p-6 md:p-8 rounded-3xl border-2 border-rose-500/50">
+              <h3 class="text-rose-300 font-black text-xl md:text-2xl mb-3">🚨 ¡Cuidado con los Stative Verbs!</h3>
+              <p class="text-lg md:text-2xl text-slate-200">
+                Aunque ocurra ahora mismo, verbos como <em>want, need, know, prefer, love, understand, believe, mean</em> SIEMPRE van en Simple.
+              </p>
+            </div>
+          </div>
+        `,
+        questions: [
+          { type: "aff", text: "I usually ___ (have) cereal for breakfast, but today I ___ (have) toast.", gaps: [["have"], ["am having"]], explanation: "Hábito (Simple) frente a excepción de hoy (Continuous)." },
+          { type: "neg", text: "Sam ___ (not / understand) this exercise.", gaps: [["does not understand"]], explanation: "'Understand' es Stative Verb: siempre Present Simple, nunca continuo." },
+          { type: "int", text: "___ (you / listen) to me right now?", gaps: [["Are you listening"]], explanation: "'Right now' ➔ acción en este momento: Are + you + listening?" },
+          { type: "aff", text: "The Earth ___ (go) round the Sun.", gaps: [["goes"]], explanation: "Verdad universal ➔ Present Simple con -es." },
+          { type: "neg", text: "We ___ (not / go) out tonight; we're too tired.", gaps: [["are not going"]], explanation: "Plan (o decisión) para esta noche en negativa ➔ aren't going." },
+          { type: "int", text: "___ (your mother / work) at the hospital every summer?", gaps: [["Does your mother work"]], explanation: "'Every summer' indica rutina ➔ Present Simple: Does + sujeto + verbo base." },
+          { type: "aff", text: "Be quiet! The baby ___ (sleep).", gaps: [["is sleeping"]], explanation: "Acción ocurriendo justo ahora ➔ Present Continuous." },
+          { type: "neg", text: "I ___ (not / want) more coffee, thanks.", gaps: [["do not want"]], explanation: "'Want' es Stative Verb: don't want, nunca 'am not wanting'." },
+          { type: "int", text: "What ___ (this word / mean)?", gaps: [["does this word mean"]], explanation: "'Mean' es Stative Verb ➔ Present Simple: What does this word mean?" },
+          { type: "aff", text: "My brother ___ (look) for a new job these weeks.", gaps: [["is looking"]], explanation: "'These weeks' = situación temporal ➔ Present Continuous." }
+        ]
+      },
+      {
+        id: "master_present",
+        title: "6. Master Test: Present Tenses",
+        short: "Master Test",
+        desc: "Examen global de huecos combinando todos los tiempos del presente.",
+        icon: "fa-trophy",
+        explanation: `
+          <h2 class="text-3xl md:text-4xl font-black text-amber-400 mb-3">6. Desafío Final Integrado</h2>
+          <p class="text-slate-200 text-lg md:text-2xl mb-6">Aplica los cuatro tiempos (Simple, Continuous, Perfect y Perfect Continuous) en afirmativa, negativa e interrogativa.</p>
+          <div class="bg-slate-950 p-6 md:p-8 rounded-3xl border-2 border-slate-800">
+            <h3 class="text-amber-400 font-black text-xl md:text-2xl mb-4">🧭 Chuleta rápida de pistas:</h3>
+            <ul class="space-y-3 text-lg md:text-2xl text-slate-300">
+              <li>• <strong>every day, usually, always, never (rutina)</strong> ➔ Present Simple</li>
+              <li>• <strong>now, look!, listen!, at the moment, today</strong> ➔ Present Continuous</li>
+              <li>• <strong>ever, never, already, yet, just, for, since</strong> ➔ Present Perfect</li>
+              <li>• <strong>how long...?, all day, duración de la actividad</strong> ➔ Present Perfect Continuous</li>
+            </ul>
+          </div>
+        `,
+        questions: [
+          { type: "aff", text: "Julia ___ (live) in Bristol since she was ten.", gaps: [["has lived", "has been living"]], explanation: "'Since' + situación que continúa: se admite Present Perfect (has lived) y Perfect Continuous (has been living)." },
+          { type: "neg", text: "I ___ (not / see) my cousins since last Christmas.", gaps: [["have not seen"]], explanation: "'See' con 'since' en negativa ➔ haven't seen (participio irregular)." },
+          { type: "int", text: "___ (you / do) anything special next weekend?", gaps: [["Are you doing"]], explanation: "Plan futuro ya organizado ➔ Present Continuous: Are you doing...?" },
+          { type: "aff", text: "Water ___ (freeze) at zero degrees.", gaps: [["freezes"]], explanation: "Verdad científica ➔ Present Simple con -s." },
+          { type: "neg", text: "They ___ (not / watch) TV at the moment.", gaps: [["are not watching"]], explanation: "'At the moment' ➔ Present Continuous en negativa: aren't watching." },
+          { type: "int", text: "How long ___ (your father / drive) that old car?", gaps: [["has your father been driving", "has your father driven"]], explanation: "'How long' + duración: Perfect Continuous (o Perfect Simple, también correcto aquí)." },
+          { type: "aff", text: "Look! Somebody ___ (break) the window.", gaps: [["has broken"]], explanation: "Resultado visible ahora de una acción pasada ➔ Present Perfect (break ➔ broken)." },
+          { type: "neg", text: "She ___ (not / believe) in ghosts.", gaps: [["does not believe"]], explanation: "'Believe' es Stative Verb ➔ Present Simple: doesn't believe." },
+          { type: "int", text: "___ (the train / leave) at 7:45 every morning?", gaps: [["Does the train leave"]], explanation: "Horario fijo y repetido ➔ Present Simple: Does + sujeto + verbo base." },
+          { type: "aff", text: "We ___ (study) hard all week, so we're exhausted.", gaps: [["have been studying"]], explanation: "Actividad prolongada ('all week') con efecto actual ➔ Present Perfect Continuous." }
+        ]
+      }
+    ];
+
+    /* ============================================================
+       CORRECCIÓN DE HUECOS
+       ============================================================ */
+
+    // Pares contracción / forma completa. bidir:true ➔ se aceptan las dos direcciones.
+    const CONTRACTIONS = [
+      { full: "do not", short: "don't", bidir: true },
+      { full: "does not", short: "doesn't", bidir: true },
+      { full: "is not", short: "isn't", bidir: true },
+      { full: "are not", short: "aren't", bidir: true },
+      { full: "have not", short: "haven't", bidir: true },
+      { full: "has not", short: "hasn't", bidir: true },
+      { full: "cannot", short: "can't", bidir: true },
+      { full: "i am", short: "i'm", bidir: false },
+      { full: "you are", short: "you're", bidir: false },
+      { full: "we are", short: "we're", bidir: false },
+      { full: "they are", short: "they're", bidir: false },
+      { full: "he is", short: "he's", bidir: false },
+      { full: "she is", short: "she's", bidir: false },
+      { full: "it is", short: "it's", bidir: false },
+      { full: "i have", short: "i've", bidir: false },
+      { full: "you have", short: "you've", bidir: false },
+      { full: "we have", short: "we've", bidir: false },
+      { full: "they have", short: "they've", bidir: false },
+      { full: "he has", short: "he's", bidir: false },
+      { full: "she has", short: "she's", bidir: false },
+      { full: "it has", short: "it's", bidir: false }
+    ];
+
+    function normalize(str) {
+      return (str || "")
+        .toString()
+        .replace(/[‘’ʼ`´]/g, "'")
+        .trim()
+        .toLowerCase()
+        .replace(/[.,;!?]+$/g, "")
+        .replace(/\s+/g, " ");
+    }
+
+    function stripApostrophes(str) {
+      return normalize(str).replace(/'/g, "");
+    }
+
+    function replaceAll(str, from, to) {
+      return str.split(from).join(to);
+    }
+
+    // Genera todas las formas válidas equivalentes de una respuesta modelo.
+    function answerVariants(answer) {
+      const set = new Set([normalize(answer)]);
+      for (let round = 0; round < 3; round++) {
+        const sizeBefore = set.size;
+        Array.from(set).forEach(v => {
+          CONTRACTIONS.forEach(c => {
+            if (v.indexOf(c.full) !== -1) set.add(replaceAll(v, c.full, c.short));
+            if (c.bidir && v.indexOf(c.short) !== -1) set.add(replaceAll(v, c.short, c.full));
+          });
+        });
+        if (set.size === sizeBefore) break;
+      }
+      return set;
+    }
+
+    // Devuelve "ok" | "apostrophe" | "ko"
+    function gradeGap(userValue, acceptedList) {
+      const user = normalize(userValue);
+      if (!user) return "ko";
+      let apostropheOnly = false;
+      for (let i = 0; i < acceptedList.length; i++) {
+        const variants = answerVariants(acceptedList[i]);
+        if (variants.has(user)) return "ok";
+        const loose = new Set(Array.from(variants).map(stripApostrophes));
+        if (loose.has(stripApostrophes(user))) apostropheOnly = true;
+      }
+      return apostropheOnly ? "apostrophe" : "ko";
+    }
+
+    function escapeHtml(str) {
+      return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    // Resalta el verbo en infinitivo entre paréntesis.
+    function highlightHints(chunk) {
+      return escapeHtml(chunk).replace(/\(([^)]*)\)/g, '<span class="text-amber-400 font-mono text-xl md:text-2xl">($1)</span>');
+    }
+
+    /* ============================================================
+       APP
+       ============================================================ */
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert(`Error: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    function initApp() {
+      const savedUser = localStorage.getItem("englishpro_fill_user");
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        updateUserHeader();
+        showView("viewDashboard");
+        renderModules();
+      } else {
+        showView("viewRegistration");
+      }
+    }
+
+    function handleRegistration(e) {
+      e.preventDefault();
+      currentUser = {
+        firstName: document.getElementById("regFirstName").value.trim(),
+        lastName: document.getElementById("regLastName").value.trim(),
+        email: document.getElementById("regEmail").value.trim(),
+        grade: document.getElementById("regGrade").value,
+        teacher: document.getElementById("regTeacher").value
+      };
+      localStorage.setItem("englishpro_fill_user", JSON.stringify(currentUser));
+      updateUserHeader();
+      showView("viewDashboard");
+      renderModules();
+    }
+
+    function updateUserHeader() {
+      if (!currentUser) return;
+      const el = document.getElementById("userInfoHeader");
+      el.classList.remove("hidden");
+      el.innerHTML = `
+        <span class="font-extrabold text-white">${currentUser.firstName} ${currentUser.lastName}</span> (${currentUser.grade})<br>
+        <span class="text-amber-400 font-bold text-xs"><i class="fa-solid fa-chalkboard-user"></i> Prof: ${currentUser.teacher}</span>
+      `;
+      document.getElementById("welcomeUserText").innerText = `¡Hola, ${currentUser.firstName}! 👋`;
+    }
+
+    function showView(viewId) {
+      ["viewRegistration", "viewDashboard", "viewLesson", "viewQuiz", "viewResults", "viewGlobalReport", "viewTeacher"].forEach(id => {
+        document.getElementById(id).classList.add("hidden");
+      });
+      document.getElementById(viewId).classList.remove("hidden");
+    }
+
+    function goHome() {
+      if (quizTimerInterval) clearInterval(quizTimerInterval);
+      if (currentUser) {
+        showView("viewDashboard");
+        renderModules();
+      } else {
+        showView("viewRegistration");
+      }
+    }
+
+    function buildModuleCard(mod, bestScore) {
+      let badge = `<span class="text-sm bg-slate-800 text-slate-400 px-4 py-2 rounded-xl font-bold">Pendiente</span>`;
+      if (bestScore !== null && bestScore !== undefined) {
+        badge = (bestScore >= PASS_THRESHOLD)
+          ? `<span class="text-sm bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-4 py-2 rounded-xl font-black">✅ ${bestScore}% Nivel alcanzado</span>`
+          : `<span class="text-sm bg-rose-500/20 text-rose-400 border border-rose-500/40 px-4 py-2 rounded-xl font-black">${bestScore}% · Inténtalo de nuevo</span>`;
+      }
+
+      const card = document.createElement("div");
+      card.className = "bg-slate-900 border-2 border-slate-800 hover:border-emerald-500/60 p-8 rounded-3xl transition cursor-pointer flex flex-col justify-between neon-border";
+      card.onclick = () => openLesson(mod.id);
+      card.innerHTML = `
+        <div>
+          <div class="flex justify-between items-start mb-6">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center text-2xl font-bold border border-emerald-500/30">
+              <i class="fa-solid ${mod.icon}"></i>
+            </div>
+            ${badge}
+          </div>
+          <h3 class="text-2xl md:text-3xl font-black text-white mb-3">${mod.title}</h3>
+          <p class="text-base md:text-lg text-slate-300 leading-relaxed mb-4">${mod.desc}</p>
+          <div class="flex flex-wrap gap-2 mb-6 text-xs font-black">
+            <span class="px-3 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">${mod.questions.filter(q => q.type === "aff").length} afirmativas</span>
+            <span class="px-3 py-1 rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30">${mod.questions.filter(q => q.type === "neg").length} negativas</span>
+            <span class="px-3 py-1 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30">${mod.questions.filter(q => q.type === "int").length} interrogativas</span>
+          </div>
+        </div>
+        <div class="text-base md:text-lg font-black text-emerald-400 flex items-center gap-2">
+          Ver Teoría y Ejercicios <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      `;
+      return card;
+    }
+
+    function paintModulesGrid(scoresByModule) {
+      const grid = document.getElementById("modulesGrid");
+      grid.innerHTML = "";
+      MODULES.forEach(mod => {
+        const best = scoresByModule ? scoresByModule[mod.id] : null;
+        grid.appendChild(buildModuleCard(mod, best === undefined ? null : best));
+      });
+    }
+
+    function renderModules() {
+      // Pintamos primero las tarjetas para que el panel sea usable aunque la nube tarde.
+      paintModulesGrid(null);
+
+      db.ref(RESULTS_NODE).orderByChild("email").equalTo(currentUser.email).once("value", (snapshot) => {
+        const scores = [];
+        snapshot.forEach(childSnap => {
+          scores.push(childSnap.val());
+        });
+
+        const best = {};
+        MODULES.forEach(mod => {
+          const userScores = scores.filter(s => s && s.moduleId === mod.id);
+          best[mod.id] = userScores.length > 0 ? Math.max(...userScores.map(s => Number(s.score) || 0)) : null;
+        });
+
+        paintModulesGrid(best);
+      }, (err) => {
+        console.error("No se han podido cargar los resultados previos:", err);
+      });
+    }
+
+    function openLesson(modId) {
+      currentModuleId = modId;
+      const mod = MODULES.find(m => m.id === modId);
+      document.getElementById("lessonTopicCategory").innerText = mod.title;
+      document.getElementById("lessonContent").innerHTML = mod.explanation;
+      showView("viewLesson");
+    }
+
+    function startCurrentQuiz() {
+      currentQuestionIdx = 0;
+      currentScore = 0;
+      quizSeconds = 0;
+      attemptLog = [];
+
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      document.getElementById("quizCategoryTitle").innerText = mod.title;
+
+      showView("viewQuiz");
+      startTimer();
+      renderQuestion();
+    }
+
+    function startTimer() {
+      if (quizTimerInterval) clearInterval(quizTimerInterval);
+      quizTimerInterval = setInterval(() => {
+        quizSeconds++;
+        const mins = String(Math.floor(quizSeconds / 60)).padStart(2, '0');
+        const secs = String(quizSeconds % 60).padStart(2, '0');
+        document.getElementById("quizTimer").innerText = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function renderQuestion() {
+      answered = false;
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      const q = mod.questions[currentQuestionIdx];
+
+      document.getElementById("quizQuestionCount").innerText = `Ejercicio ${currentQuestionIdx + 1} de ${mod.questions.length}`;
+      document.getElementById("quizProgressBar").style.width = `${((currentQuestionIdx + 1) / mod.questions.length) * 100}%`;
+
+      const t = TYPE_LABELS[q.type];
+      document.getElementById("quizTypeBadge").innerHTML = `
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border ${t.cls} text-sm md:text-base font-black uppercase tracking-wider">
+          <i class="fa-solid ${t.icon}"></i> Oración ${t.label}
+        </span>
+      `;
+
+      // Construye la frase con los huecos
+      const chunks = q.text.split("___");
+      let html = "";
+      chunks.forEach((chunk, i) => {
+        html += `<span>${highlightHints(chunk)}</span>`;
+        if (i < chunks.length - 1) {
+          const model = q.gaps[i][0];
+          // Ancho en 'ch' para que el hueco se adapte al tamaño de letra y a móviles.
+          const width = Math.max(8, model.length + 3);
+          html += `<input type="text" id="gap_${i}" class="gap-input text-xl md:text-3xl" style="width:${width}ch" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`;
+        }
+      });
+      document.getElementById("quizSentence").innerHTML = html;
+
+      const feedbackBox = document.getElementById("quizFeedback");
+      feedbackBox.classList.add("hidden");
+      document.getElementById("nextQuestionBtn").classList.add("hidden");
+      const checkBtn = document.getElementById("checkAnswerBtn");
+      checkBtn.classList.remove("hidden");
+      checkBtn.disabled = false;
+
+      // Enter = comprobar
+      q.gaps.forEach((g, i) => {
+        const input = document.getElementById(`gap_${i}`);
+        input.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter") {
+            ev.preventDefault();
+            if (!answered) checkExercise(); else nextQuestion();
+          }
+        });
+      });
+
+      const first = document.getElementById("gap_0");
+      if (first) first.focus();
+    }
+
+    function checkExercise() {
+      if (answered) return;
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      const q = mod.questions[currentQuestionIdx];
+
+      const userAnswers = [];
+      const results = [];
+
+      q.gaps.forEach((accepted, i) => {
+        const input = document.getElementById(`gap_${i}`);
+        const value = input.value;
+        userAnswers.push(value.trim());
+        const verdict = gradeGap(value, accepted);
+        results.push(verdict);
+        input.readOnly = true;
+        input.classList.add(verdict === "ok" ? "gap-ok" : "gap-ko");
+      });
+
+      answered = true;
+      const allOk = results.every(r => r === "ok");
+      if (allOk) currentScore++;
+
+      attemptLog.push({
+        text: q.text,
+        type: q.type,
+        user: userAnswers.slice(),
+        correct: q.gaps.map(g => g[0]),
+        ok: allOk
+      });
+
+      const solution = q.gaps.map(g => g[0]).join("  /  ");
+      const feedbackBox = document.getElementById("quizFeedback");
+
+      if (allOk) {
+        feedbackBox.className = "p-6 md:p-8 rounded-2xl text-lg md:text-2xl font-bold border-2 bg-emerald-950/40 border-emerald-500/60 text-emerald-200";
+        feedbackBox.innerHTML = `<strong>¡CORRECTO! 🎉</strong> ${q.explanation}`;
+      } else {
+        const apostropheHint = results.indexOf("apostrophe") !== -1
+          ? `<div class="mt-3 text-amber-300 text-base md:text-xl"><i class="fa-solid fa-lightbulb"></i> ¡Casi! Revisa el <strong>apóstrofo</strong> de la contracción (don't, isn't, haven't...).</div>`
+          : "";
+        feedbackBox.className = "p-6 md:p-8 rounded-2xl text-lg md:text-2xl font-bold border-2 bg-rose-950/40 border-rose-500/60 text-rose-200";
+        feedbackBox.innerHTML = `
+          <div class="mb-2"><strong>SOLUCIÓN:</strong> <span class="text-emerald-300 font-mono">${escapeHtml(solution)}</span></div>
+          <div class="text-slate-200 font-semibold text-base md:text-xl">${q.explanation}</div>
+          ${apostropheHint}
+        `;
+      }
+
+      feedbackBox.classList.remove("hidden");
+      document.getElementById("checkAnswerBtn").classList.add("hidden");
+      const nextBtn = document.getElementById("nextQuestionBtn");
+      nextBtn.classList.remove("hidden");
+      nextBtn.innerHTML = (currentQuestionIdx < mod.questions.length - 1)
+        ? `Siguiente Ejercicio <i class="fa-solid fa-arrow-right ml-2"></i>`
+        : `Ver Resultado <i class="fa-solid fa-flag-checkered ml-2"></i>`;
+      nextBtn.focus();
+    }
+
+    function nextQuestion() {
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      if (currentQuestionIdx < mod.questions.length - 1) {
+        currentQuestionIdx++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function quitQuiz() {
+      if (confirm("¿Salir del examen en curso?")) {
+        clearInterval(quizTimerInterval);
+        goHome();
+      }
+    }
+
+    function finishQuiz() {
+      clearInterval(quizTimerInterval);
+      const mod = MODULES.find(m => m.id === currentModuleId);
+      const percentage = Math.round((currentScore / mod.questions.length) * 100);
+
+      const mins = Math.floor(quizSeconds / 60);
+      const secs = quizSeconds % 60;
+      const timeStr = `${mins}m ${secs}s`;
+      const nowStr = new Date().toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' });
+
+      const record = {
+        studentName: `${currentUser.firstName} ${currentUser.lastName}`,
+        email: currentUser.email,
+        grade: currentUser.grade,
+        teacher: currentUser.teacher,
+        topic: mod.title,
+        moduleId: mod.id,
+        exerciseType: "fill_in_the_gaps",
+        score: percentage,
+        rawScore: `${currentScore}/${mod.questions.length}`,
+        secondsSpent: quizSeconds,
+        timeSpent: timeStr,
+        dateTime: nowStr,
+        timestamp: Date.now()
+      };
+
+      const passed = percentage >= PASS_THRESHOLD;
+
+      const resultsCard = document.getElementById("resultsCard");
+      resultsCard.innerHTML = `
+        <div class="w-24 h-24 mx-auto rounded-full flex items-center justify-center text-4xl font-black ${passed ? 'bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500/50' : 'bg-rose-500/20 text-rose-400 border-2 border-rose-500/50'}">
+          ${percentage}%
+        </div>
+        <div>
+          <h2 class="text-3xl font-black text-white mb-2">${passed ? '¡Nivel alcanzado! 🎉' : 'Todavía no has alcanzado el nivel'}</h2>
+          <p class="text-slate-300 text-lg">${passed ? 'Gran trabajo, ¡sigue así!' : `Necesitas un ${PASS_THRESHOLD}% para superar este bloque. ¡Vuelve a intentarlo!`}</p>
+        </div>
+        <div class="bg-slate-950 p-6 rounded-2xl border-2 border-slate-800 text-left text-base md:text-xl text-slate-200 space-y-3 max-w-lg mx-auto">
+          <div class="flex justify-between"><span class="text-slate-400">Tema:</span> <span class="font-bold text-emerald-400">${record.topic}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Puntuación:</span> <span class="font-bold text-white">${record.rawScore} (${percentage}%)</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Resultado:</span> <span class="font-bold ${passed ? 'text-emerald-400' : 'text-rose-400'}">${passed ? '✅ Nivel alcanzado' : '⚠️ Nivel no alcanzado (mínimo ' + PASS_THRESHOLD + '%)'}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Tiempo:</span> <span class="font-bold text-emerald-400">${timeStr}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Profesor/a:</span> <span class="font-bold text-amber-400">${record.teacher}</span></div>
+          <div class="flex justify-between"><span class="text-slate-400">Fecha:</span> <span class="font-bold text-white">${nowStr}</span></div>
+        </div>
+        <div id="saveStatusLine" class="text-xs font-bold text-slate-500 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Guardando en la nube...
+        </div>
+        <div class="pt-4 flex flex-col md:flex-row gap-3 justify-center">
+          ${!passed ? `<button onclick="startCurrentQuiz()" class="bg-rose-600 hover:bg-rose-500 text-white font-black text-lg px-8 py-4 rounded-2xl transition order-first">🔁 Repetir este bloque</button>` : ''}
+          <button onclick="goHome()" class="${passed ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-slate-800 hover:bg-slate-700'} text-white font-black text-lg px-8 py-4 rounded-2xl transition">
+            Volver al Panel
+          </button>
+        </div>
+      `;
+
+      renderReview();
+      showView("viewResults");
+      window.scrollTo(0, 0);
+
+      saveResultToFirebase(record);
+    }
+
+    function renderReview() {
+      const box = document.getElementById("reviewCard");
+      let rows = "";
+      attemptLog.forEach((a, idx) => {
+        const t = TYPE_LABELS[a.type];
+        const userStr = a.user.map(u => u || "—").join("  /  ");
+        const solStr = a.correct.join("  /  ");
+        rows += `
+          <div class="bg-slate-950 border ${a.ok ? 'border-emerald-500/40' : 'border-rose-500/40'} rounded-2xl p-4 md:p-5 text-left">
+            <div class="flex justify-between items-start gap-3 mb-2">
+              <span class="text-sm font-black ${a.ok ? 'text-emerald-400' : 'text-rose-400'}">
+                <i class="fa-solid ${a.ok ? 'fa-circle-check' : 'fa-circle-xmark'}"></i> ${idx + 1}
+              </span>
+              <span class="text-[11px] font-black uppercase px-2 py-1 rounded-lg border ${t.cls}">${t.label}</span>
+            </div>
+            <p class="text-base md:text-lg text-slate-200 font-semibold mb-2">${highlightHints(a.text).replace(/___/g, "______")}</p>
+            <div class="text-sm md:text-base space-y-1">
+              <div><span class="text-slate-500 font-bold">Tu respuesta:</span> <span class="${a.ok ? 'text-emerald-300' : 'text-rose-300'} font-mono">${escapeHtml(userStr)}</span></div>
+              ${a.ok ? "" : `<div><span class="text-slate-500 font-bold">Correcta:</span> <span class="text-emerald-300 font-mono">${escapeHtml(solStr)}</span></div>`}
+            </div>
+          </div>
+        `;
+      });
+
+      box.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="text-xl md:text-2xl font-black text-white"><i class="fa-solid fa-list-check text-emerald-400 mr-2"></i>Corrección ejercicio a ejercicio</h3>
+          <button onclick="window.print()" class="no-print text-sm bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-4 py-2 rounded-xl"><i class="fa-solid fa-print"></i> Imprimir</button>
+        </div>
+        <div class="grid grid-cols-1 gap-3">${rows}</div>
+      `;
+    }
+
+    function saveResultToFirebase(record, isRetry) {
+      db.ref(RESULTS_NODE).push(record).then(() => {
+        const line = document.getElementById("saveStatusLine");
+        if (line) line.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> <span class="text-emerald-400">Guardado en la nube</span>`;
+      }).catch(err => {
+        console.error("Error al guardar en Firebase:", err);
+        if (!isRetry) {
+          setTimeout(() => saveResultToFirebase(record, true), 2500);
+        } else {
+          const line = document.getElementById("saveStatusLine");
+          if (line) line.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-400"></i> <span class="text-amber-400">No se pudo guardar. Avisa a tu profesor/a.</span>`;
+        }
+      });
+    }
+
+    function showGlobalReportModal() {
+      showView("viewGlobalReport");
+      document.getElementById("globalReportDetails").innerHTML = `
+        <div class="text-center py-10 text-slate-400 font-bold">
+          <i class="fa-solid fa-spinner fa-spin text-2xl mb-3"></i><br>Cargando tu informe...
+        </div>
+      `;
+
+      db.ref(RESULTS_NODE).orderByChild("email").equalTo(currentUser.email).once("value", (snapshot) => {
+        const records = [];
+        snapshot.forEach(childSnap => {
+          records.push(childSnap.val());
+        });
+
+        const container = document.getElementById("globalReportDetails");
+
+        let completedCount = 0;
+        let totalPercentageSum = 0;
+        let totalSecondsSum = 0;
+        let breakdownHtml = "";
+
+        MODULES.forEach(mod => {
+          const topicRecords = records.filter(r => r.moduleId === mod.id);
+          if (topicRecords.length > 0) {
+            const bestRecord = topicRecords.reduce((max, r) => r.score > max.score ? r : max, topicRecords[0]);
+            totalPercentageSum += bestRecord.score;
+            totalSecondsSum += bestRecord.secondsSpent || 0;
+            completedCount++;
+
+            breakdownHtml += `
+              <div class="flex justify-between items-center bg-slate-950/80 p-4 rounded-xl border border-slate-800 text-sm md:text-base">
+                <span class="font-extrabold text-white">${mod.title}</span>
+                <div class="text-right">
+                  <span class="font-black ${bestRecord.score >= PASS_THRESHOLD ? 'text-emerald-400' : 'text-rose-400'}">${bestRecord.score}%</span>
+                  <span class="text-slate-500 text-xs ml-2">(${bestRecord.timeSpent})</span>
+                </div>
+              </div>
+            `;
+          } else {
+            breakdownHtml += `
+              <div class="flex justify-between items-center bg-slate-950/30 p-4 rounded-xl border border-slate-800/40 text-sm opacity-50">
+                <span class="font-bold text-slate-400">${mod.title}</span>
+                <span class="text-rose-400 font-bold italic">Pendiente</span>
+              </div>
+            `;
+          }
+        });
+
+        if (completedCount < MODULES.length) {
+          container.innerHTML = `
+            <div class="text-center py-6 space-y-4">
+              <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl border-2 border-amber-500/40">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <h3 class="text-2xl font-black text-white">Evaluación Incompleta</h3>
+              <p class="text-slate-300 text-base md:text-lg max-w-md mx-auto">
+                Has realizado <strong>${completedCount} de ${MODULES.length}</strong> bloques. Necesitas completar todos para generar tu informe final.
+              </p>
+              <div class="space-y-2 text-left my-4">
+                ${breakdownHtml}
+              </div>
+              <button onclick="goHome()" class="no-print bg-emerald-600 text-white font-extrabold px-8 py-4 rounded-2xl text-base">Regresar y completar</button>
+            </div>
+          `;
+          showView("viewGlobalReport");
+          return;
+        }
+
+        const finalAverage = Math.round(totalPercentageSum / MODULES.length);
+        const levelReached = finalAverage >= PASS_THRESHOLD;
+        const totalMins = Math.floor(totalSecondsSum / 60);
+        const totalSecs = totalSecondsSum % 60;
+        const totalDurationStr = `${totalMins}m ${totalSecs}s`;
+
+        container.innerHTML = `
+          <div class="grid grid-cols-3 gap-4 items-center bg-slate-950/80 p-5 rounded-2xl border border-slate-800">
+            <div class="col-span-2 space-y-1">
+              <p class="text-xs text-slate-400 uppercase font-bold tracking-wider">Alumno / Expediente</p>
+              <h3 class="text-xl md:text-2xl font-black text-white leading-tight">${currentUser.firstName} ${currentUser.lastName}</h3>
+              <p class="text-sm text-emerald-300 font-semibold">${currentUser.grade} • ${currentUser.email}</p>
+              <p class="text-xs text-amber-400 font-extrabold mt-1">Profesor/a: ${currentUser.teacher}</p>
+            </div>
+            <div class="text-center ${levelReached ? 'bg-emerald-500/10 border-2 border-emerald-500/40' : 'bg-rose-500/10 border-2 border-rose-500/40'} p-4 rounded-2xl">
+              <span class="text-xs font-bold ${levelReached ? 'text-emerald-400' : 'text-rose-400'} block uppercase">Nota Media</span>
+              <span class="text-4xl md:text-5xl font-black ${levelReached ? 'text-emerald-400' : 'text-rose-400'} leading-none">${finalAverage}%</span>
+              <span class="block text-[11px] md:text-xs font-black mt-1 ${levelReached ? 'text-emerald-300' : 'text-rose-300'}">${levelReached ? '✅ Nivel alcanzado' : '⚠️ Nivel no alcanzado'}</span>
+            </div>
+          </div>
+
+          <div class="bg-emerald-950/40 border border-emerald-500/30 p-4 rounded-xl flex justify-between items-center text-sm md:text-base">
+            <span class="text-slate-400">Tiempo Total de Evaluación:</span>
+            <span class="font-bold text-emerald-400">${totalDurationStr}</span>
+          </div>
+
+          <div>
+            <p class="text-xs font-black uppercase text-slate-400 mb-3 tracking-wider">Desglose de Bloques Realizados</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              ${breakdownHtml}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 space-y-3 no-print">
+            <div class="flex justify-center">
+              <button onclick="window.print()" class="px-8 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-2xl transition text-base md:text-lg flex items-center justify-center gap-3">
+                <i class="fa-solid fa-print"></i> Imprimir / Guardar PDF
+              </button>
+            </div>
+          </div>
+        `;
+
+        showView("viewGlobalReport");
+      });
+    }
+
+    function showTeacherLogin() {
+      const pwd = prompt("Introduce tu contraseña de profesora:");
+      if (pwd === "nuria123") {
+        currentTeacherLoggedIn = "Nuria Calvo";
+        renderTeacherDashboard();
+        showView("viewTeacher");
+      } else if (pwd !== null) {
+        alert("Contraseña incorrecta");
+      }
+    }
+
+    let teacherAllRecords = [];
+    let teacherSearchTerm = "";
+    let teacherResultsRef = null;
+    const TEACHER_COLSPAN = 5 + MODULES.length;
+
+    function normalizeTeacherName(s) {
+      return (s || "")
+        .toString()
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function renderTeacherDashboard() {
+      document.getElementById("teacherTitle").innerText = `Panel de ${currentTeacherLoggedIn}`;
+      renderTeacherTableHead();
+
+      teacherSearchTerm = "";
+      const searchInput = document.getElementById("teacherSearchInput");
+      if (searchInput) searchInput.value = "";
+
+      const tbody = document.getElementById("teacherTableBody");
+      tbody.innerHTML = `<tr><td colspan="${TEACHER_COLSPAN}" class="p-6 text-center text-slate-400 font-bold">Cargando datos desde la nube...</td></tr>`;
+
+      if (teacherResultsRef) {
+        teacherResultsRef.off("value");
+      }
+
+      teacherResultsRef = db.ref(RESULTS_NODE);
+      teacherResultsRef.on("value", (snapshot) => {
+        const all = [];
+        snapshot.forEach(childSnap => {
+          if (childSnap.val()) all.push(childSnap.val());
+        });
+
+        const wanted = normalizeTeacherName(currentTeacherLoggedIn);
+
+        teacherAllRecords = all.filter(r => {
+          if (!r) return false;
+          const t = normalizeTeacherName(r.teacher);
+          return !t || t === wanted || t.includes(wanted) || wanted.includes(t);
+        });
+
+        paintTeacherTable();
+        updateTeacherLastRefreshed();
+      }, (err) => {
+        console.error("Error leyendo resultados de Firebase:", err);
+        tbody.innerHTML = `<tr><td colspan="${TEACHER_COLSPAN}" class="p-6 text-center text-rose-400 font-bold">
+          ⚠️ No se han podido cargar los datos (${err.message}). Comprueba tu conexión.
+        </td></tr>`;
+      });
+    }
+
+    function refreshTeacherDashboardNow() {
+      const btn = document.getElementById("teacherRefreshBtn");
+      if (btn) { btn.disabled = true; btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Actualizando...`; }
+
+      db.ref(RESULTS_NODE).once("value").then((snapshot) => {
+        const all = [];
+        snapshot.forEach(childSnap => {
+          if (childSnap.val()) all.push(childSnap.val());
+        });
+        const wanted = normalizeTeacherName(currentTeacherLoggedIn);
+        teacherAllRecords = all.filter(r => {
+          if (!r) return false;
+          const t = normalizeTeacherName(r.teacher);
+          return !t || t === wanted || t.includes(wanted) || wanted.includes(t);
+        });
+        paintTeacherTable();
+        updateTeacherLastRefreshed();
+      }).catch((err) => {
+        console.error("Error al actualizar:", err);
+        alert("No se ha podido actualizar: " + err.message);
+      }).finally(() => {
+        if (btn) { btn.disabled = false; btn.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Actualizar`; }
+      });
+    }
+
+    function updateTeacherLastRefreshed() {
+      const el = document.getElementById("teacherLastRefreshed");
+      if (!el) return;
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, "0");
+      const mm = String(now.getMinutes()).padStart(2, "0");
+      const ss = String(now.getSeconds()).padStart(2, "0");
+      el.innerText = `Última actualización: ${hh}:${mm}:${ss}`;
+    }
+
+    function renderTeacherTableHead() {
+      const thead = document.getElementById("teacherTableHead");
+      thead.innerHTML = `
+        <tr>
+          <th class="p-3">Alumno</th>
+          <th class="p-3">Curso</th>
+          ${MODULES.map(m => `<th class="p-3 text-center">${m.short || m.title}</th>`).join("")}
+          <th class="p-3 text-center">Progreso</th>
+          <th class="p-3 text-center">Nivel</th>
+          <th class="p-3">Última actividad</th>
+        </tr>
+      `;
+    }
+
+    function buildStudentSummaries(records) {
+      const byStudent = {};
+      records.forEach(r => {
+        if (!r) return;
+
+        const rawKey = r.email || r.studentName || "sin_nombre";
+        const key = rawKey.toString().trim().toLowerCase();
+
+        if (!byStudent[key]) {
+          byStudent[key] = {
+            key,
+            studentName: r.studentName || "Alumno",
+            grade: r.grade || "—",
+            email: r.email || "",
+            attempts: [],
+            lastTimestamp: 0,
+            lastDateTime: ""
+          };
+        }
+        const s = byStudent[key];
+        s.attempts.push(r);
+
+        const ts = Number(r.timestamp) || 0;
+        if (ts >= s.lastTimestamp || !s.lastDateTime) {
+          s.lastTimestamp = ts;
+          s.lastDateTime = r.dateTime || "";
+          if (r.studentName) s.studentName = r.studentName;
+          if (r.grade) s.grade = r.grade;
+        }
+      });
+
+      return Object.values(byStudent).map(s => {
+        const moduleScores = MODULES.map(mod => {
+          const attemptsForMod = s.attempts.filter(a =>
+            a.moduleId === mod.id ||
+            (a.topic && (a.topic.includes(mod.short) || a.topic.includes(mod.title)))
+          );
+          if (attemptsForMod.length === 0) return null;
+
+          const scores = attemptsForMod.map(a => Number(a.score) || 0);
+          return Math.max(...scores);
+        });
+
+        const completedCount = moduleScores.filter(sc => sc !== null).length;
+        const sumScores = moduleScores.reduce((acc, sc) => acc + (sc || 0), 0);
+        const allDone = completedCount === MODULES.length;
+        const finalAverage = allDone ? Math.round(sumScores / MODULES.length) : null;
+        const levelReached = allDone ? finalAverage >= PASS_THRESHOLD : null;
+
+        return Object.assign({}, s, { moduleScores, completedCount, finalAverage, levelReached, allDone });
+      });
+    }
+
+    function computeTeacherStats(students) {
+      const total = students.length;
+      const completedAll = students.filter(s => s.allDone);
+      const levelReached = completedAll.filter(s => s.levelReached);
+      const avg = completedAll.length ? Math.round(completedAll.reduce((a, s) => a + s.finalAverage, 0) / completedAll.length) : 0;
+      return { total, completedAll: completedAll.length, levelReached: levelReached.length, avg };
+    }
+
+    function renderTeacherStats(students) {
+      const stats = computeTeacherStats(students);
+      const grid = document.getElementById("teacherStatsGrid");
+      if (!grid) return;
+      grid.innerHTML = `
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-white">${stats.total}</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Alumnos</div>
+        </div>
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-emerald-400">${stats.completedAll}/${stats.total || 0}</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Han hecho todo</div>
+        </div>
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-emerald-400">${stats.levelReached}</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Nivel alcanzado</div>
+        </div>
+        <div class="bg-slate-900 border-2 border-slate-800 rounded-2xl p-4 text-center">
+          <div class="text-3xl font-black text-amber-400">${stats.avg}%</div>
+          <div class="text-xs text-slate-400 font-bold uppercase mt-1">Media del grupo</div>
+        </div>
+      `;
+    }
+
+    function filterTeacherTable(term) {
+      teacherSearchTerm = term || "";
+      paintTeacherTable();
+    }
+
+    function paintTeacherTable() {
+      const tbody = document.getElementById("teacherTableBody");
+      let students = buildStudentSummaries(teacherAllRecords);
+
+      renderTeacherStats(students);
+
+      const term = teacherSearchTerm.trim().toLowerCase();
+      if (term) {
+        students = students.filter(s =>
+          (s.studentName || "").toLowerCase().includes(term) ||
+          (s.email || "").toLowerCase().includes(term)
+        );
+      }
+
+      if (students.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="${TEACHER_COLSPAN}" class="p-6 text-center text-slate-500 font-bold">
+          ${teacherAllRecords.length === 0 ? "No hay intentos registrados para tus alumnos/as." : "Ningún alumno coincide con la búsqueda."}
+        </td></tr>`;
+        return;
+      }
+
+      students.sort((a, b) => (a.studentName || "").localeCompare(b.studentName || "", "es"));
+
+      tbody.innerHTML = "";
+      students.forEach(s => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-800/50 transition";
+
+        const moduleCells = s.moduleScores.map(score => {
+          if (score === null) return `<td class="p-3 text-center text-slate-600">—</td>`;
+          const cls = score >= PASS_THRESHOLD ? "bg-emerald-500/15 text-emerald-400" : "bg-rose-500/15 text-rose-400";
+          return `<td class="p-3 text-center"><span class="inline-block px-2 py-1 rounded-lg font-black text-xs ${cls}">${score}%</span></td>`;
+        }).join("");
+
+        const progressCell = s.allDone
+          ? `<span class="font-black text-white">${s.finalAverage}%</span>`
+          : `<span class="font-bold text-slate-400">${s.completedCount}/${MODULES.length}</span>`;
+
+        const levelCell = !s.allDone
+          ? `<span class="text-xs font-bold text-slate-500">En curso</span>`
+          : (s.levelReached
+              ? `<span class="text-xs font-black text-emerald-400">✅ Alcanzado</span>`
+              : `<span class="text-xs font-black text-rose-400">⚠️ No alcanzado</span>`);
+
+        tr.innerHTML = `
+          <td class="p-3 font-extrabold text-white">${s.studentName}</td>
+          <td class="p-3 text-slate-300 font-medium">${s.grade || "—"}</td>
+          ${moduleCells}
+          <td class="p-3 text-center">${progressCell}</td>
+          <td class="p-3 text-center">${levelCell}</td>
+          <td class="p-3 text-slate-400 text-xs">${s.lastDateTime || "—"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    window.onload = initApp;
+  </script>
+</body>
+</html>
