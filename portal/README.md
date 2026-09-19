@@ -88,7 +88,8 @@ lápiz ✏️, cambia el texto entre comillas y haz *Commit changes*.
 - `sections` → cada bloque de colores, con su `title`, `icon`, `accent` (color)
   y sus `paragraphs`. Además, cada bloque admite:
   - `feature` → el recuadro destacado de arriba (como «Krisenka Finley»), con
-    `icon`, `title` y `text`.
+    `icon`, `title`, `text` y, si quieres, `url`: con enlace, el recuadro entero
+    se vuelve pinchable.
   - `chips` → etiquetas sueltas, como los idiomas.
   - `lists` → una o varias listas (discografía, cortometrajes…), cada una con su
     `title`, su `icon`, sus `items` y, si quieres, una `note` en cursiva debajo.
@@ -100,6 +101,33 @@ Dentro de un párrafo, lo que pongas entre dos asteriscos sale **en negrita**:
 `Obtuve el **n.º 1 en las oposiciones**` se ve como *Obtuve el* **n.º 1 en las
 oposiciones**. No se admite ningún otro código: cualquier otra cosa se muestra
 tal cual, así que no se puede romper la página escribiendo texto.
+
+### «Sobre mí» es una página aparte
+
+La bio no está en la portada: es una página propia, con su cabecera, su menú y
+su botón de «Volver a las apps». Todo vive en el mismo `index.html`, así que no
+hay nada duplicado ni ningún repositorio extra que mantener.
+
+Direcciones para compartirla:
+
+- `https://nuriacalvo-teacher.github.io/#/sobre-mi`
+- `https://nuriacalvo-teacher.github.io/sobre-mi.html` (más corta de dictar;
+  ese fichero solo redirige a la anterior)
+
+La flecha de «atrás» del navegador funciona con normalidad.
+
+### Cuidado con las comas al editar apps.json
+
+Es el error más habitual, y deja la web mostrando la versión antigua:
+
+- Cada línea lleva una coma al final **menos la última** de su bloque.
+- Si borras una línea, comprueba que la de encima no se ha quedado con una coma
+  colgando antes del `}` o del `]`.
+
+Si te pasa, la web te avisa con un mensaje rojo abajo diciéndote **en qué línea
+está la errata**, y mientras tanto sigue funcionando con la última versión buena.
+Para evitarlo del todo, usa el panel de profesora: el `apps.json` que genera
+siempre sale bien escrito.
 
 ### Añadir enlaces a los discos o a los cortometrajes
 
