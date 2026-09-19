@@ -84,7 +84,9 @@ El texto de la sección *Sobre mí* está en `apps.json`, dentro del apartado
 lápiz ✏️, cambia el texto entre comillas y haz *Commit changes*.
 
 - `headline` → la frase grande bajo tu nombre.
-- `highlights` → las cuatro cifras destacadas (`value` es el número, `label` el texto).
+- `highlights` → cifras destacadas bajo tu nombre (`value` es el número, `label`
+  el texto). Ahora mismo está quitado: si algún día quieres recuperarlas, añade
+  la lista y volverán a aparecer solas.
 - `sections` → cada bloque de colores, con su `title`, `icon`, `accent` (color),
   sus `paragraphs`, y opcionalmente `chips` (las etiquetas de idiomas) o `items`
   (las listas con año o lugar a la derecha).
