@@ -11,16 +11,65 @@
     "bio": "Aquí reúno las aplicaciones que voy creando para mis grupos de ESO y Bachillerato del IES Goya. Todas son gratuitas, funcionan en el móvil, en la tablet y en la pizarra digital, y no hace falta instalar nada: solo abrir y practicar."
   },
   "categories": [
-    { "id": "grammar",    "name": "Gramática",          "icon": "fa-diagram-project",  "accent": "indigo"  },
-    { "id": "vocabulary", "name": "Vocabulario",         "icon": "fa-book-open",        "accent": "emerald" },
-    { "id": "writing",    "name": "Writing",             "icon": "fa-pen-nib",          "accent": "amber"   },
-    { "id": "speaking",   "name": "Speaking",            "icon": "fa-microphone-lines", "accent": "rose"    },
-    { "id": "reading",    "name": "Reading & Literatura","icon": "fa-book-bookmark",    "accent": "sky"     },
-    { "id": "exams",      "name": "Exámenes y repaso",   "icon": "fa-clipboard-check",  "accent": "violet"  },
-    { "id": "tools",      "name": "Aula y herramientas", "icon": "fa-toolbox",          "accent": "slate"   },
-    { "id": "other",      "name": "Otros proyectos",     "icon": "fa-globe",            "accent": "teal"    }
+    {
+      "id": "grammar",
+      "name": "Gramática",
+      "icon": "fa-diagram-project",
+      "accent": "indigo"
+    },
+    {
+      "id": "vocabulary",
+      "name": "Vocabulario",
+      "icon": "fa-book-open",
+      "accent": "emerald"
+    },
+    {
+      "id": "writing",
+      "name": "Writing",
+      "icon": "fa-pen-nib",
+      "accent": "amber"
+    },
+    {
+      "id": "speaking",
+      "name": "Speaking",
+      "icon": "fa-microphone-lines",
+      "accent": "rose"
+    },
+    {
+      "id": "reading",
+      "name": "Reading & Literatura",
+      "icon": "fa-book-bookmark",
+      "accent": "sky"
+    },
+    {
+      "id": "exams",
+      "name": "Exámenes y repaso",
+      "icon": "fa-clipboard-check",
+      "accent": "violet"
+    },
+    {
+      "id": "tools",
+      "name": "Aula y herramientas",
+      "icon": "fa-toolbox",
+      "accent": "slate"
+    },
+    {
+      "id": "other",
+      "name": "Otros proyectos",
+      "icon": "fa-globe",
+      "accent": "teal"
+    }
   ],
-  "levels": ["1º ESO", "2º ESO", "3º ESO", "4º ESO", "1º Bach", "2º Bach", "B1", "B2"],
+  "levels": [
+    "1º ESO",
+    "2º ESO",
+    "3º ESO",
+    "4º ESO",
+    "1º Bach",
+    "2º Bach",
+    "B1",
+    "B2"
+  ],
   "apps": [
     {
       "id": "present-tenses",
@@ -30,8 +79,14 @@
       "subtitle": "Domina todos los presentes",
       "description": "Teoría, ejemplos y test de 10 preguntas por bloque para diferenciar present simple, continuous, perfect y perfect continuous. Con informe final de evaluación.",
       "category": "grammar",
-      "levels": ["3º ESO", "4º ESO"],
-      "tags": ["Teoría + test", "Informe de notas"],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Teoría + test",
+        "Informe de notas"
+      ],
       "icon": "fa-clock",
       "accent": "indigo",
       "status": "live",
@@ -47,8 +102,13 @@
       "subtitle": "Construye frases correctas",
       "description": "Práctica del orden de las palabras en la oración inglesa: afirmativa, negativa e interrogativa.",
       "category": "grammar",
-      "levels": ["3º ESO", "4º ESO"],
-      "tags": ["Word order"],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Word order"
+      ],
       "icon": "fa-shapes",
       "accent": "violet",
       "status": "live",
@@ -64,8 +124,15 @@
       "subtitle": "Los verbos irregulares, a fondo",
       "description": "Entrenamiento completo de verbos irregulares: infinitivo, pasado simple y participio.",
       "category": "vocabulary",
-      "levels": ["2º ESO", "3º ESO", "4º ESO"],
-      "tags": ["Verbos", "Práctica"],
+      "levels": [
+        "2º ESO",
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Verbos",
+        "Práctica"
+      ],
       "icon": "fa-bolt",
       "accent": "emerald",
       "status": "live",
@@ -81,8 +148,14 @@
       "subtitle": "Repaso rápido antes del examen",
       "description": "Aplicación interactiva para repasar los verbos irregulares en inglés de forma rápida.",
       "category": "vocabulary",
-      "levels": ["2º ESO", "3º ESO", "4º ESO"],
-      "tags": ["Repaso exprés"],
+      "levels": [
+        "2º ESO",
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Repaso exprés"
+      ],
       "icon": "fa-rotate",
       "accent": "emerald",
       "status": "live",
@@ -98,8 +171,14 @@
       "subtitle": "Dos bloques clave de Bachillerato",
       "description": "Condicionales (tipos 0, 1, 2 y 3) y estilo indirecto explicados y practicados en una sola aplicación.",
       "category": "grammar",
-      "levels": ["1º Bach", "2º Bach"],
-      "tags": ["Conditionals", "Reported speech"],
+      "levels": [
+        "1º Bach",
+        "2º Bach"
+      ],
+      "tags": [
+        "Conditionals",
+        "Reported speech"
+      ],
       "icon": "fa-code-branch",
       "accent": "indigo",
       "status": "live",
@@ -115,8 +194,13 @@
       "subtitle": "Del estilo directo al indirecto",
       "description": "Transformaciones de estilo directo a indirecto paso a paso, con cambios de tiempo verbal y de expresiones de tiempo.",
       "category": "grammar",
-      "levels": ["4º ESO", "1º Bach"],
-      "tags": ["Transformaciones"],
+      "levels": [
+        "4º ESO",
+        "1º Bach"
+      ],
+      "tags": [
+        "Transformaciones"
+      ],
       "icon": "fa-comment-dots",
       "accent": "sky",
       "status": "live",
@@ -132,8 +216,13 @@
       "subtitle": "Who, which, that, whose…",
       "description": "Repaso de las oraciones de relativo: especificativas, explicativas y uso correcto de cada pronombre.",
       "category": "grammar",
-      "levels": ["4º ESO", "1º Bach"],
-      "tags": ["Relativos"],
+      "levels": [
+        "4º ESO",
+        "1º Bach"
+      ],
+      "tags": [
+        "Relativos"
+      ],
       "icon": "fa-link",
       "accent": "indigo",
       "status": "live",
@@ -149,8 +238,14 @@
       "subtitle": "Rutinas y hábitos en inglés",
       "description": "Vocabulario y estructuras para hablar de hábitos y rutinas diarias, con adverbios de frecuencia.",
       "category": "grammar",
-      "levels": ["1º ESO", "2º ESO"],
-      "tags": ["Rutinas", "Frecuencia"],
+      "levels": [
+        "1º ESO",
+        "2º ESO"
+      ],
+      "tags": [
+        "Rutinas",
+        "Frecuencia"
+      ],
       "icon": "fa-repeat",
       "accent": "amber",
       "status": "live",
@@ -166,8 +261,13 @@
       "subtitle": "Vocabulario de la familia",
       "description": "English vocabulary: family and relationships. Léxico de parentesco y relaciones personales.",
       "category": "vocabulary",
-      "levels": ["1º ESO", "2º ESO"],
-      "tags": ["Léxico"],
+      "levels": [
+        "1º ESO",
+        "2º ESO"
+      ],
+      "tags": [
+        "Léxico"
+      ],
       "icon": "fa-people-roof",
       "accent": "rose",
       "status": "live",
@@ -183,8 +283,12 @@
       "subtitle": "Vocabulario de la unidad 2",
       "description": "Vocabulario del módulo 2 de 4º de ESO para practicar y autoevaluarse antes del examen.",
       "category": "vocabulary",
-      "levels": ["4º ESO"],
-      "tags": ["Unidad 2"],
+      "levels": [
+        "4º ESO"
+      ],
+      "tags": [
+        "Unidad 2"
+      ],
       "icon": "fa-book-open",
       "accent": "emerald",
       "status": "live",
@@ -200,8 +304,15 @@
       "subtitle": "Writing formal paso a paso",
       "description": "Cómo escribir un correo de reclamación en inglés: estructura, registro formal y expresiones útiles.",
       "category": "writing",
-      "levels": ["1º Bach", "2º Bach", "B2"],
-      "tags": ["Formal writing", "Modelo"],
+      "levels": [
+        "1º Bach",
+        "2º Bach",
+        "B2"
+      ],
+      "tags": [
+        "Formal writing",
+        "Modelo"
+      ],
       "icon": "fa-envelope-open-text",
       "accent": "amber",
       "status": "live",
@@ -217,8 +328,14 @@
       "subtitle": "Juego de lectura",
       "description": "Juego interactivo sobre la lectura de Animal Farm, de George Orwell: personajes, argumento y comprensión.",
       "category": "reading",
-      "levels": ["1º Bach", "2º Bach"],
-      "tags": ["Lectura", "Juego"],
+      "levels": [
+        "1º Bach",
+        "2º Bach"
+      ],
+      "tags": [
+        "Lectura",
+        "Juego"
+      ],
       "icon": "fa-feather-pointed",
       "accent": "sky",
       "status": "live",
@@ -234,8 +351,15 @@
       "subtitle": "Preparación de la prueba oral",
       "description": "Práctica guiada de la prueba oral de nivel B1: preguntas tipo, turnos de habla y expresiones para el examen.",
       "category": "speaking",
-      "levels": ["B1", "4º ESO", "1º Bach"],
-      "tags": ["Examen oral", "B1"],
+      "levels": [
+        "B1",
+        "4º ESO",
+        "1º Bach"
+      ],
+      "tags": [
+        "Examen oral",
+        "B1"
+      ],
       "icon": "fa-microphone-lines",
       "accent": "rose",
       "status": "live",
@@ -251,7 +375,10 @@
       "subtitle": "Versión de trabajo",
       "description": "Segunda versión de la aplicación de present tenses.",
       "category": "grammar",
-      "levels": ["3º ESO", "4º ESO"],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
       "tags": [],
       "icon": "fa-clock",
       "accent": "indigo",
@@ -268,7 +395,9 @@
       "subtitle": "Vocabulario",
       "description": "Vocabulario del módulo 2 de 4º de ESO.",
       "category": "vocabulary",
-      "levels": ["4º ESO"],
+      "levels": [
+        "4º ESO"
+      ],
       "tags": [],
       "icon": "fa-book",
       "accent": "emerald",
@@ -303,7 +432,9 @@
       "description": "Herramienta para pasar lista y controlar la asistencia del grupo.",
       "category": "tools",
       "levels": [],
-      "tags": ["Uso docente"],
+      "tags": [
+        "Uso docente"
+      ],
       "icon": "fa-clipboard-user",
       "accent": "slate",
       "status": "live",
@@ -320,7 +451,9 @@
       "description": "Herramienta interna de control y seguimiento.",
       "category": "tools",
       "levels": [],
-      "tags": ["Uso docente"],
+      "tags": [
+        "Uso docente"
+      ],
       "icon": "fa-sliders",
       "accent": "slate",
       "status": "live",
@@ -337,7 +470,9 @@
       "description": "Proyecto sobre el patrimonio del IES Goya de Zaragoza.",
       "category": "other",
       "levels": [],
-      "tags": ["Proyecto"],
+      "tags": [
+        "Proyecto"
+      ],
       "icon": "fa-landmark",
       "accent": "teal",
       "status": "live",
@@ -354,7 +489,9 @@
       "description": "Fichas de aprendizaje de chino.",
       "category": "other",
       "levels": [],
-      "tags": ["Chino"],
+      "tags": [
+        "Chino"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -371,7 +508,9 @@
       "description": "Segunda ficha de aprendizaje de chino.",
       "category": "other",
       "levels": [],
-      "tags": ["Chino"],
+      "tags": [
+        "Chino"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -388,7 +527,9 @@
       "description": "Fichas de aprendizaje de alemán.",
       "category": "other",
       "levels": [],
-      "tags": ["Alemán"],
+      "tags": [
+        "Alemán"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -405,7 +546,9 @@
       "description": "Segunda ficha de aprendizaje de alemán.",
       "category": "other",
       "levels": [],
-      "tags": ["Alemán"],
+      "tags": [
+        "Alemán"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -422,7 +565,9 @@
       "description": "Repositorio de pruebas sobre cómo crear una app.",
       "category": "other",
       "levels": [],
-      "tags": ["Pruebas"],
+      "tags": [
+        "Pruebas"
+      ],
       "icon": "fa-flask",
       "accent": "slate",
       "status": "beta",
@@ -439,7 +584,9 @@
       "description": "Repositorio de pruebas.",
       "category": "other",
       "levels": [],
-      "tags": ["Pruebas"],
+      "tags": [
+        "Pruebas"
+      ],
       "icon": "fa-flask",
       "accent": "slate",
       "status": "beta",
@@ -456,7 +603,9 @@
       "description": "Repositorio de pruebas.",
       "category": "other",
       "levels": [],
-      "tags": ["Pruebas"],
+      "tags": [
+        "Pruebas"
+      ],
       "icon": "fa-flask",
       "accent": "slate",
       "status": "beta",
@@ -464,5 +613,123 @@
       "visible": false,
       "updated": "2025-10-06"
     }
-  ]
+  ],
+  "about": {
+    "headline": "Profesora, lingüista, artista y curiosa por naturaleza.",
+    "highlights": [
+      {
+        "value": "Nº 1",
+        "label": "Oposiciones de Inglés · Aragón",
+        "accent": "indigo"
+      },
+      {
+        "value": "+20",
+        "label": "Años de experiencia docente",
+        "accent": "violet"
+      },
+      {
+        "value": "7",
+        "label": "Idiomas",
+        "accent": "emerald"
+      },
+      {
+        "value": "4",
+        "label": "Álbumes publicados",
+        "accent": "rose"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Experiencia lingüística y educativa",
+        "icon": "fa-graduation-cap",
+        "accent": "indigo",
+        "paragraphs": [
+          "Obtuve el **n.º 1 en las oposiciones de Enseñanza Secundaria de Aragón**, en la especialidad de Inglés, y cuento con más de 20 años de experiencia docente.",
+          "Me gradué con **First-Class Honours en Trinity College Dublin** y siempre he sentido una profunda pasión por las lenguas y la comunicación. Tengo competencia en siete idiomas."
+        ],
+        "listTitle": "Idiomas",
+        "chips": [
+          "Español",
+          "Inglés",
+          "Francés",
+          "Alemán",
+          "Ruso",
+          "Catalán",
+          "Chino · pronto 😅"
+        ]
+      },
+      {
+        "title": "El mundo de las artes",
+        "icon": "fa-palette",
+        "accent": "rose",
+        "paragraphs": [
+          "Más allá de la enseñanza, siempre he estado muy vinculada al mundo artístico. Soy **retratista y caricaturista**, además de **cantautora y compositora** bajo el nombre artístico de **Krisenka Finley**.",
+          "He publicado cuatro álbumes y he recibido diversos reconocimientos internacionales por mi música. Mi trayectoria musical también incluye la producción de videoclips, jingles publicitarios y composiciones sinfónicas.",
+          "Más recientemente me he adentrado en el mundo del cine, creando cuatro cortometrajes en los que utilizo la **Inteligencia Artificial como herramienta creativa**:"
+        ],
+        "listTitle": "Cortometrajes",
+        "items": [
+          {
+            "name": "1923",
+            "meta": "2026"
+          },
+          {
+            "name": "Jerusalén Conquistada",
+            "meta": "2026"
+          },
+          {
+            "name": "Atlas Touring Club",
+            "meta": "2026"
+          },
+          {
+            "name": "La Firma",
+            "meta": "2025"
+          }
+        ]
+      },
+      {
+        "title": "Tecnología y emprendimiento",
+        "icon": "fa-microchip",
+        "accent": "emerald",
+        "paragraphs": [
+          "Me apasionan las nuevas tecnologías desde sus comienzos y siempre me ha gustado explorar todo lo que pueden hacer posible.",
+          "A principios de los años 90, mientras estudiaba en la Universidad de Zaragoza, fui **la primera estudiante en disponer de una dirección de correo electrónico** en la universidad. En una época en la que el alumnado todavía no tenía cuentas de correo individuales, conseguí que el servicio estuviera disponible para el conjunto de estudiantes a partir del curso siguiente.",
+          "También fui reconocida como **Emprendedora del Año por el Ayuntamiento de Zaragoza y SACME (CEOE)**, tras crear una microempresa que facilitaba a mis alumnos el acceso a viajes internacionales de bajo coste, eliminando intermediarios mediante Internet. Hoy puede parecer algo bastante sencillo, pero en aquel momento el concepto era realmente innovador.",
+          "Mi curiosidad por la tecnología no ha dejado de crecer: he realizado numerosos MOOCs sobre robótica y programación, y actualmente sigo matriculada en varios cursos más. Y sí… sigo apuntándome a cursos nuevos. Me encanta aprender."
+        ]
+      },
+      {
+        "title": "Otras experiencias profesionales",
+        "icon": "fa-briefcase",
+        "accent": "amber",
+        "paragraphs": [
+          "Mi trayectoria profesional también me ha llevado por ámbitos bastante diferentes:"
+        ],
+        "items": [
+          {
+            "name": "Bibliotecaria en Stuttgart",
+            "meta": "Alemania"
+          },
+          {
+            "name": "Responsable del Departamento de Compras",
+            "meta": "Filial multinacional de OPEL España"
+          },
+          {
+            "name": "…y alguna que otra aventura más por el camino",
+            "meta": ""
+          }
+        ]
+      }
+    ],
+    "closing": {
+      "title": "Y, en pocas palabras…",
+      "icon": "fa-heart",
+      "paragraphs": [
+        "Soy curiosa por naturaleza. Me encanta aprender, crear, experimentar y embarcarme en proyectos que me lleven a lugares nuevos, ya sea en el ámbito de los idiomas, la educación, el arte, la música, la tecnología, el emprendimiento o el cine.",
+        "No creo demasiado en la idea de encasillar a las personas en una única categoría. **Enseñar es lo que hago, pero la curiosidad es lo que me mueve.**",
+        "Y, por encima de todo, **soy madre**. Probablemente sea mi papel más importante de todos y, sin duda, el que me mantiene aprendiendo cada día."
+      ],
+      "quote": "Espero que mi bio te motive a seguir aprendiendo. 😅"
+    }
+  }
 }

@@ -210,6 +210,7 @@ button,input,select,textarea{ font:inherit; color:inherit; }
   border-bottom:1px solid transparent; transition:border-color .2s;
 }
 .toolbar-wrap.stuck{ border-bottom-color:var(--border); }
+.toolbar-wrap.unstick{ position:relative; top:auto; border-bottom-color:transparent; }
 .toolbar{
   background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
   padding:14px; box-shadow:var(--shadow); display:grid; gap:12px;
@@ -391,6 +392,72 @@ select.control:focus{ border-color:var(--brand); outline:none; }
   display:grid; place-items:center; color:#fff; font-size:5rem; font-weight:900; letter-spacing:-.04em;
   box-shadow:0 30px 60px -30px rgba(99,102,241,.9);
 }
+/* --- Sobre mí ampliado --- */
+.about-head{ display:grid; gap:26px; align-items:center; }
+@media (min-width:900px){ .about-head{ grid-template-columns:300px 1fr; gap:44px; } }
+.about-lead{ font-size:clamp(1.05rem,2.2vw,1.3rem); font-weight:700; color:var(--text); margin:14px 0 0; }
+#aboutHighlights{ margin-top:26px; grid-template-columns:repeat(2,1fr); }
+@media (min-width:600px){ #aboutHighlights{ grid-template-columns:repeat(4,1fr); } }
+#aboutHighlights .stat{ padding:16px; }
+#aboutHighlights .stat-num{ font-size:1.55rem; }
+#aboutHighlights .stat-label{ font-size:.71rem; letter-spacing:.04em; }
+
+.about-grid{ display:grid; gap:18px; margin-top:26px; align-items:start; }
+@media (min-width:920px){ .about-grid{ grid-template-columns:1fr 1fr; } }
+.about-card{
+  position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:26px; box-shadow:var(--shadow); overflow:hidden;
+  backdrop-filter:var(--glass); -webkit-backdrop-filter:var(--glass);
+}
+.about-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--acc),var(--acc-2)); }
+.about-card-head{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.about-card-head .card-icon{ width:48px; height:48px; font-size:1.2rem; }
+.about-card h3{ margin:0; font-size:1.18rem; font-weight:900; letter-spacing:-.02em; color:var(--acc); line-height:1.25; }
+:root[data-theme="light"] .about-card h3{ color:color-mix(in srgb, var(--acc) 82%, #000); }
+.about-card p{ margin:0 0 13px; color:var(--text-2); font-size:.96rem; }
+.about-card p:last-child{ margin-bottom:0; }
+.about-card strong{ color:var(--text); font-weight:800; }
+.mini-title{ font-size:.72rem; font-weight:900; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin:20px 0 10px; }
+.lang-chips{ display:flex; flex-wrap:wrap; gap:7px; }
+.lang-chip{
+  font-size:.82rem; font-weight:800; padding:6px 13px; border-radius:999px;
+  background:color-mix(in srgb, var(--acc) 13%, transparent);
+  border:1px solid color-mix(in srgb, var(--acc) 32%, transparent); color:var(--acc);
+}
+:root[data-theme="light"] .lang-chip{ color:color-mix(in srgb, var(--acc) 80%, #000); }
+.work-list{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+.work-list li{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  padding:11px 15px; border-radius:13px; background:var(--bg); border:1px solid var(--border);
+  font-weight:700; font-size:.93rem; transition:border-color .18s, transform .18s;
+}
+.work-list li:hover{ border-color:color-mix(in srgb, var(--acc) 40%, transparent); transform:translateX(3px); }
+.work-list .meta{
+  font-size:.74rem; font-weight:900; letter-spacing:.05em; color:var(--acc);
+  background:color-mix(in srgb, var(--acc) 13%, transparent); padding:3px 10px; border-radius:999px; white-space:nowrap;
+}
+.about-closing{
+  margin-top:18px; padding:32px; border-radius:28px; position:relative; overflow:hidden;
+  border:1px solid color-mix(in srgb, var(--brand) 34%, transparent);
+  background:
+    radial-gradient(700px 300px at 8% 0%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 70%),
+    radial-gradient(600px 300px at 96% 100%, rgba(236,72,153,.14), transparent 70%),
+    var(--surface);
+  box-shadow:var(--shadow);
+}
+.about-closing h3{ margin:0 0 16px; font-size:1.4rem; font-weight:900; letter-spacing:-.02em;
+  display:flex; align-items:center; gap:12px; }
+.about-closing h3 i{ color:#f43f5e; }
+.about-closing p{ color:var(--text-2); font-size:1rem; margin:0 0 13px; max-width:78ch; }
+.about-closing strong{ color:var(--text); font-weight:800; }
+.about-quote{
+  margin:22px 0 0; padding:18px 22px; border-radius:16px; border-left:4px solid var(--brand);
+  background:color-mix(in srgb, var(--brand) 10%, transparent);
+  font-size:1.05rem; font-weight:800; color:var(--text); font-style:italic;
+}
+.avatar-big img{ width:100%; height:100%; object-fit:cover; border-radius:34px; }
+
 .site-footer{ border-top:1px solid var(--border); margin-top:40px; padding-block:30px; color:var(--muted); font-size:.87rem; }
 .footer-inner{ display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; }
 .footer-links{ display:flex; gap:16px; flex-wrap:wrap; font-weight:700; }
@@ -652,24 +719,30 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
   <!-- ============================ SOBRE MÍ ============================ -->
   <section id="sobre-mi" class="section">
     <div class="wrap">
-      <div class="about">
-        <div><div class="avatar-big" id="aboutAvatar">NC</div></div>
-        <div>
-          <span class="eyebrow"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Sobre mí</span>
-          <h2 id="aboutName">Nuria Calvo</h2>
-          <p id="aboutBio"></p>
-          <ul class="about-list">
-            <li><i class="fa-solid fa-school" aria-hidden="true"></i> <span id="aboutSchool">Profesora de Inglés en el IES Goya (Zaragoza)</span></li>
-            <li><i class="fa-solid fa-code" aria-hidden="true"></i> <span>Todas las apps son de código abierto y están publicadas en GitHub.</span></li>
-            <li><i class="fa-solid fa-universal-access" aria-hidden="true"></i> <span>Pensadas para funcionar en clase, en casa y con cualquier dispositivo.</span></li>
-          </ul>
-          <div class="hero-cta">
-            <a class="btn btn-ghost" id="aboutGh" href="https://github.com/nuriacalvo-teacher" target="_blank" rel="noopener">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> Ver el código en GitHub
-            </a>
+      <div class="about" style="display:block">
+        <div class="about-head">
+          <div><div class="avatar-big" id="aboutAvatar">NC</div></div>
+          <div>
+            <span class="eyebrow"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Sobre mí</span>
+            <h2 id="aboutName">Nuria Calvo</h2>
+            <p class="about-lead" id="aboutHeadline"></p>
+            <p id="aboutBio"></p>
+            <ul class="about-list">
+              <li><i class="fa-solid fa-school" aria-hidden="true"></i> <span id="aboutSchool">Profesora de Inglés en el IES Goya (Zaragoza)</span></li>
+              <li><i class="fa-solid fa-code" aria-hidden="true"></i> <span>Todas las apps son de código abierto y están publicadas en GitHub.</span></li>
+            </ul>
+            <div class="hero-cta">
+              <a class="btn btn-ghost" id="aboutGh" href="https://github.com/nuriacalvo-teacher" target="_blank" rel="noopener">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> Ver el código en GitHub
+              </a>
+            </div>
           </div>
         </div>
+        <div class="stats" id="aboutHighlights"></div>
       </div>
+
+      <div class="about-grid" id="aboutCards"></div>
+      <div id="aboutClosing"></div>
     </div>
   </section>
 </main>
@@ -840,16 +913,65 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
     "bio": "Aquí reúno las aplicaciones que voy creando para mis grupos de ESO y Bachillerato del IES Goya. Todas son gratuitas, funcionan en el móvil, en la tablet y en la pizarra digital, y no hace falta instalar nada: solo abrir y practicar."
   },
   "categories": [
-    { "id": "grammar",    "name": "Gramática",          "icon": "fa-diagram-project",  "accent": "indigo"  },
-    { "id": "vocabulary", "name": "Vocabulario",         "icon": "fa-book-open",        "accent": "emerald" },
-    { "id": "writing",    "name": "Writing",             "icon": "fa-pen-nib",          "accent": "amber"   },
-    { "id": "speaking",   "name": "Speaking",            "icon": "fa-microphone-lines", "accent": "rose"    },
-    { "id": "reading",    "name": "Reading & Literatura","icon": "fa-book-bookmark",    "accent": "sky"     },
-    { "id": "exams",      "name": "Exámenes y repaso",   "icon": "fa-clipboard-check",  "accent": "violet"  },
-    { "id": "tools",      "name": "Aula y herramientas", "icon": "fa-toolbox",          "accent": "slate"   },
-    { "id": "other",      "name": "Otros proyectos",     "icon": "fa-globe",            "accent": "teal"    }
+    {
+      "id": "grammar",
+      "name": "Gramática",
+      "icon": "fa-diagram-project",
+      "accent": "indigo"
+    },
+    {
+      "id": "vocabulary",
+      "name": "Vocabulario",
+      "icon": "fa-book-open",
+      "accent": "emerald"
+    },
+    {
+      "id": "writing",
+      "name": "Writing",
+      "icon": "fa-pen-nib",
+      "accent": "amber"
+    },
+    {
+      "id": "speaking",
+      "name": "Speaking",
+      "icon": "fa-microphone-lines",
+      "accent": "rose"
+    },
+    {
+      "id": "reading",
+      "name": "Reading & Literatura",
+      "icon": "fa-book-bookmark",
+      "accent": "sky"
+    },
+    {
+      "id": "exams",
+      "name": "Exámenes y repaso",
+      "icon": "fa-clipboard-check",
+      "accent": "violet"
+    },
+    {
+      "id": "tools",
+      "name": "Aula y herramientas",
+      "icon": "fa-toolbox",
+      "accent": "slate"
+    },
+    {
+      "id": "other",
+      "name": "Otros proyectos",
+      "icon": "fa-globe",
+      "accent": "teal"
+    }
   ],
-  "levels": ["1º ESO", "2º ESO", "3º ESO", "4º ESO", "1º Bach", "2º Bach", "B1", "B2"],
+  "levels": [
+    "1º ESO",
+    "2º ESO",
+    "3º ESO",
+    "4º ESO",
+    "1º Bach",
+    "2º Bach",
+    "B1",
+    "B2"
+  ],
   "apps": [
     {
       "id": "present-tenses",
@@ -859,8 +981,14 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Domina todos los presentes",
       "description": "Teoría, ejemplos y test de 10 preguntas por bloque para diferenciar present simple, continuous, perfect y perfect continuous. Con informe final de evaluación.",
       "category": "grammar",
-      "levels": ["3º ESO", "4º ESO"],
-      "tags": ["Teoría + test", "Informe de notas"],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Teoría + test",
+        "Informe de notas"
+      ],
       "icon": "fa-clock",
       "accent": "indigo",
       "status": "live",
@@ -876,8 +1004,13 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Construye frases correctas",
       "description": "Práctica del orden de las palabras en la oración inglesa: afirmativa, negativa e interrogativa.",
       "category": "grammar",
-      "levels": ["3º ESO", "4º ESO"],
-      "tags": ["Word order"],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Word order"
+      ],
       "icon": "fa-shapes",
       "accent": "violet",
       "status": "live",
@@ -893,8 +1026,15 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Los verbos irregulares, a fondo",
       "description": "Entrenamiento completo de verbos irregulares: infinitivo, pasado simple y participio.",
       "category": "vocabulary",
-      "levels": ["2º ESO", "3º ESO", "4º ESO"],
-      "tags": ["Verbos", "Práctica"],
+      "levels": [
+        "2º ESO",
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Verbos",
+        "Práctica"
+      ],
       "icon": "fa-bolt",
       "accent": "emerald",
       "status": "live",
@@ -910,8 +1050,14 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Repaso rápido antes del examen",
       "description": "Aplicación interactiva para repasar los verbos irregulares en inglés de forma rápida.",
       "category": "vocabulary",
-      "levels": ["2º ESO", "3º ESO", "4º ESO"],
-      "tags": ["Repaso exprés"],
+      "levels": [
+        "2º ESO",
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Repaso exprés"
+      ],
       "icon": "fa-rotate",
       "accent": "emerald",
       "status": "live",
@@ -927,8 +1073,14 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Dos bloques clave de Bachillerato",
       "description": "Condicionales (tipos 0, 1, 2 y 3) y estilo indirecto explicados y practicados en una sola aplicación.",
       "category": "grammar",
-      "levels": ["1º Bach", "2º Bach"],
-      "tags": ["Conditionals", "Reported speech"],
+      "levels": [
+        "1º Bach",
+        "2º Bach"
+      ],
+      "tags": [
+        "Conditionals",
+        "Reported speech"
+      ],
       "icon": "fa-code-branch",
       "accent": "indigo",
       "status": "live",
@@ -944,8 +1096,13 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Del estilo directo al indirecto",
       "description": "Transformaciones de estilo directo a indirecto paso a paso, con cambios de tiempo verbal y de expresiones de tiempo.",
       "category": "grammar",
-      "levels": ["4º ESO", "1º Bach"],
-      "tags": ["Transformaciones"],
+      "levels": [
+        "4º ESO",
+        "1º Bach"
+      ],
+      "tags": [
+        "Transformaciones"
+      ],
       "icon": "fa-comment-dots",
       "accent": "sky",
       "status": "live",
@@ -961,8 +1118,13 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Who, which, that, whose…",
       "description": "Repaso de las oraciones de relativo: especificativas, explicativas y uso correcto de cada pronombre.",
       "category": "grammar",
-      "levels": ["4º ESO", "1º Bach"],
-      "tags": ["Relativos"],
+      "levels": [
+        "4º ESO",
+        "1º Bach"
+      ],
+      "tags": [
+        "Relativos"
+      ],
       "icon": "fa-link",
       "accent": "indigo",
       "status": "live",
@@ -978,8 +1140,14 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Rutinas y hábitos en inglés",
       "description": "Vocabulario y estructuras para hablar de hábitos y rutinas diarias, con adverbios de frecuencia.",
       "category": "grammar",
-      "levels": ["1º ESO", "2º ESO"],
-      "tags": ["Rutinas", "Frecuencia"],
+      "levels": [
+        "1º ESO",
+        "2º ESO"
+      ],
+      "tags": [
+        "Rutinas",
+        "Frecuencia"
+      ],
       "icon": "fa-repeat",
       "accent": "amber",
       "status": "live",
@@ -995,8 +1163,13 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Vocabulario de la familia",
       "description": "English vocabulary: family and relationships. Léxico de parentesco y relaciones personales.",
       "category": "vocabulary",
-      "levels": ["1º ESO", "2º ESO"],
-      "tags": ["Léxico"],
+      "levels": [
+        "1º ESO",
+        "2º ESO"
+      ],
+      "tags": [
+        "Léxico"
+      ],
       "icon": "fa-people-roof",
       "accent": "rose",
       "status": "live",
@@ -1012,8 +1185,12 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Vocabulario de la unidad 2",
       "description": "Vocabulario del módulo 2 de 4º de ESO para practicar y autoevaluarse antes del examen.",
       "category": "vocabulary",
-      "levels": ["4º ESO"],
-      "tags": ["Unidad 2"],
+      "levels": [
+        "4º ESO"
+      ],
+      "tags": [
+        "Unidad 2"
+      ],
       "icon": "fa-book-open",
       "accent": "emerald",
       "status": "live",
@@ -1029,8 +1206,15 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Writing formal paso a paso",
       "description": "Cómo escribir un correo de reclamación en inglés: estructura, registro formal y expresiones útiles.",
       "category": "writing",
-      "levels": ["1º Bach", "2º Bach", "B2"],
-      "tags": ["Formal writing", "Modelo"],
+      "levels": [
+        "1º Bach",
+        "2º Bach",
+        "B2"
+      ],
+      "tags": [
+        "Formal writing",
+        "Modelo"
+      ],
       "icon": "fa-envelope-open-text",
       "accent": "amber",
       "status": "live",
@@ -1046,8 +1230,14 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Juego de lectura",
       "description": "Juego interactivo sobre la lectura de Animal Farm, de George Orwell: personajes, argumento y comprensión.",
       "category": "reading",
-      "levels": ["1º Bach", "2º Bach"],
-      "tags": ["Lectura", "Juego"],
+      "levels": [
+        "1º Bach",
+        "2º Bach"
+      ],
+      "tags": [
+        "Lectura",
+        "Juego"
+      ],
       "icon": "fa-feather-pointed",
       "accent": "sky",
       "status": "live",
@@ -1063,8 +1253,15 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Preparación de la prueba oral",
       "description": "Práctica guiada de la prueba oral de nivel B1: preguntas tipo, turnos de habla y expresiones para el examen.",
       "category": "speaking",
-      "levels": ["B1", "4º ESO", "1º Bach"],
-      "tags": ["Examen oral", "B1"],
+      "levels": [
+        "B1",
+        "4º ESO",
+        "1º Bach"
+      ],
+      "tags": [
+        "Examen oral",
+        "B1"
+      ],
       "icon": "fa-microphone-lines",
       "accent": "rose",
       "status": "live",
@@ -1080,7 +1277,10 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Versión de trabajo",
       "description": "Segunda versión de la aplicación de present tenses.",
       "category": "grammar",
-      "levels": ["3º ESO", "4º ESO"],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
       "tags": [],
       "icon": "fa-clock",
       "accent": "indigo",
@@ -1097,7 +1297,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "subtitle": "Vocabulario",
       "description": "Vocabulario del módulo 2 de 4º de ESO.",
       "category": "vocabulary",
-      "levels": ["4º ESO"],
+      "levels": [
+        "4º ESO"
+      ],
       "tags": [],
       "icon": "fa-book",
       "accent": "emerald",
@@ -1132,7 +1334,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Herramienta para pasar lista y controlar la asistencia del grupo.",
       "category": "tools",
       "levels": [],
-      "tags": ["Uso docente"],
+      "tags": [
+        "Uso docente"
+      ],
       "icon": "fa-clipboard-user",
       "accent": "slate",
       "status": "live",
@@ -1149,7 +1353,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Herramienta interna de control y seguimiento.",
       "category": "tools",
       "levels": [],
-      "tags": ["Uso docente"],
+      "tags": [
+        "Uso docente"
+      ],
       "icon": "fa-sliders",
       "accent": "slate",
       "status": "live",
@@ -1166,7 +1372,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Proyecto sobre el patrimonio del IES Goya de Zaragoza.",
       "category": "other",
       "levels": [],
-      "tags": ["Proyecto"],
+      "tags": [
+        "Proyecto"
+      ],
       "icon": "fa-landmark",
       "accent": "teal",
       "status": "live",
@@ -1183,7 +1391,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Fichas de aprendizaje de chino.",
       "category": "other",
       "levels": [],
-      "tags": ["Chino"],
+      "tags": [
+        "Chino"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -1200,7 +1410,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Segunda ficha de aprendizaje de chino.",
       "category": "other",
       "levels": [],
-      "tags": ["Chino"],
+      "tags": [
+        "Chino"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -1217,7 +1429,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Fichas de aprendizaje de alemán.",
       "category": "other",
       "levels": [],
-      "tags": ["Alemán"],
+      "tags": [
+        "Alemán"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -1234,7 +1448,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Segunda ficha de aprendizaje de alemán.",
       "category": "other",
       "levels": [],
-      "tags": ["Alemán"],
+      "tags": [
+        "Alemán"
+      ],
       "icon": "fa-language",
       "accent": "teal",
       "status": "live",
@@ -1251,7 +1467,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Repositorio de pruebas sobre cómo crear una app.",
       "category": "other",
       "levels": [],
-      "tags": ["Pruebas"],
+      "tags": [
+        "Pruebas"
+      ],
       "icon": "fa-flask",
       "accent": "slate",
       "status": "beta",
@@ -1268,7 +1486,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Repositorio de pruebas.",
       "category": "other",
       "levels": [],
-      "tags": ["Pruebas"],
+      "tags": [
+        "Pruebas"
+      ],
       "icon": "fa-flask",
       "accent": "slate",
       "status": "beta",
@@ -1285,7 +1505,9 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "description": "Repositorio de pruebas.",
       "category": "other",
       "levels": [],
-      "tags": ["Pruebas"],
+      "tags": [
+        "Pruebas"
+      ],
       "icon": "fa-flask",
       "accent": "slate",
       "status": "beta",
@@ -1293,7 +1515,125 @@ code.inline{ background:var(--surface-hi); padding:2px 7px; border-radius:6px; f
       "visible": false,
       "updated": "2025-10-06"
     }
-  ]
+  ],
+  "about": {
+    "headline": "Profesora, lingüista, artista y curiosa por naturaleza.",
+    "highlights": [
+      {
+        "value": "Nº 1",
+        "label": "Oposiciones de Inglés · Aragón",
+        "accent": "indigo"
+      },
+      {
+        "value": "+20",
+        "label": "Años de experiencia docente",
+        "accent": "violet"
+      },
+      {
+        "value": "7",
+        "label": "Idiomas",
+        "accent": "emerald"
+      },
+      {
+        "value": "4",
+        "label": "Álbumes publicados",
+        "accent": "rose"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Experiencia lingüística y educativa",
+        "icon": "fa-graduation-cap",
+        "accent": "indigo",
+        "paragraphs": [
+          "Obtuve el **n.º 1 en las oposiciones de Enseñanza Secundaria de Aragón**, en la especialidad de Inglés, y cuento con más de 20 años de experiencia docente.",
+          "Me gradué con **First-Class Honours en Trinity College Dublin** y siempre he sentido una profunda pasión por las lenguas y la comunicación. Tengo competencia en siete idiomas."
+        ],
+        "listTitle": "Idiomas",
+        "chips": [
+          "Español",
+          "Inglés",
+          "Francés",
+          "Alemán",
+          "Ruso",
+          "Catalán",
+          "Chino · pronto 😅"
+        ]
+      },
+      {
+        "title": "El mundo de las artes",
+        "icon": "fa-palette",
+        "accent": "rose",
+        "paragraphs": [
+          "Más allá de la enseñanza, siempre he estado muy vinculada al mundo artístico. Soy **retratista y caricaturista**, además de **cantautora y compositora** bajo el nombre artístico de **Krisenka Finley**.",
+          "He publicado cuatro álbumes y he recibido diversos reconocimientos internacionales por mi música. Mi trayectoria musical también incluye la producción de videoclips, jingles publicitarios y composiciones sinfónicas.",
+          "Más recientemente me he adentrado en el mundo del cine, creando cuatro cortometrajes en los que utilizo la **Inteligencia Artificial como herramienta creativa**:"
+        ],
+        "listTitle": "Cortometrajes",
+        "items": [
+          {
+            "name": "1923",
+            "meta": "2026"
+          },
+          {
+            "name": "Jerusalén Conquistada",
+            "meta": "2026"
+          },
+          {
+            "name": "Atlas Touring Club",
+            "meta": "2026"
+          },
+          {
+            "name": "La Firma",
+            "meta": "2025"
+          }
+        ]
+      },
+      {
+        "title": "Tecnología y emprendimiento",
+        "icon": "fa-microchip",
+        "accent": "emerald",
+        "paragraphs": [
+          "Me apasionan las nuevas tecnologías desde sus comienzos y siempre me ha gustado explorar todo lo que pueden hacer posible.",
+          "A principios de los años 90, mientras estudiaba en la Universidad de Zaragoza, fui **la primera estudiante en disponer de una dirección de correo electrónico** en la universidad. En una época en la que el alumnado todavía no tenía cuentas de correo individuales, conseguí que el servicio estuviera disponible para el conjunto de estudiantes a partir del curso siguiente.",
+          "También fui reconocida como **Emprendedora del Año por el Ayuntamiento de Zaragoza y SACME (CEOE)**, tras crear una microempresa que facilitaba a mis alumnos el acceso a viajes internacionales de bajo coste, eliminando intermediarios mediante Internet. Hoy puede parecer algo bastante sencillo, pero en aquel momento el concepto era realmente innovador.",
+          "Mi curiosidad por la tecnología no ha dejado de crecer: he realizado numerosos MOOCs sobre robótica y programación, y actualmente sigo matriculada en varios cursos más. Y sí… sigo apuntándome a cursos nuevos. Me encanta aprender."
+        ]
+      },
+      {
+        "title": "Otras experiencias profesionales",
+        "icon": "fa-briefcase",
+        "accent": "amber",
+        "paragraphs": [
+          "Mi trayectoria profesional también me ha llevado por ámbitos bastante diferentes:"
+        ],
+        "items": [
+          {
+            "name": "Bibliotecaria en Stuttgart",
+            "meta": "Alemania"
+          },
+          {
+            "name": "Responsable del Departamento de Compras",
+            "meta": "Filial multinacional de OPEL España"
+          },
+          {
+            "name": "…y alguna que otra aventura más por el camino",
+            "meta": ""
+          }
+        ]
+      }
+    ],
+    "closing": {
+      "title": "Y, en pocas palabras…",
+      "icon": "fa-heart",
+      "paragraphs": [
+        "Soy curiosa por naturaleza. Me encanta aprender, crear, experimentar y embarcarme en proyectos que me lleven a lugares nuevos, ya sea en el ámbito de los idiomas, la educación, el arte, la música, la tecnología, el emprendimiento o el cine.",
+        "No creo demasiado en la idea de encasillar a las personas en una única categoría. **Enseñar es lo que hago, pero la curiosidad es lo que me mueve.**",
+        "Y, por encima de todo, **soy madre**. Probablemente sea mi papel más importante de todos y, sin duda, el que me mantiene aprendiendo cada día."
+      ],
+      "quote": "Espero que mi bio te motive a seguir aprendiendo. 😅"
+    }
+  }
 }</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -1310,6 +1650,7 @@ const THEME_KEY   = 'nc-portal-theme';
 const VIEW_KEY    = 'nc-portal-view';
 const TEACHER_KEY = 'nuria123';          // cámbiala si quieres (ver README)
 const CATALOG_URL = 'apps.json';
+const PORTAL_REPO = 'nuriacalvo-teacher/nuriacalvo-teacher.github.io';  // repositorio donde vive este portal
 
 const ACCENTS = ['indigo','violet','emerald','amber','rose','sky','teal','cyan','pink','orange','lime','slate'];
 const ICONS = [
@@ -1404,7 +1745,50 @@ function renderAll(){
   renderFilters(c);
   renderStats(c);
   renderFeatured(c);
+  renderAbout(c);
   renderCatalog();
+}
+
+/* Texto con **negritas** -> HTML seguro (se escapa antes de convertir) */
+function rich(s){
+  return esc(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+}
+
+function renderAbout(c){
+  const ab = c.about;
+  const cards = $('#aboutCards'), closing = $('#aboutClosing'), hi = $('#aboutHighlights');
+  if (!ab){ cards.innerHTML = closing.innerHTML = hi.innerHTML = ''; $('#aboutHeadline').hidden = true; return; }
+
+  $('#aboutHeadline').textContent = ab.headline || '';
+  $('#aboutHeadline').hidden = !ab.headline;
+
+  hi.innerHTML = (ab.highlights||[]).map(s => `
+    <div class="stat" data-accent="${esc(s.accent||'indigo')}">
+      <div class="stat-num">${esc(s.value)}</div>
+      <div class="stat-label">${esc(s.label)}</div>
+    </div>`).join('');
+
+  cards.innerHTML = (ab.sections||[]).map(s => `
+    <article class="about-card reveal" data-accent="${esc(s.accent||'indigo')}">
+      <div class="about-card-head">
+        <div class="card-icon"><i class="fa-solid ${esc(s.icon||'fa-star')}" aria-hidden="true"></i></div>
+        <h3>${esc(s.title)}</h3>
+      </div>
+      ${(s.paragraphs||[]).map(p => `<p>${rich(p)}</p>`).join('')}
+      ${s.chips ? `<p class="mini-title">${esc(s.listTitle||'')}</p>
+        <div class="lang-chips">${s.chips.map(x=>`<span class="lang-chip">${esc(x)}</span>`).join('')}</div>` : ''}
+      ${s.items ? `${s.listTitle && !s.chips ? `<p class="mini-title">${esc(s.listTitle)}</p>` : ''}
+        <ul class="work-list">${s.items.map(it=>`<li><span>${esc(it.name)}</span>${it.meta?`<span class="meta">${esc(it.meta)}</span>`:''}</li>`).join('')}</ul>` : ''}
+    </article>`).join('');
+
+  const cl = ab.closing;
+  closing.innerHTML = !cl ? '' : `
+    <div class="about-closing reveal">
+      <h3><i class="fa-solid ${esc(cl.icon||'fa-heart')}" aria-hidden="true"></i> ${esc(cl.title||'')}</h3>
+      ${(cl.paragraphs||[]).map(p => `<p>${rich(p)}</p>`).join('')}
+      ${cl.quote ? `<p class="about-quote">${esc(cl.quote)}</p>` : ''}
+    </div>`;
+  revealCards();
 }
 
 function renderIdentity(c){
@@ -1412,7 +1796,9 @@ function renderIdentity(c){
   const name = t.name || 'Nuria Calvo';
   const initials = name.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase() || 'NC';
   $('#brandMark').textContent = initials;
-  $('#aboutAvatar').textContent = initials;
+  $('#aboutAvatar').innerHTML = t.photo
+    ? `<img src="${esc(t.photo)}" alt="Fotografía de ${esc(name)}">`
+    : esc(initials);
   $('#brandName').textContent = name;
   $('#aboutName').textContent = name;
   $('#brandSub').textContent = `English Apps · ${t.school || ''}`.trim();
@@ -1706,7 +2092,7 @@ function openAdmin(){
   fillProfileForm();
   renderAdminList();
   const gh = (catalogInUse().teacher||{}).github;
-  $('#editOnGh').href = gh ? `https://github.com/${gh}/present-tenses/edit/main/apps.json` : 'https://github.com';
+  $('#editOnGh').href = `https://github.com/${PORTAL_REPO}/edit/main/apps.json`;
   $('#adminTitle').textContent = `Panel de ${(catalogInUse().teacher||{}).name || 'la profesora'} · Gestión del catálogo`;
   openModal('adminModal');
 }
@@ -1925,6 +2311,7 @@ function buildJson(){
     teacher: working.teacher,
     categories: working.categories,
     levels: working.levels,
+    about: working.about,
     apps: (working.apps||[]).map(a => ({
       id: a.id || slug(a.title), repo: a.repo || '', url: a.url || '',
       title: a.title || '', subtitle: a.subtitle || '', description: a.description || '',
@@ -1980,6 +2367,10 @@ function init(){
   tw.parentNode.insertBefore(sentinel, tw);
   if ('IntersectionObserver' in window){
     new IntersectionObserver(([en]) => tw.classList.toggle('stuck', !en.isIntersecting), { threshold:1 }).observe(sentinel);
+    // Fuera del catálogo la barra deja de ser fija, para no estorbar al leer la bio
+    new IntersectionObserver(([en]) => {
+      tw.classList.toggle('unstick', !en.isIntersecting && en.boundingClientRect.top < 0);
+    }, { threshold:0 }).observe($('#catalogo'));
   }
 
   $('#year').textContent = new Date().getFullYear();

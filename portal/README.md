@@ -1,15 +1,19 @@
 # Nuria Calvo · English Apps
 
-Portal web donde se recogen, organizadas por temas y cursos, las aplicaciones
-educativas de inglés que voy publicando en GitHub.
+Página principal de **Nuria Calvo**, profesora de Inglés del IES Goya (Zaragoza).
+Reúne, organizadas por temas y cursos, las aplicaciones educativas publicadas en
+esta cuenta de GitHub.
+
+🔗 **https://nuriacalvo-teacher.github.io**
 
 | Fichero | Para qué sirve |
 |---|---|
-| `landing.html` | La página del portal. No hace falta tocarla nunca. |
+| `index.html` | La página. No hace falta tocarla nunca. |
 | `apps.json` | **El catálogo.** Aquí se decide qué apps se ven y en qué orden. |
-| `index.html` | La app *Present Tenses* (la de siempre, no se ha modificado). |
 
-Dirección del portal: `https://nuriacalvo-teacher.github.io/present-tenses/landing.html`
+Cada app vive en su propio repositorio (`present-tenses`, `irregular-verbs`,
+`habits`…). Esta página solo las enlaza: **no hay que copiar nada aquí** cuando
+crees una app nueva.
 
 ---
 
@@ -17,18 +21,19 @@ Dirección del portal: `https://nuriacalvo-teacher.github.io/present-tenses/land
 
 Cada vez que subas una app nueva a GitHub:
 
-1. Abre el portal y pulsa el botón **⚙️ Profesora** (arriba a la derecha).
+1. Abre la página y pulsa el botón **⚙️ Profesora** (arriba a la derecha).
 2. Escribe la contraseña (por defecto: `nuria123`).
 3. Ve a la pestaña **Repositorios de GitHub** y pulsa **Cargar mis repositorios**.
-   Aparecerán *todos* tus repositorios, incluidos los que no tienen nada que ver con inglés.
+   Aparecerán *todos* tus repositorios, incluidos los que no tienen nada que ver
+   con inglés.
 4. Marca **solo** los que quieras publicar y pulsa **Añadir seleccionados al catálogo**.
 5. En la pestaña **Mis apps**, pulsa el lápiz ✏️ de cada app nueva para ponerle
    título, descripción, curso, tema, color e icono.
 6. Ve a **Publicar cambios** → **Descargar apps.json**.
-7. Sube ese fichero a GitHub: entra en `apps.json` en el repositorio, pulsa el
-   lápiz ✏️, borra todo, pega el contenido nuevo y pulsa **Commit changes**.
+7. Sube ese fichero a este repositorio: entra en `apps.json`, pulsa el lápiz ✏️,
+   borra todo, pega el contenido nuevo y pulsa **Commit changes**.
 
-En un minuto la web muestra los cambios al alumnado.
+En un minuto la página muestra los cambios al alumnado.
 
 > **Importante:** lo que editas en el panel se guarda solo en tu navegador hasta
 > que subes el `apps.json` a GitHub. Mientras tanto verás abajo el aviso
@@ -59,12 +64,12 @@ En un minuto la web muestra los cambios al alumnado.
 
 ## Detalles técnicos
 
-- Una sola página, sin instalación, sin servidor y sin base de datos: el portal
-  lee `apps.json` y lo pinta.
+- Una sola página, sin instalación, sin servidor y sin base de datos: lee
+  `apps.json` y lo pinta.
 - Si `apps.json` no se puede leer (por ejemplo al abrir el fichero desde el disco
   con doble clic), la página usa una copia de seguridad del catálogo que lleva
   incrustada, así nunca se ve vacía.
-- El portal **no llama a la API de GitHub cuando entra el alumnado**: eso se hace
+- La página **no llama a la API de GitHub cuando entra el alumnado**: eso se hace
   solo dentro del panel de profesora. Si lo hiciera en cada visita, un aula
   entera compartiendo la misma conexión agotaría el límite de peticiones de
   GitHub y la página fallaría.
@@ -72,9 +77,40 @@ En un minuto la web muestra los cambios al alumnado.
   `category`, `levels`, `tags`, `icon`, `accent`, `status` (`live` / `beta` /
   `soon`), `featured`, `visible`, `url`, `repo`, `updated`.
 
+### Cambiar la bio de «Sobre mí»
+
+El texto de la sección *Sobre mí* está en `apps.json`, dentro del apartado
+`about`. Se edita igual que el resto: entra en `apps.json` en GitHub, pulsa el
+lápiz ✏️, cambia el texto entre comillas y haz *Commit changes*.
+
+- `headline` → la frase grande bajo tu nombre.
+- `highlights` → las cuatro cifras destacadas (`value` es el número, `label` el texto).
+- `sections` → cada bloque de colores, con su `title`, `icon`, `accent` (color),
+  sus `paragraphs`, y opcionalmente `chips` (las etiquetas de idiomas) o `items`
+  (las listas con año o lugar a la derecha).
+- `closing` → el bloque final, con su `quote` en cursiva.
+
+Dentro de un párrafo, lo que pongas entre dos asteriscos sale **en negrita**:
+`Obtuve el **n.º 1 en las oposiciones**` se ve como *Obtuve el* **n.º 1 en las
+oposiciones**. No se admite ningún otro código: cualquier otra cosa se muestra
+tal cual, así que no se puede romper la página escribiendo texto.
+
+### Poner tu foto en lugar de las iniciales
+
+En `apps.json`, dentro de `teacher`, añade una línea con la dirección de la
+imagen:
+
+```json
+"photo": "https://nuriacalvo-teacher.github.io/nuriacalvo-teacher.github.io/foto.jpg",
+```
+
+Lo más cómodo es subir la foto a este mismo repositorio (cuadrada, 600×600 px
+aproximadamente) y poner solo `"photo": "foto.jpg"`. Si no pones nada, se siguen
+viendo las iniciales sobre el fondo de color.
+
 ### Cambiar la contraseña del panel
 
-En `landing.html`, busca la línea:
+En `index.html`, busca la línea:
 
 ```js
 const TEACHER_KEY = 'nuria123';
@@ -85,23 +121,3 @@ conveniencia, no de seguridad: sirve para que nadie toque el panel sin querer,
 pero cualquiera que mire el código de la página puede leerla. No pasa nada,
 porque el panel solo genera un fichero que luego subes tú a GitHub: nadie puede
 modificar la web desde ahí.
-
-### Convertir el portal en la página principal
-
-Ahora mismo la dirección del repositorio abre la app *Present Tenses*. Si algún
-día quieres que abra el portal:
-
-1. Renombra `index.html` → `present-tenses.html`.
-2. Renombra `landing.html` → `index.html`.
-3. En `apps.json`, cambia la dirección de la app Present Tenses a
-   `https://nuriacalvo-teacher.github.io/present-tenses/present-tenses.html`.
-
-Aviso: los enlaces antiguos que hayas repartido al alumnado dejarán de llevar
-directamente a la app y llevarán al portal.
-
-### Un portal para toda tu cuenta
-
-Si prefieres que el portal viva en `https://nuriacalvo-teacher.github.io`
-(sin `/present-tenses/` detrás), crea un repositorio nuevo llamado exactamente
-`nuriacalvo-teacher.github.io` y copia ahí `landing.html` (renombrado a
-`index.html`) y `apps.json`. Todo lo demás funciona igual.
