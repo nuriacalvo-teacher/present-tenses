@@ -39,6 +39,6 @@ master_l3_4   | 2         | 21/21        | 11/11
 master_l3_5   | 8         | 24/24        | 12/12
 --------------------------------------------------------
 TOTAL 36      | 3252      | 784/784      | 420/420
-Expansión de todo el nivel 3: 108.2 ms
+Expansión de todo el nivel 3: 71.9 ms
 
 TODO OK ✔

@@ -292,10 +292,11 @@ check("'s modelo: it's been -> has", E.modelReadings("It's been raining").indexO
 check("'s modelo: it's snowing -> is", E.modelReadings("It's snowing")[0] === "it is snowing");
 check("'d modelo: I'd gone -> had", E.modelReadings("I'd gone")[0] === "i had gone");
 check("'d modelo: I'd go -> would", E.modelReadings("I'd go")[0] === "i would go");
-const ex = [...new Set(E.expandPattern("(I|We) [usually] (get up|wake up) at (seven|7) [o'clock] {T:every day}").map(s => s.toLowerCase()))];
-// 2 sujetos × 2 (usually) × 2 verbos × 2 (seven/7) × 2 (o'clock) × 2 (every/each day) × 2 posiciones (principio/final)
-check("plantilla: nº de variantes", ex.length === 128, ex.length);
-check("plantilla: hueco al principio", ex.indexOf("every day we usually wake up at 7") >= 0);
+// hueco sin definir en L3_CONFIG: vale tal cual, al principio o al final
+const ex = [...new Set(E.expandPattern("(I|We) [usually] (get up|wake up) at (seven|7) [o'clock] {T:once in a blue moon}").map(s => s.toLowerCase()))];
+// 2 sujetos × 2 (usually) × 2 verbos × 2 (seven/7) × 2 (o'clock) × 2 posiciones (principio/final)
+check("plantilla: nº de variantes", ex.length === 64, ex.length);
+check("plantilla: hueco al principio", ex.indexOf("once in a blue moon we usually wake up at 7") >= 0);
 check("plantilla: anidada y opcional con alternativas", E.expandPattern("a (b (c|d)|e) [f|g]").length === 9);
 check("plantilla: ; separa oraciones", E.expandPattern("x y {T:today} ; z w").indexOf("today x y z w") >= 0 &&
   E.expandPattern("x y {T:today} ; z w").indexOf("x y z w today") < 0);
