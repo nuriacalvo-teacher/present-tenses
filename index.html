@@ -437,7 +437,7 @@
             x: "Rutina diaria → present simple." },
           { es: "Mi madre no trabaja los viernes.", verb: "(work)", en: "My mother doesn't work on Fridays.",
             alts: ["My mum doesn't work on Fridays.", "On Fridays my mother does not work."],
-            pat: ["My @mother does not work {T:on fridays}"],
+            pat: ["My @mother does not work {T:on fridays}", "My @mother does not work fridays"],
             x: "Negativa en 3ª persona: doesn't + infinitivo." },
           { es: "¿Hablas inglés en casa?", verb: "(speak)", en: "Do you speak English at home?",
             alts: ["Do you speak English in your house?"],
@@ -445,15 +445,15 @@
             x: "Pregunta con 'you' → Do you + infinitivo." },
           { es: "El tren sale a las ocho.", verb: "(leave)", en: "The train leaves at eight.",
             alts: ["The train leaves at 8 o'clock."],
-            pat: ["The train leaves at eight"],
+            pat: ["The train (leaves|departs) at eight"],
             x: "Horario fijo → present simple." },
           { es: "Nunca llegamos tarde a clase.", verb: "(arrive)", en: "We never arrive late for class.",
             alts: ["We are never late for class.", "We never arrive late to class."],
-            pat: ["We never arrive late (for|to) @class", "We are never late (for|to) @class"],
+            pat: ["We never arrive late (for|to) @class", "We are never late (for|to) @class", "We never get to @class late"],
             x: "'Never' va delante del verbo principal." },
           { es: "Mi hermana estudia medicina en Zaragoza.", verb: "(study)", en: "My sister studies medicine in Zaragoza.",
             alts: [],
-            pat: ["My sister studies medicine in Zaragoza"],
+            pat: ["My sister (studies|is studying) medicine in Zaragoza"],
             x: "study → studies (consonante + y)." }
         ]
       },
@@ -537,7 +537,7 @@
             x: "Wh- + are + sujeto + -ing." },
           { es: "Este mes vivimos con mis abuelos.", verb: "(live)", en: "This month we are living with my grandparents.",
             alts: ["We are living with my grandparents this month.", "This month we're living with my grandparents."],
-            pat: ["We are living with my @grandparents {T:this month}"],
+            pat: ["We are (living|staying) (with my @grandparents|at my grandparents' [house|place]) {T:this month}"],
             x: "Situación temporal → continuous." },
           { es: "Mañana cenamos con Marta, ya está decidido.", verb: "(have)", en: "We are having dinner with Marta tomorrow.",
             alts: ["We're going to have dinner with Marta tomorrow.", "Tomorrow we're having dinner with Marta, it's already decided."],
@@ -628,15 +628,15 @@
             x: "Cantidad de tiempo → FOR, no SINCE." },
           { es: "Mi hermana todavía no ha llegado.", verb: "(arrive)", en: "My sister hasn't arrived yet.",
             alts: ["My sister has not arrived yet.", "My sister still hasn't arrived."],
-            pat: ["My sister has not arrived yet", "My sister still has not arrived", "My sister has still not arrived"],
+            pat: ["My sister has not (arrived|got here) yet", "My sister (still has|has still) not (arrived|got here)"],
             x: "'Yet' al final en negativa." },
           { es: "Nunca he comido sushi.", verb: "(eat)", en: "I have never eaten sushi.",
             alts: ["I've never eaten sushi."],
-            pat: ["I have never eaten sushi [before]"],
+            pat: ["I have never (eaten|had) sushi [before]"],
             x: "'Never' entre have y el participio." },
           { es: "Acaban de salir de casa.", verb: "(leave)", en: "They have just left home.",
             alts: ["They've just left the house.", "They have just gone out."],
-            pat: ["They have just left (home|the house|their house)", "They have just gone out [of (the house|their house)]"],
+            pat: ["They have just left (home|the house|their house)", "They have just gone out [of (the house|their house)]", "They have just left"],
             x: "'Acabar de' → have just + participio." }
         ]
       }
@@ -713,11 +713,11 @@
             x: "Duración de la actividad." },
           { es: "Mi hermana lleva tres años aprendiendo alemán.", verb: "(learn)", en: "My sister has been learning German for three years.",
             alts: ["My sister's been learning German for three years.", "My sister has learned German for three years."],
-            pat: ["My sister has (been learning|learnt) German {T:for three years}"],
+            pat: ["My sister has (been learning|learnt|been studying|studied) German {T:for three years}"],
             x: "3ª persona → has been learning." },
           { es: "No he estado durmiendo bien últimamente.", verb: "(sleep)", en: "I haven't been sleeping well lately.",
             alts: ["I have not been sleeping well lately.", "I haven't slept well lately."],
-            pat: ["I have not (been sleeping|slept) well {T:lately}"],
+            pat: ["I have not (been sleeping|slept) [very] well {T:lately}"],
             x: "Negativa + lately." }
         ]
       },
@@ -777,7 +777,7 @@
         tr: [
           { es: "Normalmente ceno a las nueve, pero hoy estoy cenando antes.", verb: "(have dinner)", en: "I usually have dinner at nine, but today I am having dinner earlier.",
             alts: ["I usually have dinner at nine, but today I'm having dinner earlier.", "I usually have dinner at nine, but today I am having it earlier."],
-            pat: ["(I (usually|normally) (have|eat) @dinner|(Usually|Normally) I (have|eat) @dinner) at nine but (today I am (having|eating) (@dinner|it) earlier|I am (having|eating) (@dinner|it) earlier [today])"],
+            pat: ["(I (usually|normally) (have|eat) @dinner|(Usually|Normally) I (have|eat) @dinner) at nine but (today I am (having|eating) (@dinner|it) earlier|I am (having|eating) (@dinner|it) earlier [today]|today I am (having an early @dinner|eating earlier)|I am (having an early @dinner|eating earlier) [today])"],
             x: "Rutina en simple + excepción de hoy en continuous." },
           { es: "Conozco a Ana desde 2020.", verb: "(know)", en: "I have known Ana since 2020.",
             alts: ["I've known Ana since 2020."],
@@ -793,7 +793,7 @@
             x: "Situación temporal → continuous." },
           { es: "Todavía no he visto esa serie.", verb: "(see)", en: "I haven't seen that series yet.",
             alts: ["I have not seen that series yet.", "I still haven't seen that show."],
-            pat: ["I have not seen that @series yet", "I (still have|have still) not seen that @series"],
+            pat: ["I have not (seen|watched) that @series yet", "I (still have|have still) not (seen|watched) that @series"],
             x: "Negativa + yet → present perfect." },
           { es: "El agua hierve a cien grados.", verb: "(boil)", en: "Water boils at one hundred degrees.",
             alts: ["Water boils at 100 degrees."],
@@ -858,7 +858,7 @@
             x: "'Llevar + gerundio' → have been waiting for." },
           { es: "¿Alguna vez has montado a caballo?", verb: "(ride)", en: "Have you ever ridden a horse?",
             alts: [],
-            pat: ["Have you ever ridden a horse"],
+            pat: ["Have you ever ridden a horse", "Have you ever been (horse riding|horseback riding)"],
             x: "Experiencia con 'ever' + participio 'ridden'." },
           { es: "Están comiendo en la cocina.", verb: "(eat)", en: "They are eating in the kitchen.",
             alts: ["They're eating in the kitchen.", "They are having lunch in the kitchen."],
@@ -866,11 +866,11 @@
             x: "Acción en marcha → are + -ing." },
           { es: "No entiendo esta pregunta.", verb: "(understand)", en: "I don't understand this question.",
             alts: ["I do not understand this question."],
-            pat: ["I do not understand this question"],
+            pat: ["I (do not|can not) understand this question"],
             x: "'Understand' de estado → present simple negativo." },
           { es: "Ya he terminado los deberes.", verb: "(finish)", en: "I have already finished my homework.",
             alts: ["I've already finished my homework.", "I have already finished the homework."],
-            pat: ["I have already finished (my|the) homework", "I have finished (my|the) homework already"],
+            pat: ["I have already (finished|done) (my|the) homework", "I have (finished|done) (my|the) homework already"],
             x: "'Already' entre have y el participio." }
         ]
       }
@@ -1141,10 +1141,10 @@
         flat: "(flat|apartment)",
         series: "(series|show|tv series|tv show)",
         dinner: "(dinner|supper)",
-        halfhour: "(half an hour|thirty minutes)",   // 30 minutes: ya lo igualan los números
+        halfhour: "(half an hour|a half hour|thirty minutes)",   // 30 minutes: ya lo igualan los números
         weekends: "(at weekends|on weekends|at the weekend|on the weekend|on the weekends)",
         holiday: "(holiday|holidays|vacation)",
-        grandparents: "(grandparents|grandmother and grandfather|grandfather and grandmother)"
+        grandparents: "(grandparents|grandmother and grandfather|grandfather and grandmother|grandma and grandpa|grandpa and grandma)"
       };
 
       /* Ortografía británica / americana y formas dobles de verbos irregulares:
