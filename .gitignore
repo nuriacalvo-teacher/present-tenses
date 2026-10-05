@@ -1,0 +1,7 @@
+.venv-audio/
+__pycache__/
+.DS_Store
+video/audio/muestra-voces.mp3
+video/audio/comparativa-voces.mp3
+tools/gemini/salida/
+tools/gemini/_tmp.wav
