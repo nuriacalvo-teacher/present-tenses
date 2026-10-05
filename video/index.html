@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Present Lab · The four present tenses in English · Nuria Calvo</title>
+<meta name="description" content="A narrated video lesson on the present tenses in English: present simple, present continuous, present perfect and present perfect continuous. Made by Nuria Calvo, English teacher at IES Goya, Zaragoza.">
+<meta name="author" content="Nuria Calvo · IES Goya, Zaragoza">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600;700&display=swap">
+<style>
+html,body{height:100%}
+body{margin:0;background:#05060F;overflow:hidden}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#frame{width:1280px;height:800px;flex:none;transform-origin:center center;border-radius:24px;overflow:hidden;box-shadow:0 30px 120px rgba(0,0,0,.6)}
+[data-scene][hidden],[hidden]{display:none !important}
+.startbox{display:flex;flex-direction:column;align-items:center;gap:16px}
+
+html,body{height:100%}
+body{margin:0;background:#05060F;overflow:hidden}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#frame{width:1280px;height:800px;flex:none;transform-origin:center center;border-radius:24px;overflow:hidden;box-shadow:0 30px 120px rgba(0,0,0,.6)}
+[data-scene][hidden],[hidden]{display:none !important}
+.startbox{display:flex;flex-direction:column;align-items:center;gap:18px}
+
+body{margin:0;background:#0B0D1F}
+a{color:#D4FF4F}a:hover{color:#EFFFB8}
+.app{position:relative;width:1280px;height:800px;overflow:hidden;background:#0B0D1F;color:#F4F1EA;font-family:'DM Sans',system-ui,sans-serif}
+.disp{font-family:'Bricolage Grotesque','DM Sans',sans-serif}
+.sig{font-family:'Caveat',cursive}
+.coral{color:#FF7A59}.lime{color:#D4FF4F}.sky{color:#6FD3FF}.violet{color:#B79CFF}
+
+/* ---------- background FX ---------- */
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at 50% 42%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 42%,#000 25%,transparent 72%);animation:gridpan 30s linear infinite}
+@keyframes gridpan{to{background-position:48px 48px,48px 48px}}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.28;animation:drift 16s ease-in-out infinite alternate;pointer-events:none}
+.o1{width:460px;height:460px;background:#FF7A59;left:-160px;top:-140px}
+.o2{width:420px;height:420px;background:#6FD3FF;right:-160px;top:180px;animation-delay:-5s}
+.o3{width:520px;height:520px;background:#B79CFF;left:420px;bottom:-330px;animation-delay:-9s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,40px) scale(1.15)}100%{transform:translate(-50px,80px) scale(.92)}}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.2;animation:twinkle 3.2s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.9;transform:scale(1.8)}}
+.vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55));pointer-events:none}
+
+/* ---------- top bar ---------- */
+.top{position:absolute;left:0;right:0;top:0;height:76px;padding:0 36px;display:flex;align-items:center;justify-content:space-between;z-index:4}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:40px;height:40px;border-radius:12px;background:#D4FF4F;color:#0B0D1F;display:flex;align-items:center;justify-content:center;animation:logospin 8s cubic-bezier(.7,0,.3,1) infinite}
+@keyframes logospin{0%,80%{transform:rotate(0)}90%{transform:rotate(-12deg) scale(1.1)}100%{transform:rotate(360deg)}}
+.brand-name{font-size:20px;font-weight:800;letter-spacing:.02em}
+.brand-sub{font-size:12px;color:#B4B6D6;letter-spacing:.14em;text-transform:uppercase}
+.credit{display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}
+.mono-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#FF7A59,#B79CFF);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#0B0D1F}
+.credit-t{font-size:12px;color:#B4B6D6;line-height:1.1}
+.credit-n{font-size:15px;font-weight:700;color:#F4F1EA}
+
+/* ---------- stage & scenes ---------- */
+.stage{position:absolute;left:56px;right:56px;top:88px;bottom:182px;z-index:3}
+.scene{position:absolute;inset:0;animation:sceneIn .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes sceneIn{from{opacity:0;transform:translateX(70px) skewX(-5deg);filter:blur(14px)}to{opacity:1;transform:none;filter:none}}
+.wipe{position:fixed;left:0;top:0;width:1280px;height:800px;z-index:20;pointer-events:none;transform-origin:right center;animation:wipe .75s cubic-bezier(.75,0,.2,1) both}
+.wipe.coral{background:#FF7A59}.wipe.lime{background:#D4FF4F}.wipe.sky{background:#6FD3FF}.wipe.violet{background:#B79CFF}.wipe.ink{background:#F4F1EA}
+@keyframes wipe{0%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+.rv{opacity:0;transform:translateY(26px) scale(.97);filter:blur(8px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1),filter .7s}
+.rv.on{opacity:1;transform:none;filter:none}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#B4B6D6}
+.ttl{font-size:68px;font-weight:800;line-height:1;margin:10px 0 0;letter-spacing:-.02em;animation:clipIn 1.1s .25s cubic-bezier(.7,0,.2,1) both}
+@keyframes clipIn{from{clip-path:inset(0 100% 0 0);transform:translateX(-20px)}to{clip-path:inset(0 0 0 0);transform:none}}
+.cols{display:grid;grid-template-columns:540px minmax(0,1fr);gap:48px;height:100%}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.formula{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{padding:8px 16px;border-radius:999px;font-weight:700;font-size:18px;border:1.5px solid currentColor}
+.pill.fill-coral{background:#FF7A59;color:#1A0E0A;border-color:#FF7A59}
+.pill.fill-lime{background:#D4FF4F;color:#141A00;border-color:#D4FF4F}
+.pill.fill-sky{background:#6FD3FF;color:#04202E;border-color:#6FD3FF}
+.pill.fill-violet{background:#B79CFF;color:#170C33;border-color:#B79CFF}
+.plus{font-size:22px;color:#B4B6D6;font-weight:700}
+.meaning{font-size:21px;line-height:1.4;margin:0;color:#E7E5F2}
+.meaning b{color:#fff}
+.tl{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:10px 12px 4px}
+.tl svg{display:block}
+.draw{stroke-dasharray:700;stroke-dashoffset:700;animation:draw 1.8s .5s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pop{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.6);opacity:.4}}
+.svgt{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em}
+.exs{display:flex;flex-direction:column;gap:14px;padding-top:6px}
+.ex{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px)}
+.ex.hot{background:rgba(212,255,79,.08);border-color:rgba(212,255,79,.35)}
+.ex.warn{background:rgba(255,122,89,.1);border-color:rgba(255,122,89,.4)}
+.ex-tag{flex:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ex-tag.ok{background:#D4FF4F;color:#141A00}
+.ex-tag.bad{background:#FF7A59;color:#1A0E0A}
+.ex-tag.q{background:#6FD3FF;color:#04202E}
+.ex-lab{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#B4B6D6;margin-bottom:4px}
+.ex-s{font-size:23px;line-height:1.3;font-weight:500}
+.ex-n{font-size:15px;color:#B4B6D6;margin-top:4px}
+.k{font-weight:800;position:relative;white-space:nowrap}
+.k::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:3px;border-radius:3px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .8s .5s cubic-bezier(.7,0,.2,1)}
+.on .k::after{transform:scaleX(1)}
+.strike{text-decoration:line-through;text-decoration-color:#FF7A59;text-decoration-thickness:3px;color:#B4B6D6}
+.note{display:flex;gap:12px;align-items:center;padding:14px 18px;border-radius:16px;border:1.5px dashed rgba(255,255,255,.25);font-size:16px;line-height:1.35;color:#E7E5F2}
+.note svg{flex:none}
+
+/* ---------- intro ---------- */
+.intro{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
+.rings{position:absolute;left:50%;top:48%;width:720px;height:720px;margin:-360px 0 0 -360px;pointer-events:none;opacity:.5}
+.ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.14);animation:spin 40s linear infinite}
+.ring.r2{inset:90px;border-style:solid;border-color:rgba(212,255,79,.14);animation-duration:26s;animation-direction:reverse}
+.ring.r3{inset:190px;border-color:rgba(111,211,255,.16);animation-duration:18s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero{font-size:84px;line-height:1.02;font-weight:800;margin:0;letter-spacing:-.03em;position:relative}
+.w{display:inline-block;animation:rise 1s cubic-bezier(.2,.9,.2,1) both}
+.w1{animation-delay:.1s}.w2{animation-delay:.25s}.w3{animation-delay:.4s}.w4{animation-delay:.55s}
+@keyframes rise{from{opacity:0;transform:translateY(60px) rotate(6deg);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.dot-sep{color:rgba(255,255,255,.3);margin:0 10px}
+.floaty{animation:floaty 5s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-8px)}}
+.sub{font-size:22px;color:#D5D3E6;max-width:720px;margin:0;line-height:1.4}
+.by{display:flex;align-items:center;gap:14px;padding:10px 24px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden;transition:box-shadow .6s,border-color .6s}
+.by.on{border-color:rgba(212,255,79,.7);box-shadow:0 0 0 6px rgba(212,255,79,.1),0 0 40px rgba(212,255,79,.3)}
+.by::before{content:'';position:absolute;top:0;bottom:0;width:80px;left:-120px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);animation:shine 3.5s 1s ease-in-out infinite}
+@keyframes shine{0%{left:-120px}40%,100%{left:120%}}
+.by-t{font-size:15px;color:#D5D3E6}
+.by-sep{width:1px;height:26px;background:rgba(255,255,255,.25)}
+.by-n{font-size:34px;font-weight:700;color:#D4FF4F;line-height:1}
+
+/* ---------- buttons ---------- */
+.btn{appearance:none;border:0;cursor:pointer;font-family:inherit;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .3s,background .3s}
+.btn::after{content:'';position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s cubic-bezier(.2,.8,.2,1)}
+.btn:hover::after{left:130%}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn:active{transform:scale(.95)}
+.btn:focus-visible{outline:3px solid #6FD3FF;outline-offset:3px}
+.cta{display:inline-flex;align-items:center;gap:14px;padding:0 34px 0 14px;height:68px;border-radius:999px;background:#D4FF4F;color:#101400;font-size:22px;font-weight:700;box-shadow:0 12px 40px rgba(212,255,79,.35)}
+.cta-ic{width:46px;height:46px;border-radius:50%;background:#101400;color:#D4FF4F;display:flex;align-items:center;justify-content:center}
+.cta.halo{animation:halo 2s ease-out infinite}
+@keyframes halo{0%{box-shadow:0 0 0 0 rgba(212,255,79,.55),0 12px 40px rgba(212,255,79,.35)}100%{box-shadow:0 0 0 26px rgba(212,255,79,0),0 12px 40px rgba(212,255,79,.35)}}
+.ghost{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 26px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#F4F1EA;font-size:18px;font-weight:700}
+.hint{font-size:14px;color:#B4B6D6;display:flex;align-items:center;gap:8px}
+
+/* ---------- caption ---------- */
+.caption{position:absolute;left:50%;transform:translateX(-50%);bottom:118px;max-width:1040px;width:max-content;z-index:6;display:flex;gap:14px;align-items:flex-start;padding:12px 22px 12px 12px;border-radius:18px;background:rgba(8,9,24,.78);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px);font-size:19px;line-height:1.4;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.cc{flex:none;font-size:11px;font-weight:800;letter-spacing:.1em;padding:4px 8px;border-radius:6px;background:#F4F1EA;color:#0B0D1F;margin-top:3px}
+.cc.student{background:#D4FF4F;color:#101400}
+
+/* ---------- controls ---------- */
+.ctrl{position:absolute;left:32px;right:32px;bottom:22px;height:80px;z-index:6;display:flex;align-items:center;gap:18px;padding:0 18px;border-radius:24px;background:rgba(20,22,52,.72);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.ib{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.08);color:#F4F1EA;display:flex;align-items:center;justify-content:center;flex:none}
+.ib:hover{background:rgba(255,255,255,.16)}
+.play{width:60px;height:60px;border-radius:50%;background:#D4FF4F;color:#101400;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 8px 26px rgba(212,255,79,.35)}
+.play.halo{animation:halo 2s ease-out infinite}
+.chaps{flex:1;display:flex;gap:6px;min-width:0}
+.chap{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;padding:8px 2px;background:transparent;color:#B4B6D6;text-align:left;border-radius:10px}
+.chap:hover{transform:translateY(-2px)}
+.chap::after{display:none}
+.chap-bar{height:5px;border-radius:5px;background:rgba(255,255,255,.14);overflow:hidden;display:block}
+.chap-fill{display:block;height:100%;background:#F4F1EA;border-radius:5px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.chap.active .chap-fill{background:#D4FF4F;box-shadow:0 0 12px #D4FF4F}
+.chap-lab{font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chap.active .chap-lab{color:#D4FF4F}
+.chap.done .chap-lab{color:#F4F1EA}
+.vbtn{display:flex;align-items:center;gap:10px;height:48px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#F4F1EA;font-size:14px;font-weight:700;flex:none}
+.eq{display:flex;align-items:flex-end;gap:3px;height:20px}
+.eq span{width:3px;height:4px;border-radius:2px;background:#D4FF4F;display:block;transition:height .3s}
+.eq.live span{animation:eq .9s ease-in-out infinite}
+.eq.live span:nth-child(2){animation-delay:-.3s}.eq.live span:nth-child(3){animation-delay:-.6s}.eq.live span:nth-child(4){animation-delay:-.15s}.eq.live span:nth-child(5){animation-delay:-.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:20px}}
+
+/* ---------- compare ---------- */
+.cmp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:22px}
+.cmp{border-radius:22px;padding:22px 20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:12px;min-height:250px;position:relative;overflow:hidden}
+.cmp::before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:currentColor}
+.cmp-h{font-size:26px;font-weight:800}
+.cmp-s{font-size:22px;line-height:1.3;color:#F4F1EA;font-weight:500}
+.cmp-m{font-size:15px;color:#D5D3E6;line-height:1.4;margin-top:auto}
+.cmp-ic{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08)}
+.punch{margin-top:22px;text-align:center;font-size:34px;font-weight:800}
+.punch span{background:#D4FF4F;color:#101400;padding:4px 18px;border-radius:14px;display:inline-block;transform:rotate(-1.5deg)}
+
+/* ---------- quiz ---------- */
+.quiz{display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:6px}
+.qdots{display:flex;gap:10px}
+.qdot{width:40px;height:8px;border-radius:8px;background:rgba(255,255,255,.18);transition:all .4s}
+.qdot.cur{background:#F4F1EA;width:64px}
+.qdot.ok{background:#D4FF4F}
+.qdot.bad{background:#FF7A59}
+.qcard{position:relative;width:980px;padding:30px 40px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);text-align:center;animation:sceneIn .7s both}
+.qnum{font-size:13px;font-weight:700;letter-spacing:.2em;color:#B4B6D6;text-transform:uppercase}
+.qs{font-size:38px;line-height:1.35;font-weight:700;margin-top:10px}
+.blank{display:inline-block;min-width:170px;padding:0 14px;margin:0 6px;border-bottom:4px solid #F4F1EA;color:#B4B6D6;transition:all .4s}
+.blank.correct{color:#D4FF4F;border-color:#D4FF4F;animation:bounce .6s}
+.blank.wrong{color:#FF7A59;border-color:#FF7A59;animation:shake .5s}
+@keyframes bounce{40%{transform:translateY(-12px) scale(1.08)}}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:980px}
+.opt{display:flex;align-items:center;gap:14px;height:72px;padding:0 20px;border-radius:20px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);color:#F4F1EA;font-size:22px;font-weight:700;text-align:left}
+.opt:hover{border-color:#F4F1EA;background:rgba(255,255,255,.12)}
+.opt-l{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.opt.correct{background:rgba(212,255,79,.16);border-color:#D4FF4F;color:#D4FF4F}
+.opt.correct .opt-l{background:#D4FF4F;color:#101400}
+.opt.wrong{background:rgba(255,122,89,.14);border-color:#FF7A59;color:#FFB39F}
+.opt.wrong .opt-l{background:#FF7A59;color:#1A0E0A}
+.opt.dim{opacity:.45}
+.fb{display:flex;align-items:center;gap:18px;width:980px;padding:14px 16px 14px 24px;border-radius:20px;animation:sceneIn .6s both}
+.fb.ok{background:rgba(212,255,79,.1);border:1px solid rgba(212,255,79,.4)}
+.fb.no{background:rgba(255,122,89,.1);border:1px solid rgba(255,122,89,.4)}
+.fb-t{flex:1;font-size:17px;line-height:1.4}
+.fb-t b{font-size:19px}
+.nextq{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 22px;border-radius:999px;background:#F4F1EA;color:#0B0D1F;font-size:17px;font-weight:700;flex:none}
+.confetti{position:absolute;left:0;right:0;top:0;height:0;pointer-events:none;z-index:9}
+.cf{position:absolute;top:0;width:10px;height:16px;border-radius:2px;animation:fall 1.8s cubic-bezier(.2,.6,.4,1) forwards;opacity:0}
+.cf:nth-child(4n+1){background:#D4FF4F}.cf:nth-child(4n+2){background:#FF7A59}.cf:nth-child(4n+3){background:#6FD3FF}.cf:nth-child(4n){background:#B79CFF}
+.cf:nth-child(3n){width:8px;height:8px;border-radius:50%}
+@keyframes fall{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--dx,40px),420px) rotate(720deg)}}
+
+/* ---------- outro ---------- */
+.outro{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:56px;align-items:center;height:100%}
+.big{font-size:88px;font-weight:800;line-height:.98;margin:12px 0 18px;letter-spacing:-.03em}
+.recap{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.ocard{border-radius:30px;padding:30px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.ring-wrap{position:relative;width:170px;height:170px}
+.ring-n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-n b{font-size:48px;line-height:1}
+.ring-arc{transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+.sign{font-size:52px;color:#D4FF4F;line-height:1;transform:rotate(-4deg);animation:rise 1.2s .6s both}
+.sign-line{width:220px;height:14px}
+
+
+
+/* ---------- Present Lab additions ---------- */
+.vs-notes{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+[data-scene="5"] .vs-c{min-height:0}
+[data-scene="5"] .keyq{margin:10px 0 14px}
+[data-scene="6"] .exs{gap:8px}
+.gold{color:#FFC857}.pink{color:#FF8FC7}
+.pill.fill-gold{background:#FFC857;color:#2A1D00;border-color:#FFC857}
+.pill.fill-pink{background:#FF8FC7;color:#2E0718;border-color:#FF8FC7}
+.wipe.gold{background:#FFC857}.wipe.pink{background:#FF8FC7}
+.ttl{font-size:58px}
+.cols{grid-template-columns:560px minmax(0,1fr);gap:44px}
+.col{gap:14px}
+.meaning{font-size:20px}
+.es{margin:-6px 0 0;font-size:15px;color:#B4B6D6;display:flex;gap:10px;align-items:center;font-style:italic}
+.es-tag{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.1em;padding:3px 6px;border-radius:5px;background:rgba(255,255,255,.12);color:#F4F1EA}
+.ex{padding:14px 18px}
+.ex-s{font-size:22px}
+.exs{gap:12px}
+.chap-lab{font-size:11px;letter-spacing:.02em}
+.chaps{gap:5px}
+.vbtn{padding:0 14px}
+.intro .hero{font-size:92px}
+.grad{background:linear-gradient(90deg,#6FD3FF,#B79CFF 35%,#FF8FC7 65%,#FFC857);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:gradmove 6s ease-in-out infinite alternate}
+@keyframes gradmove{to{background-position:100% 0}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:inherit}
+.intro .chips{justify-content:center;max-width:900px}
+.chip{padding:8px 16px;border-radius:999px;font-weight:700;font-size:17px;border:1.5px solid currentColor;background:rgba(255,255,255,.04)}
+.intro .chip{animation:floaty 4s ease-in-out infinite}
+.intro .chip:nth-child(2){animation-delay:-.7s}.intro .chip:nth-child(3){animation-delay:-1.4s}.intro .chip:nth-child(4){animation-delay:-2.1s}.intro .chip:nth-child(5){animation-delay:-2.8s}.intro .chip:nth-child(6){animation-delay:-3.5s}
+.toplink{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:999px;background:rgba(212,255,79,.12);border:1px solid rgba(212,255,79,.45);color:#D4FF4F;font-weight:700;font-size:14px;text-decoration:none}
+.toplink:hover{color:#101400;background:#D4FF4F}
+.topr{display:flex;align-items:center;gap:14px}
+/* which one? */
+.keyq{font-size:30px;font-weight:800;margin:18px 0 18px}
+.keyq span{background:#F4F1EA;color:#0B0D1F;padding:2px 14px;border-radius:12px;display:inline-block;transform:rotate(-1deg)}
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px}
+.vs-h{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:800;letter-spacing:.06em;text-align:center;padding:6px;border-bottom:4px solid currentColor}
+.vs-c{border-radius:20px;padding:16px 20px;background:rgba(255,255,255,.05);border:1.5px solid currentColor;display:flex;flex-direction:column;gap:8px;min-height:92px}
+.vs-l{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.vs-l b{font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.vs-s{font-size:22px;color:#F4F1EA;font-weight:500}
+/* diary & departures board */
+.widgets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.diary{background:#F4F1EA;color:#1B1B2F;border-radius:16px;padding:14px 18px;transform:rotate(-2deg);box-shadow:0 18px 40px rgba(0,0,0,.4);background-image:repeating-linear-gradient(#F4F1EA 0 33px,#d9d6ea 33px 34px)}
+.diary-h{font-weight:800;letter-spacing:.2em;font-size:13px;color:#C2410C;margin-bottom:6px}
+.diary-r{font-size:28px;line-height:34px;color:#1B1B2F}
+.diary-r span{font-size:22px;color:#7C3AED;margin-right:8px}
+.board{background:#0A0A12;border:2px solid #2A2D48;border-radius:14px;padding:12px 14px;font-family:'Courier New',monospace;color:#FFD84D;box-shadow:inset 0 0 30px rgba(0,0,0,.8)}
+.board-h{font-size:12px;letter-spacing:.3em;color:#B4B6D6;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-weight:700}
+.board-r{display:grid;grid-template-columns:62px 1fr auto;gap:8px;font-size:17px;font-weight:700;padding:6px 0;border-top:1px solid #1E2036;animation:flip .8s cubic-bezier(.3,1.4,.5,1) both}
+.board-r:nth-child(3){animation-delay:.25s}
+.board-r .ok{color:#D4FF4F;font-size:13px;align-self:center}
+@keyframes flip{from{transform:rotateX(90deg);opacity:0}to{transform:none;opacity:1}}
+/* time clauses */
+.clause{display:flex;align-items:stretch;gap:10px}
+.cl-box{flex:1;border-radius:18px;border:2px solid currentColor;padding:14px 16px;background:rgba(255,255,255,.05);text-align:center}
+.cl-t{font-size:13px;font-weight:800;letter-spacing:.14em}
+.cl-f{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:800;color:#F4F1EA;margin-top:6px}
+.cl-no{margin-top:6px;font-size:18px;font-weight:700}
+.cl-plus{font-size:40px;font-weight:800;color:#B4B6D6;align-self:center}
+.grow{transform-box:fill-box;transform-origin:left center;animation:grow 1.4s .5s cubic-bezier(.6,0,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hintrow{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+.hint.rec{color:#6ee7b7}
+.voicebox{display:flex;align-items:center;gap:8px;font-size:14px;color:#D5D3E6;font-weight:600}
+.voiceSel{height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(10,14,30,.8);color:#F4F1EA;padding:0 10px;font:500 14px 'DM Sans',sans-serif;max-width:300px}
+.ghost.small{height:40px;padding:0 14px;font-size:14px}
+.novoice{font-size:14px;color:#FDA4AF}
+.cta[disabled]{opacity:.6;cursor:progress}
+.intro{gap:14px}
+.intro .hero{font-size:84px}
+/* quiz & outro tweaks */
+.qcard{padding:26px 40px}
+.qs{font-size:36px}
+.opt{font-size:20px}
+.big{font-size:80px}
+.ctas{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.ctas-sub{display:flex;gap:10px}
+.cta-link{text-decoration:none}
+.practise{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:22px;background:rgba(212,255,79,.08);border:1.5px solid rgba(212,255,79,.4);margin-bottom:22px}
+.practise-t{font-size:16px;color:#D5D3E6;line-height:1.4}
+.practise-t b{color:#D4FF4F}
+</style>
+</head>
+<body>
+<div id="viewport">
+<div id="frame">
+<div class="app">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="grid-bg"></div>
+  <span class="star" style="left: 8%; top: 18%; animation-delay: -0.4s"></span>
+  <span class="star" style="left: 22%; top: 8%; animation-delay: -1.2s"></span>
+  <span class="star" style="left: 36%; top: 30%; animation-delay: -2.1s"></span>
+  <span class="star" style="left: 61%; top: 12%; animation-delay: -0.8s"></span>
+  <span class="star" style="left: 74%; top: 26%; animation-delay: -2.7s"></span>
+  <span class="star" style="left: 89%; top: 10%; animation-delay: -1.6s"></span>
+  <span class="star" style="left: 93%; top: 44%; animation-delay: -0.2s"></span>
+  <span class="star" style="left: 4%; top: 52%; animation-delay: -2.4s"></span>
+  <span class="star" style="left: 48%; top: 58%; animation-delay: -1.1s"></span>
+  <span class="star" style="left: 67%; top: 64%; animation-delay: -2.9s"></span>
+  <span class="star" style="left: 15%; top: 70%; animation-delay: -0.6s"></span>
+  <span class="star" style="left: 83%; top: 72%; animation-delay: -1.9s"></span>
+  <div class="vignette"></div>
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13"></path><path d="M13 6l6 6-6 6"></path><path d="M4 6v12"></path></svg>
+      </div>
+      <div>
+        <div class="brand-name disp">PRESENT LAB</div>
+        <div class="brand-sub">English grammar · ESO &amp; Bachillerato</div>
+      </div>
+    </div>
+    <div class="topr">
+      <a class="toplink" href="https://nuriacalvo-teacher.github.io/present-tenses/">Exercises
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+      <div class="credit">
+        <div class="mono-av disp">NC</div>
+        <div>
+          <div class="credit-t">An educational app by</div>
+          <div class="credit-n">Nuria Calvo</div>
+          <div class="credit-t">English teacher · IES Goya, Zaragoza</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <!-- ===== 0 · INTRO ===== -->
+    <section class="scene intro" data-scene="0">
+      <div class="rings"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div></div>
+      <div class="kicker">A narrated mini-lesson · 9 minutes</div>
+      <h1 class="hero disp"><span class="w w1">The four</span><br><span class="w w2">present</span> <span class="w w3 grad">tenses</span></h1>
+      <div class="chips">
+        <span class="chip sky">I work</span>
+        <span class="chip coral">I'm working</span>
+        <span class="chip violet">I've worked</span>
+        <span class="chip gold">I've been working</span>
+        <span class="chip lime">which one?</span>
+        <span class="chip pink">top mistakes</span>
+      </div>
+      <div class="by floaty rv on" data-b="-1">
+        <span class="by-t">An educational app made by</span>
+        <span class="by-n sig">Nuria Calvo</span>
+        <span class="by-sep"></span>
+        <span class="by-t">English teacher at <b style="color: #F4F1EA">IES Goya</b>, Zaragoza</span>
+      </div>
+      <div id="startBox" class="startbox">
+        <button class="btn cta halo" id="startBtn">
+          <span class="cta-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"></path></svg></span>
+          Start the lesson
+        </button>
+        <div class="hintrow">
+          <div class="hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>
+            <span id="hintText">Turn your sound on — the lesson is narrated in English</span>
+          </div>
+          <div id="voiceBox" class="voicebox" hidden>
+            <label for="voicePick">Voice</label>
+            <select id="voicePick" class="voiceSel"></select>
+            <button class="btn ghost small" id="testVoice" type="button">Test voice</button>
+          </div>
+        </div>
+        <div id="noVoiceMsg" class="novoice" hidden>No English voice was found on this device. The subtitles will play instead.</div>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="1">
+      <div class="wipe sky"></div>
+      <div class="cols">
+        <div class="col">
+          <div class="kicker">Chapter 01 · Routines, facts &amp; states</div>
+          <h2 class="ttl disp"><span class="sky">Present simple</span></h2>
+          <div class="formula rv" data-b="1"><span class="pill fill-sky">he / she / it</span><span class="plus">+</span><span class="pill sky">verb + s</span></div>
+          <p class="meaning rv" data-b="1"><b>Routines</b>, habits, <b>general truths</b>, timetables and states.</p>
+          <p class="es rv" data-b="1"><span class="es-tag">ES</span>me levanto a las siete · el agua se congela a 0 °C</p>
+          <div class="tl rv" data-b="1">
+              <svg width="514" height="140" viewBox="0 0 520 140">
+                <line x1="20" y1="100" x2="498" y2="100" stroke="rgba(255,255,255,.3)" stroke-width="2"></line>
+                <path d="M490 94 L500 100 L490 106" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"></path>
+                <text x="20" y="130" class="svgt" fill="#B4B6D6">PAST</text>
+                <text x="498" y="130" text-anchor="end" class="svgt" fill="#B4B6D6">FUTURE</text><line x1="260" y1="26" x2="260" y2="112" stroke="#F4F1EA" stroke-width="2" stroke-dasharray="4 5"></line><text x="260" y="130" text-anchor="middle" class="svgt" fill="#F4F1EA">NOW</text><circle class="pop" cx="60" cy="66" r="11" fill="#6FD3FF" style="animation-delay: 0.3s"></circle><circle class="pop" cx="140" cy="66" r="11" fill="#6FD3FF" style="animation-delay: 0.6s"></circle><circle class="pop" cx="220" cy="66" r="11" fill="#6FD3FF" style="animation-delay: 0.9s"></circle><circle class="pop" cx="300" cy="66" r="11" fill="#6FD3FF" style="animation-delay: 1.2s"></circle><circle class="pop" cx="380" cy="66" r="11" fill="#6FD3FF" style="animation-delay: 1.5s"></circle><circle class="pop" cx="460" cy="66" r="11" fill="#6FD3FF" style="animation-delay: 1.8s"></circle><text x="260" y="20" text-anchor="middle" class="svgt" fill="#6FD3FF">EVERY DAY · ALWAYS · NEVER</text>
+              </svg>
+            </div>
+        </div>
+        <div class="exs">
+          <div class="ex  rv" data-b="1">
+              <span class="ex-tag ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"></path><path d="M3 11V9a3 3 0 0 1 3-3h15"></path><path d="M7 22l-4-4 4-4"></path><path d="M21 13v2a3 3 0 0 1-3 3H3"></path></svg></span>
+              <div><div class="ex-lab">Routine · general truth</div><div class="ex-s">I <b class="k sky">get</b> up at seven every day.<br>Water <b class="k sky">freezes</b> at zero degrees.</div></div>
+            </div><div class="ex warn rv" data-b="2">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">He · she · it → add -s</div><div class="ex-s"><span class="strike">My sister play the piano.</span></div><div class="ex-n">My sister <b class="k sky">plays</b> the piano.</div></div>
+            </div><div class="ex warn rv" data-b="3">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">do / does → no -s</div><div class="ex-s"><span class="strike">Tom doesn’t likes coffee.</span></div><div class="ex-n">Tom <b class="k sky">doesn’t like</b> coffee. · <b class="k sky">Does</b> she live here?</div></div>
+            </div><div class="ex  rv" data-b="4">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+              <div><div class="ex-lab">always · usually · never</div><div class="ex-s">I <b class="k sky">always</b> read at night.<br>She <b class="k sky">is never</b> late.</div></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="2">
+      <div class="wipe coral"></div>
+      <div class="cols">
+        <div class="col">
+          <div class="kicker">Chapter 02 · Happening now</div>
+          <h2 class="ttl disp"><span class="coral">Present continuous</span></h2>
+          <div class="formula rv" data-b="1"><span class="pill fill-coral">am / is / are</span><span class="plus">+</span><span class="pill coral">verb-ing</span></div>
+          <p class="meaning rv" data-b="2">Actions <b>in progress</b>: right now, these days, and <b>fixed plans</b>.</p>
+          <p class="es rv" data-b="2"><span class="es-tag">ES</span>está lloviendo · estos días estoy leyendo un libro</p>
+          <div class="tl rv" data-b="2">
+              <svg width="514" height="140" viewBox="0 0 520 140">
+                <line x1="20" y1="100" x2="498" y2="100" stroke="rgba(255,255,255,.3)" stroke-width="2"></line>
+                <path d="M490 94 L500 100 L490 106" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"></path>
+                <text x="20" y="130" class="svgt" fill="#B4B6D6">PAST</text>
+                <text x="498" y="130" text-anchor="end" class="svgt" fill="#B4B6D6">FUTURE</text><line x1="260" y1="26" x2="260" y2="112" stroke="#F4F1EA" stroke-width="2" stroke-dasharray="4 5"></line><text x="260" y="130" text-anchor="middle" class="svgt" fill="#F4F1EA">NOW</text><circle class="pulse" cx="260" cy="66" r="14" fill="#FF7A59" opacity=".45"></circle><path class="draw" d="M170 66 L350 66" stroke="#FF7A59" stroke-width="10" stroke-linecap="round" fill="none"></path><text x="260" y="20" text-anchor="middle" class="svgt" fill="#FF7A59">IN PROGRESS · AROUND NOW</text>
+              </svg>
+            </div>
+        </div>
+        <div class="exs">
+          <div class="ex  rv" data-b="2">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+              <div><div class="ex-lab">Right now</div><div class="ex-s">Look! It<b class="k coral">’s raining</b>!</div></div>
+            </div><div class="ex  rv" data-b="3">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+              <div><div class="ex-lab">Temporary · these days</div><div class="ex-s">I<b class="k coral">’m reading</b> a great book these days.</div></div>
+            </div><div class="ex  rv" data-b="4">
+              <span class="ex-tag ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>
+              <div><div class="ex-lab">Fixed plan · change</div><div class="ex-s">We<b class="k coral">’re flying</b> to Rome on Friday.<br>The weather <b class="k coral">is getting</b> warmer.</div></div>
+            </div><div class="ex warn rv" data-b="5">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">Don’t forget be!</div><div class="ex-s"><span class="strike">She working now.</span></div><div class="ex-n">She <b class="k coral">is working</b> now.</div></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="3">
+      <div class="wipe violet"></div>
+      <div class="cols">
+        <div class="col">
+          <div class="kicker">Chapter 03 · The past that matters now</div>
+          <h2 class="ttl disp"><span class="violet">Present perfect</span></h2>
+          <div class="formula rv" data-b="1"><span class="pill fill-violet">have / has</span><span class="plus">+</span><span class="pill violet">past participle</span></div>
+          <p class="meaning rv" data-b="1">It connects the <b>past</b> with the <b>present</b>. We never say <b>when</b>.</p>
+          <p class="es rv" data-b="1"><span class="es-tag">ES</span>he estado en Londres · he perdido las llaves</p>
+          <div class="tl rv" data-b="1">
+              <svg width="514" height="140" viewBox="0 0 520 140">
+                <line x1="20" y1="100" x2="498" y2="100" stroke="rgba(255,255,255,.3)" stroke-width="2"></line>
+                <path d="M490 94 L500 100 L490 106" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"></path>
+                <text x="20" y="130" class="svgt" fill="#B4B6D6">PAST</text>
+                <text x="498" y="130" text-anchor="end" class="svgt" fill="#B4B6D6">FUTURE</text><line x1="400" y1="26" x2="400" y2="112" stroke="#F4F1EA" stroke-width="2" stroke-dasharray="4 5"></line><text x="400" y="130" text-anchor="middle" class="svgt" fill="#F4F1EA">NOW</text><circle class="pop" cx="130" cy="66" r="11" fill="#B79CFF" style="animation-delay: .4s"></circle><path class="draw" d="M142 66 C 220 16, 320 16, 386 60" stroke="#B79CFF" stroke-width="5" stroke-dasharray="10 9" fill="none" stroke-linecap="round"></path><g class="pop" style="animation-delay: 1.8s"><circle cx="400" cy="66" r="18" fill="#B79CFF"></circle><path d="M392 66 l6 6 l11 -12" stroke="#160F2E" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><text x="130" y="36" text-anchor="middle" class="svgt" fill="#B79CFF">SOME TIME</text><text x="290" y="20" text-anchor="middle" class="svgt" fill="#B79CFF">STILL MATTERS NOW</text>
+              </svg>
+            </div>
+        </div>
+        <div class="exs">
+          <div class="ex  rv" data-b="2">
+              <span class="ex-tag ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7z"></path></svg></span>
+              <div><div class="ex-lab">Experience · ever / never</div><div class="ex-s"><b class="k violet">Have</b> you ever <b class="k violet">eaten</b> sushi?</div></div>
+            </div><div class="ex  rv" data-b="3">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+              <div><div class="ex-lab">Result now · just</div><div class="ex-s">I<b class="k violet">’ve lost</b> my keys!<br>Your mum <b class="k violet">has just arrived</b>.</div></div>
+            </div><div class="ex  rv" data-b="4">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+              <div><div class="ex-lab">Up to now · for / since</div><div class="ex-s">We<b class="k violet">’ve lived</b> here <b class="k violet">for ten years</b>.<br>I<b class="k violet">’ve known</b> her <b class="k violet">since 2019</b>.</div></div>
+            </div><div class="note rv" data-b="5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4FF4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.5v.01"></path></svg><span><b>has been</b> to Paris → and came back · <b>has gone</b> to Paris → still there</span></div><div class="ex warn rv" data-b="6">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">Finished time → past simple</div><div class="ex-s"><span class="strike">I have seen him yesterday.</span></div><div class="ex-n">I <b class="k violet">saw</b> him yesterday.</div></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="4">
+      <div class="wipe gold"></div>
+      <div class="cols">
+        <div class="col">
+          <div class="kicker">Chapter 04 · How long?</div>
+          <h2 class="ttl disp"><span class="gold">Present perfect continuous</span></h2>
+          <div class="formula rv" data-b="1"><span class="pill fill-gold">have / has</span><span class="plus">+</span><span class="pill gold">been</span><span class="plus">+</span><span class="pill gold">verb-ing</span></div>
+          <p class="meaning rv" data-b="1"><b>How long</b> an activity has been going on — or an activity with a <b>visible effect</b>.</p>
+          <p class="es rv" data-b="1"><span class="es-tag">ES</span>llevo seis años estudiando inglés</p>
+          <div class="tl rv" data-b="1">
+              <svg width="514" height="140" viewBox="0 0 520 140">
+                <line x1="20" y1="100" x2="498" y2="100" stroke="rgba(255,255,255,.3)" stroke-width="2"></line>
+                <path d="M490 94 L500 100 L490 106" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"></path>
+                <text x="20" y="130" class="svgt" fill="#B4B6D6">PAST</text>
+                <text x="498" y="130" text-anchor="end" class="svgt" fill="#B4B6D6">FUTURE</text><line x1="400" y1="26" x2="400" y2="112" stroke="#F4F1EA" stroke-width="2" stroke-dasharray="4 5"></line><text x="400" y="130" text-anchor="middle" class="svgt" fill="#F4F1EA">NOW</text><circle class="pop" cx="90" cy="66" r="10" fill="#FFC857" style="animation-delay: .4s"></circle><path class="draw" d="M100 66 L400 66" stroke="#FFC857" stroke-width="8" stroke-dasharray="14 8" fill="none"></path><circle class="pulse" cx="400" cy="66" r="14" fill="#FFC857" opacity=".45"></circle><text x="90" y="36" text-anchor="middle" class="svgt" fill="#FFC857">STARTED</text><text x="300" y="36" text-anchor="middle" class="svgt" fill="#FFC857">… AND STILL GOING</text>
+              </svg>
+            </div>
+        </div>
+        <div class="exs">
+          <div class="ex  rv" data-b="1">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+              <div><div class="ex-lab">Duration · for / since / how long</div><div class="ex-s">I<b class="k gold">’ve been studying</b> English for six years.</div></div>
+            </div><div class="ex  rv" data-b="2">
+              <span class="ex-tag q"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+              <div><div class="ex-lab">Visible effect</div><div class="ex-s">Your hands are dirty! What <b class="k gold">have</b> you <b class="k gold">been doing</b>?</div></div>
+            </div><div class="ex warn rv" data-b="3">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">Quantity → perfect simple</div><div class="ex-s"><span class="strike">We have been writing five emails.</span></div><div class="ex-n">We <b class="k gold">have written</b> five emails.</div></div>
+            </div><div class="ex warn rv" data-b="4">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">State verbs → no continuous</div><div class="ex-s"><span class="strike">I have been knowing her for years.</span></div><div class="ex-n">I <b class="k gold">have known</b> her for years.</div></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="scene" data-scene="5">
+      <div class="wipe lime"></div>
+      <div class="kicker">Chapter 05 · Which one?</div>
+      <h2 class="ttl disp"><span class="sky">Simple</span> or <span class="coral">continuous</span>?</h2>
+      <div class="keyq disp rv" data-b="1">The trick: <span>look at the time words.</span></div>
+      <div class="vs">
+        <div class="vs-c sky rv" data-b="2">
+          <div class="vs-l"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"></path><path d="M3 11V9a3 3 0 0 1 3-3h15"></path><path d="M7 22l-4-4 4-4"></path><path d="M21 13v2a3 3 0 0 1-3 3H3"></path></svg> every day · usually · never → <b>simple</b></div>
+          <div class="vs-s">I usually <b class="k sky">get</b> up at seven.</div>
+        </div>
+        <div class="vs-c coral rv" data-b="2">
+          <div class="vs-l"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg> now · at the moment · Look! → <b>continuous</b></div>
+          <div class="vs-s">This week I<b class="k coral">’m getting</b> up at nine.</div>
+        </div>
+        <div class="vs-c violet rv" data-b="3">
+          <div class="vs-l"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7z"></path></svg> ever · already · yet · just → <b>perfect</b></div>
+          <div class="vs-s">We<b class="k violet">’ve seen</b> this film before.</div>
+        </div>
+        <div class="vs-c gold rv" data-b="3">
+          <div class="vs-l"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg> how long · for · since → <b>perfect continuous</b></div>
+          <div class="vs-s">It<b class="k gold">’s been raining</b> since Monday.</div>
+        </div>
+      </div>
+      <div class="vs-notes">
+        <div class="note rv" data-b="4"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4FF4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.5v.01"></path></svg><span><b>yesterday · last week · ago</b> → none of the presents: <b>past simple</b>! I <b>visited</b> my gran last weekend.</span></div>
+        <div class="note rv" data-b="5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4FF4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.5v.01"></path></svg><span><b>State verbs</b> (like, know, want) stay simple: She <b>doesn’t like</b> chocolate, but she<b>’s eating</b> a piece now.</span></div>
+      </div>
+    </section>
+    <section class="scene" data-scene="6">
+      <div class="wipe pink"></div>
+      <div class="cols">
+        <div class="col">
+          <div class="kicker">Chapter 06 · Top mistakes</div>
+          <h2 class="ttl disp"><span class="pink">Spot the mistake</span></h2>
+          <p class="meaning rv" data-b="0">The five mistakes that cost you <b>points</b> in the exam.</p>
+          <div class="chips rv" data-b="0"><span class="chip sky">-s</span><span class="chip coral">am / is / are</span><span class="chip lime">state verbs</span><span class="chip violet">participle</span><span class="chip pink">yesterday</span></div>
+          <p class="es rv" data-b="0"><span class="es-tag">ES</span>repasa siempre esto antes de entregar el examen</p>
+        </div>
+        <div class="exs">
+          <div class="ex warn rv" data-b="1">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">1 · Forgetting the -s</div><div class="ex-s"><span class="strike">He work in a bank.</span></div><div class="ex-n">He <b class="k sky">works</b> in a bank.</div></div>
+            </div><div class="ex warn rv" data-b="2">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">2 · Forgetting be</div><div class="ex-s"><span class="strike">They playing football now.</span></div><div class="ex-n">They <b class="k coral">are playing</b> football now.</div></div>
+            </div><div class="ex warn rv" data-b="3">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">3 · State verbs in -ing</div><div class="ex-s"><span class="strike">I am wanting a new phone.</span></div><div class="ex-n">I <b class="k lime">want</b> a new phone.</div></div>
+            </div><div class="ex warn rv" data-b="4">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">4 · Past instead of participle</div><div class="ex-s"><span class="strike">I have saw that film.</span></div><div class="ex-n">I have <b class="k violet">seen</b> that film.</div></div>
+            </div><div class="ex warn rv" data-b="5">
+              <span class="ex-tag bad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+              <div><div class="ex-lab">5 · A hidden yesterday</div><div class="ex-s"><span class="strike">I have gone to the cinema yesterday.</span></div><div class="ex-n">I <b class="k pink">went</b> to the cinema yesterday.</div></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== 7 · QUIZ ===== -->
+    <section class="scene quiz" data-scene="7">
+      <div class="wipe lime"></div>
+      <div class="kicker">Chapter 07 · Your turn</div>
+      <div class="qdots" id="qdots"></div>
+      <div class="qcard">
+        <div class="confetti" id="confetti" hidden></div>
+        <div class="qnum">Question <span id="qNum">1</span> of <span id="qTot">6</span></div>
+        <div class="qs disp"><span id="qBefore"></span><span class="blank" id="blank">&nbsp;</span><span id="qAfter"></span></div>
+      </div>
+      <div class="opts" id="opts"></div>
+      <div class="fb" id="fb" hidden>
+        <div class="fb-t"><b id="fbHead"></b> <span id="fbWhy"></span></div>
+        <button class="btn nextq" id="nextQ"><span id="nextLabel">Next question</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== 8 · WRAP-UP ===== -->
+    <section class="scene" data-scene="8">
+      <div class="wipe violet"></div>
+      <div class="outro">
+        <div>
+          <div class="kicker">Lesson complete</div>
+          <h2 class="big disp" id="scoreHead">Great job!</h2>
+          <div class="recap rv" data-b="1">
+            <span class="pill sky">present simple</span>
+            <span class="pill coral">present continuous</span>
+            <span class="pill violet">present perfect</span>
+            <span class="pill gold">perfect continuous</span>
+            <span class="pill lime">simple or continuous</span>
+            <span class="pill pink">top mistakes</span>
+          </div>
+          <div class="practise rv" data-b="2">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D4FF4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+            <div class="practise-t"><b>Now practise!</b> 6 modules · 3 levels each: choose the right option, fill in the gap and translate into English.</div>
+          </div>
+          <div class="ctas">
+            <a class="btn cta halo cta-link" href="https://nuriacalvo-teacher.github.io/present-tenses/">
+              <span class="cta-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+              Go to the exercises
+            </a>
+            <div class="ctas-sub">
+              <button class="btn ghost small" id="replay">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 4v5h5"></path></svg>
+                Watch again
+              </button>
+              <button class="btn ghost small" id="retryQuiz">Retry the quiz</button>
+            </div>
+          </div>
+        </div>
+        <div class="ocard">
+          <div class="ring-wrap">
+            <svg width="170" height="170" viewBox="0 0 170 170">
+              <circle cx="85" cy="85" r="70" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"></circle>
+              <circle class="ring-arc" id="ringArc" cx="85" cy="85" r="70" fill="none" stroke="#D4FF4F" stroke-width="12" stroke-linecap="round" stroke-dasharray="439.8" style="stroke-dashoffset: 439.8" transform="rotate(-90 85 85)"></circle>
+            </svg>
+            <div class="ring-n"><b class="disp"><span id="score">0</span>/<span id="scoreTot">6</span></b><span class="credit-t">quiz score</span></div>
+          </div>
+          <div class="credit-t" style="font-size: 14px">This educational app was created by</div>
+          <div class="sign sig">Nuria Calvo</div>
+          <div class="credit-t" style="font-size: 14px; margin-top: -6px">English teacher at <b style="color: #F4F1EA">IES Goya</b> · Zaragoza</div>
+          <svg class="sign-line" viewBox="0 0 220 14"><path class="draw" d="M4 9 C 60 2, 120 14, 216 5" stroke="#D4FF4F" stroke-width="3" fill="none" stroke-linecap="round"></path></svg>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="caption" aria-live="polite">
+    <span class="cc" id="ccWho">CC</span>
+    <span id="caption">Tip: turn your sound on. This lesson is narrated in English. Press “Start the lesson” to begin.</span>
+  </div>
+
+  <nav class="ctrl" aria-label="Lesson controls">
+    <button class="btn ib" id="prev" aria-label="Previous chapter">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6z"></path><path d="M20 5v14L9 12z"></path></svg>
+    </button>
+    <button class="btn play halo" id="play" aria-label="Play or pause">
+      <svg id="icPause" style="display: none" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6z"></path><path d="M14 4h4v16h-4z"></path></svg>
+      <svg id="icPlay" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"></path></svg>
+    </button>
+    <button class="btn ib" id="next" aria-label="Next chapter">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2z"></path><path d="M4 5v14l11-7z"></path></svg>
+    </button>
+    <div class="chaps" id="chaps"></div>
+    <button class="btn vbtn" id="voice" aria-label="Toggle English narration">
+      <span class="eq" id="eq"><span></span><span></span><span></span><span></span><span></span></span>
+      <span id="voiceLabel">Voice on</span>
+    </button>
+  </nav>
+</div>
+</div>
+</div>
+
+<script>
+/* =====================================================================
+   GUION DEL VÍDEO
+   Todo lo que se dice y se lee en pantalla sale de aquí. Si cambias una
+   frase, vuelve a grabar (tools/README.md): las frases que no se regraben
+   se dicen con la voz del navegador hasta entonces.
+
+   Cada capítulo es una lista de pasos (cada paso enciende sus animaciones,
+   las de data-b). Un paso es una frase o una lista de frases seguidas:
+     - "Texto"           lo dice la profesora
+     - "S: Texto"        lo dice el alumno
+     - "[alegre] Texto"  lo de los corchetes es cómo decirlo: no se lee ni
+                         sale en pantalla, solo lo usa la grabación.
+   ===================================================================== */
+var LESSON = {
+  "scenes": [
+    [
+      [
+        "Hello, and welcome to Present Lab!",
+        "S: [cheerful, waving hello] Hi everyone!"
+      ],
+      "This educational app has been made by Nuria Calvo, an English teacher at IES Goya, Zaragoza.",
+      [
+        "In English, there are four present tenses, and each one tells us something different.",
+        "S: [surprised] Four? I thought there was only one present!",
+        "[firm, smiling] Four! And by the end of this lesson, you'll know them all."
+      ],
+      [
+        "Today you'll learn the present simple, the present continuous, the present perfect and the present perfect continuous. And how to choose the right one!",
+        "S: [excited] Let's go!"
+      ]
+    ],
+    [
+      "Chapter one: the present simple!",
+      [
+        "We use it for routines, habits, general truths, timetables and states.",
+        "S: [trying it out] Like... I get up at seven every day?",
+        "Exactly! And water freezes at zero degrees."
+      ],
+      [
+        "Watch out for he, she and it: the verb takes an s.",
+        "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] My sister play the piano.",
+        "[firm, correcting at once] No! My sister plays. Add the s!",
+        "S: [repeating carefully] My sister plays the piano."
+      ],
+      [
+        "In negatives and questions, we use do and does.",
+        "S: [unsure, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] Tom doesn't likes coffee.",
+        "[firm] Careful! After doesn't, no s: Tom doesn't like coffee. And in questions: does she live here?"
+      ],
+      [
+        "Words like always, usually and never go before the verb, but after be.",
+        "S: [trying it out] I always read at night. And she is never late!",
+        "Perfect!"
+      ]
+    ],
+    [
+      "Chapter two: the present continuous!",
+      [
+        "The form is: am, is or are, plus a verb ending in -ing.",
+        "S: [checking] I'm working, she's working, they're working?",
+        "That's it!"
+      ],
+      [
+        "We use it for actions happening right now, at this moment.",
+        "S: [pointing out of the window] Look! It's raining!",
+        "Right! It's happening now."
+      ],
+      [
+        "And for temporary situations: things happening these days, but not exactly now.",
+        "S: [casual] I'm reading a great book these days."
+      ],
+      [
+        "We also use it for fixed plans in the future, and for changes in progress.",
+        "S: [excited] We're flying to Rome on Friday!",
+        "And the weather is getting warmer!"
+      ],
+      [
+        "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] She working now.",
+        "[firm, stopping the student] Stop! Don't forget the verb be. She is working.",
+        "S: [proud] She is working. Easy!"
+      ]
+    ],
+    [
+      "Chapter three: the present perfect!",
+      [
+        "The form is: have or has, plus the past participle. It connects the past with the present, and we never say when.",
+        "S: [checking] I have seen, she has seen?",
+        "Exactly!"
+      ],
+      [
+        "We use it for life experiences, often with ever and never.",
+        "S: [curious] Have you ever eaten sushi?",
+        "[cheerful] Yes, I have! Many times."
+      ],
+      [
+        "We also use it for a result we can see now, and with just, for something that has just happened.",
+        "S: [panicking] Oh no! I've lost my keys!",
+        "[calm] Don't panic. Your mum has just arrived."
+      ],
+      [
+        "And for situations up to now, with for and since. For a period of time, since a starting point.",
+        "S: [thinking it through] We've lived here for ten years. And I've known her since 2019.",
+        "Perfect!"
+      ],
+      [
+        "Been or gone? He has been to Paris: he went and came back. He has gone to Paris: he's still there.",
+        "S: [understanding] So my brother has gone to the shops. He isn't here!"
+      ],
+      [
+        "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have seen him yesterday.",
+        "[firm] No! With a finished time, like yesterday or last week, never use the present perfect. Say: I saw him yesterday.",
+        "S: [repeating carefully] I saw him yesterday."
+      ]
+    ],
+    [
+      "Chapter four: the present perfect continuous!",
+      [
+        "The form is: have or has, plus been, plus a verb ending in -ing. It tells us how long an activity has been going on.",
+        "S: [proud] I've been studying English for six years!",
+        "[impressed] Great! For, since and how long are the clues."
+      ],
+      [
+        "We also use it for a recent activity with a visible effect.",
+        "S: [surprised] Your hands are dirty! What have you been doing?",
+        "[laughing] I've been painting all morning!"
+      ],
+      [
+        "But if there's a quantity, use the present perfect simple.",
+        "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] We have been writing five emails.",
+        "[firm] No! There's a quantity, five emails. Say: we have written five emails."
+      ],
+      [
+        "And state verbs like know, like or want never go in the continuous.",
+        "S: [unsure, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have been knowing her for years.",
+        "[firm] Careful! I have known her for years."
+      ]
+    ],
+    [
+      "Chapter five: simple or continuous?",
+      [
+        "S: [confused] Simple, continuous, perfect... I always mix them up!",
+        "[energetic] Here's the trick: look at the time words."
+      ],
+      [
+        "Every day, usually and never take the present simple. Now, at the moment and look take the present continuous.",
+        "S: [trying it out] I usually get up at seven, but this week I'm getting up at nine!",
+        "Perfect!"
+      ],
+      [
+        "Ever, already, yet and just take the present perfect. How long, for and since with an activity take the present perfect continuous.",
+        "S: [thinking] We've seen this film before. And it's been raining since Monday."
+      ],
+      [
+        "And yesterday, last week or ago? None of the presents: that's the past simple!",
+        "S: [surprised] So: I visited my gran last weekend."
+      ],
+      [
+        "And remember: state verbs, like like, know and want, stay simple.",
+        "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] She isn't liking chocolate.",
+        "[firm] Not quite! She doesn't like chocolate, but she's eating a piece right now."
+      ]
+    ],
+    [
+      [
+        "Chapter six: the top five mistakes. Let's check them one by one!",
+        "S: [determined] Bring them on!"
+      ],
+      [
+        "Mistake number one: forgetting the s.",
+        "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] He work in a bank.",
+        "[firm] He works! He, she, it: add the s."
+      ],
+      [
+        "Mistake number two: forgetting be in the continuous.",
+        "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] They playing football now.",
+        "[firm] They are playing! Am, is or are, always."
+      ],
+      [
+        "Mistake number three: state verbs in the continuous.",
+        "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I am wanting a new phone.",
+        "[firm] No! I want a new phone."
+      ],
+      [
+        "Mistake number four: the past instead of the participle after have.",
+        "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have saw that film.",
+        "[firm] I have seen that film. Have, plus the past participle!"
+      ],
+      [
+        "And mistake number five: a hidden yesterday.",
+        "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have gone to the cinema yesterday.",
+        "[firm] Yesterday is finished! I went to the cinema yesterday.",
+        "S: [proud] Got it! No more mistakes!"
+      ]
+    ],
+    [
+      [
+        "Time for a challenge! Choose the right tense for each sentence.",
+        "S: [determined, excited] I'm ready!"
+      ]
+    ],
+    [
+      [
+        "[delighted, proud] Fantastic work!",
+        "S: [proud] Thanks!"
+      ],
+      "Now you know the four present tenses: the present simple, the present continuous, the present perfect and the present perfect continuous.",
+      [
+        "This educational app was made by Nuria Calvo, an English teacher at IES Goya, Zaragoza. Now it's your turn: click the button and practise with the exercises.",
+        "S: [cheerful, waving goodbye] See you in class!"
+      ]
+    ]
+  ],
+  "quiz": [
+    {
+      "before": "My sister ",
+      "after": " the piano every afternoon.",
+      "spoken": "My sister, blank, the piano every afternoon.",
+      "opts": [
+        "plays",
+        "play",
+        "is playing"
+      ],
+      "a": 0,
+      "why": "It's a routine, and my sister is third person, so we use the present simple with an s: plays."
+    },
+    {
+      "before": "Listen! The neighbours ",
+      "after": " again.",
+      "spoken": "Listen! The neighbours, blank, again.",
+      "opts": [
+        "argue",
+        "are arguing",
+        "have argued"
+      ],
+      "a": 1,
+      "why": "Listen! tells us it's happening right now, so we use the present continuous."
+    },
+    {
+      "before": "I ",
+      "after": " him at the party last Saturday.",
+      "spoken": "I, blank, him at the party last Saturday.",
+      "opts": [
+        "have seen",
+        "see",
+        "saw"
+      ],
+      "a": 2,
+      "why": "Last Saturday is a finished time, so we use the past simple, not the present perfect."
+    },
+    {
+      "before": "I ",
+      "after": " English for six years.",
+      "spoken": "I, blank, English for six years.",
+      "opts": [
+        "am studying",
+        "have been studying",
+        "study"
+      ],
+      "a": 1,
+      "why": "It's the duration of an activity with for, so we use have been, plus -ing."
+    },
+    {
+      "before": "I ",
+      "after": " her since we were at school.",
+      "spoken": "I, blank, her since we were at school.",
+      "opts": [
+        "have been knowing",
+        "am knowing",
+        "have known"
+      ],
+      "a": 2,
+      "why": "Know is a state verb, so it never goes in the continuous: I have known her."
+    },
+    {
+      "before": "The shop ",
+      "after": " yet. We'll have to wait.",
+      "spoken": "The shop, blank, yet. We'll have to wait.",
+      "opts": [
+        "hasn't opened",
+        "doesn't open",
+        "isn't opening"
+      ],
+      "a": 0,
+      "why": "Yet goes with the present perfect: the shop hasn't opened yet."
+    }
+  ]
+};
+
+(function () {
+  "use strict";
+
+  var frame = document.getElementById("frame");
+  function fit() {
+    var s = Math.min(window.innerWidth / 1280, window.innerHeight / 800);
+    frame.style.transform = "scale(" + s + ")";
+    frame.style.borderRadius = s < 1 ? "0" : "24px";
+  }
+  window.addEventListener("resize", fit); fit();
+
+  var SCRIPT = LESSON.scenes, QUIZ = LESSON.quiz;
+  var QUIZ_SCENE = 7, LAST = SCRIPT.length - 1;
+  var LABELS = ["Intro", "Simple", "Continuous", "Perfect", "Perf. cont.", "Which one?", "Mistakes", "Quiz", "Practise"];
+
+  /* Un paso del guion -> sus frases: quién habla, qué sale en pantalla y el
+     texto tal cual (es lo que guarda el manifest de la grabación). */
+  function turnsOf(beat) {
+    return (typeof beat === "string" ? [beat] : beat).map(function (raw) {
+      var who = /^S:\s*/.test(raw) ? "S" : "T";
+      var text = raw.replace(/^S:\s*/, "").replace(/^\[[^\]]*\]\s*/, "");
+      return { who: who, text: text, raw: raw };
+    });
+  }
+  /* Los textos que se dicen, con la misma clave que usa la grabación. */
+  function questionText(i) { return "Question " + (i + 1) + ". " + QUIZ[i].spoken; }
+  function feedbackText(i, ok) {
+    var q = QUIZ[i];
+    return ok ? "Correct! " + q.why : "Not quite. The right answer is: " + q.opts[q.a] + ". " + q.why;
+  }
+  /* La frase con la opción j puesta: la dice el alumno al elegirla. */
+  function answerText(i, j) {
+    var q = QUIZ[i];
+    return (q.before + q.opts[j] + q.after).replace(/\s*\u2014\s*/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function allClips() {
+    var out = [];
+    SCRIPT.forEach(function (L, i) {
+      L.forEach(function (b, j) {
+        turnsOf(b).forEach(function (u, k) { out.push(["s" + i + "_" + j + "_" + k, u.raw]); });
+      });
+    });
+    QUIZ.forEach(function (q, i) {
+      out.push(["q" + i, questionText(i)]);
+      out.push(["q" + i + "_ok", feedbackText(i, true)]);
+      out.push(["q" + i + "_no", feedbackText(i, false)]);
+      q.opts.forEach(function (_, j) { out.push(["q" + i + "_a" + j, answerText(i, j)]); });
+    });
+    return out;
+  }
+
+  /* ---------- qué dispositivo tenemos delante ---------- */
+  var UA_STR = navigator.userAgent || "";
+  var IS_IOS = /iPad|iPhone|iPod/.test(UA_STR) ||
+               (/Macintosh/.test(UA_STR) && navigator.maxTouchPoints > 1);   /* iPad en modo escritorio */
+  var IS_MAC = /Macintosh/.test(UA_STR) && !IS_IOS;
+  var IS_APPLE = IS_IOS || IS_MAC;
+  var IS_ANDROID = /Android/.test(UA_STR);
+  /* El parche de pause()+resume() es SOLO para Chrome de escritorio, que corta
+     las frases largas a los 15 s. En iOS parte las frases y suena metálico. */
+  var NEEDS_KEEPALIVE = /Chrome|Chromium|Edg\//.test(UA_STR) && !IS_IOS && !IS_ANDROID;
+  /* En Apple, velocidad 1.0: las voces compactas se deforman al cambiarla.
+     El tono (pitch) no se toca nunca. */
+  var RATE = IS_APPLE ? 1 : 0.95;
+
+  /* ---------- narración grabada ----------------------------------------
+     Si existe audio/manifest.json, cada frase sale de un MP3 grabado con voces
+     neuronales y suena igual en cualquier aparato. El manifest guarda el texto
+     de cada clip: si el guion ha cambiado y no se ha regrabado, esa frase pasa
+     sola a la voz del navegador. Sin manifest, todo va con la voz del
+     navegador. Se graba con tools/build_video.py (ver tools/README.md). */
+  var AUDIO_DIR = "audio/";
+  var clips = {};
+  var manifestDone = false;
+  function loadManifest(cb) {
+    var fin = function () { if (!manifestDone) { manifestDone = true; cb(); } };
+    if (typeof fetch === "undefined") { fin(); return; }
+    setTimeout(fin, 4000);                     /* red lenta: no bloquear el botón */
+    try {
+      fetch(AUDIO_DIR + "manifest.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) { if (j && j.clips) clips = j.clips; fin(); })
+        .catch(fin);
+    } catch (e) { fin(); }
+  }
+  function clipFor(key, text) {
+    var e = clips[key];
+    return (e && e.f && e.t === text && window.Audio) ? e : null;
+  }
+  function hasRecording() {
+    var list = allClips();
+    for (var i = 0; i < list.length; i++) if (!clipFor(list[i][0], list[i][1])) return false;
+    return true;
+  }
+
+  /* ---------- voz del navegador (respaldo) ----------------------------
+     Copiado de BRIT: se puntúa la calidad del motor, se prefiere el acento
+     británico y se apartan las voces "de broma" de Apple. Se identifican
+     por voiceURI (en iOS la compacta y la mejorada se llaman igual) y las de
+     broma se filtran también por voiceURI, que Apple nunca traduce. */
+  var NOVELTY_VOICE = /\b(bad ?news|good ?news|bahh|bells|boing|bubbles|cellos|deranged|jester|pipe ?organ|organ|princess|trinoids|whisper|zarvox|wobble|superstar|hysterical|albert|junior|kathy|ralph|bruce|rocko|shelley|grandma|grandpa|eddy|flo|sandy|reed|fred|bufón|bufon|burbujas|campanas|violonchelos|trastornad[oa]|histéric[oa]|histeric[oa]|órgano|organo|princesa|susurro|bamboleo|superestrella|abuel[oa]|malas ?noticias|buenas ?noticias)\b/i;
+  function isNovelty(v) { return !!v && (NOVELTY_VOICE.test(v.name || "") || NOVELTY_VOICE.test(v.voiceURI || "")); }
+  function vKey(v) { return (v && (v.voiceURI || (v.name + "|" + v.lang))) || ""; }
+  function vQuality(v) {
+    var both = (v.name || "") + " " + (v.voiceURI || "");
+    if (/premium|siri_|\bsiri\b/i.test(both)) return 3;
+    if (/enhanced|neural|natural|wavenet|studio|journey/i.test(both)) return 3;
+    if (/\bcompact\b|\.compact\.|-compact|eloquence|espeak|pico|festival|flite|mbrola/i.test(both)) return 0;
+    if (/google/i.test(both)) return 3;
+    return 2;
+  }
+  function vScore(v) {
+    var name = v.name || "", both = name + " " + (v.voiceURI || ""), lang = (v.lang || "").replace("_", "-"), s = 0, q = vQuality(v);
+    s += (q === 3 ? 90 : q === 0 ? -70 : 0);
+    if (isNovelty(v)) s -= 300;
+    if (/google/i.test(both)) s += 40; else if (/microsoft/i.test(both)) s += 28; else if (/apple|com\.apple/i.test(both)) s += 20;
+    if (/^en-GB/i.test(lang)) s += 45; else if (/^en-(IE|AU|NZ|ZA)/i.test(lang)) s += 26; else if (/^en-US/i.test(lang)) s += 20; else if (/^en/i.test(lang)) s += 10; else s -= 1000;
+    if (/libby|sonia|ryan|thomas|maisie|abbi|bella|olivia|aria|jenny|guy|hazel/i.test(name)) s += 14;
+    if (/daniel|serena|kate|oliver|stephanie|arthur|martha|karen|moira|alex\b/i.test(name)) s += 10;
+    if (/online/i.test(both) && navigator.onLine === false) s -= 200;
+    if (v.localService) s += 3;
+    return s;
+  }
+  function englishVoices() {
+    var all = [];
+    try { all = (window.speechSynthesis && window.speechSynthesis.getVoices()) || []; } catch (e) {}
+    all = all.filter(function (v) { return /^en/i.test((v.lang || "").replace("_", "-")); });
+    var usable = all.filter(function (v) { return !isNovelty(v); });
+    return (usable.length ? usable : all).sort(function (a, b) { return vScore(b) - vScore(a); });
+  }
+  function storageGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
+  function storageSet(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+  var VOICE_KEY = "present_video_voice";
+  var voiceList = [], voicesChecked = false;
+  function chosenVoice() {
+    var want = storageGet(VOICE_KEY) || "";
+    for (var i = 0; i < voiceList.length; i++) if (vKey(voiceList[i]) === want) return voiceList[i];
+    return voiceList[0] || null;
+  }
+  function loadVoices() {
+    voiceList = englishVoices();
+    paintVoiceUI();
+  }
+
+  /* ---------- estado ---------- */
+  var st = { scene: 0, beat: -1, playing: false, started: false, speaking: false, voiceOn: true, qi: 0, answers: {} };
+  var tok = 0, wd = null, keepAlive = null, warmed = false;
+  var audioEl = window.Audio ? new Audio() : null;     /* uno solo: iOS lo desbloquea con el primer toque */
+  if (audioEl) {
+    audioEl.preload = "auto";
+    try { audioEl.preservesPitch = true; audioEl.mozPreservesPitch = true; audioEl.webkitPreservesPitch = true; } catch (e) {}
+  }
+  var $ = function (id) { return document.getElementById(id); };
+  var scenes = [];
+  document.querySelectorAll("[data-scene]").forEach(function (s) { scenes[Number(s.dataset.scene)] = s; });
+
+  function warm() {
+    /* iOS solo deja hablar al navegador si la primera vez sale de un toque */
+    if (warmed || !window.speechSynthesis || !window.SpeechSynthesisUtterance) return;
+    warmed = true;
+    try { var u = new SpeechSynthesisUtterance(" "); u.volume = 0; window.speechSynthesis.speak(u); } catch (e) {}
+  }
+  function stopKeepAlive() { if (keepAlive) { clearInterval(keepAlive); keepAlive = null; } }
+
+  /* opt: { raw: texto del guion (con "S:" y corchetes), who: "T" o "S",
+            gap: pausa al terminar, en ms } */
+  function say(text, done, key, opt) {
+    opt = opt || {};
+    var t = ++tok, fin = false, gap = opt.gap === undefined ? 550 : opt.gap;
+    clearTimeout(wd); stopKeepAlive();
+    function end() {
+      if (fin || t !== tok) return;
+      fin = true; clearTimeout(wd); stopKeepAlive();
+      st.speaking = false; render();
+      if (done) setTimeout(function () { if (t === tok) done(); }, gap);
+    }
+    $("caption").textContent = text;
+    var cc = $("ccWho");
+    cc.textContent = opt.who === "S" ? "STUDENT" : opt.who === "T" ? "TEACHER" : "CC";
+    cc.classList.toggle("student", opt.who === "S");
+    st.speaking = true; render();
+    var words = text.split(/\s+/).length;
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
+    if (audioEl) { try { audioEl.pause(); } catch (e) {} }
+
+    var rec = st.voiceOn ? clipFor(key, opt.raw || text) : null;
+    if (rec && audioEl) {
+      var fellBack = false;
+      var fallback = function () {
+        if (fellBack || fin || t !== tok) return;
+        fellBack = true;
+        speakDevice(text, t, end, words);
+      };
+      audioEl.onended = end;
+      audioEl.onerror = fallback;
+      audioEl.src = AUDIO_DIR + rec.f;
+      var p;
+      try { p = audioEl.play(); } catch (e) { fallback(); return; }
+      if (p && p.catch) p.catch(fallback);
+      wd = setTimeout(end, (rec.d || words * 0.45) * 1000 + 4000);   /* por si el navegador no avisa */
+      return;
+    }
+    speakDevice(text, t, end, words);
+  }
+
+  function speakDevice(text, t, end, words) {
+    var sy = window.speechSynthesis;
+    var est = (words * 0.37 + 0.9) / RATE;
+    clearTimeout(wd);
+    if (st.voiceOn && sy && window.SpeechSynthesisUtterance && voiceList.length) {
+      try {
+        sy.cancel();
+        var u = new SpeechSynthesisUtterance(text), v = chosenVoice();
+        try { if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = "en-GB"; } } catch (e) { u.lang = "en-GB"; }
+        u.rate = RATE; u.pitch = 1; u.volume = 1;
+        u.onend = end;
+        u.onerror = function () { if (t !== tok) return; wd = setTimeout(end, est * 1000); };
+        window.__utter = u;                           /* Chrome pierde el onend si se recoge la basura */
+        sy.speak(u);
+        if (NEEDS_KEEPALIVE) {
+          keepAlive = setInterval(function () {
+            if (t !== tok) { stopKeepAlive(); return; }
+            if (sy.speaking && !sy.paused) { sy.pause(); sy.resume(); }
+          }, 9000);
+        }
+        wd = setTimeout(end, est * 2000 + 3000);
+      } catch (e) { wd = setTimeout(end, est * 1000); }
+    } else {
+      /* sin voz: solo subtítulos, con tiempo para leerlos */
+      wd = setTimeout(end, est * 1000 + 600);
+    }
+  }
+  function hush() {
+    tok++; clearTimeout(wd); stopKeepAlive();
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
+    if (audioEl) { try { audioEl.pause(); } catch (e) {} }
+    st.speaking = false;
+  }
+
+  /* ---------- flujo ---------- */
+  function showScene(i) {
+    scenes.forEach(function (s) { s.hidden = true; });
+    scenes[i].querySelectorAll("[data-b]").forEach(function (el) {
+      if (Number(el.dataset.b) >= 0) el.classList.remove("on");
+    });
+    void document.body.offsetWidth;
+    scenes[i].hidden = false;
+    st.scene = i;
+  }
+  function runBeat(scene, beat, turn) {
+    turn = turn || 0;
+    if (st.scene !== scene) showScene(scene);
+    st.beat = beat; render();
+    var turns = turnsOf(SCRIPT[scene][beat]), u = turns[turn], more = turn + 1 < turns.length;
+    say(u.text, function () {
+      if (more) runBeat(scene, beat, turn + 1);
+      else if (beat + 1 < SCRIPT[scene].length) runBeat(scene, beat + 1);
+      else sceneDone(scene);
+    }, "s" + scene + "_" + beat + "_" + turn, { raw: u.raw, who: u.who, gap: more ? 220 : 550 });
+  }
+  function sceneDone(scene) {
+    if (scene < QUIZ_SCENE) runBeat(scene + 1, 0);
+    else if (scene === QUIZ_SCENE) askQuestion(st.qi);
+    else { st.playing = false; render(); }
+  }
+  function askQuestion(qi) { say(questionText(qi), null, "q" + qi, { who: "T" }); }
+  function goTo(i) {
+    warm();
+    hush();
+    if (i === QUIZ_SCENE) { st.qi = 0; st.answers = {}; renderQuiz(); }
+    st.started = true; st.playing = true;
+    showScene(i);
+    runBeat(i, 0);
+  }
+  function pick(i) {
+    if (st.answers[st.qi] !== undefined) return;
+    var q = QUIZ[st.qi];
+    st.answers[st.qi] = i; st.started = true;
+    var ok = i === q.a;
+    renderQuiz();
+    var qi = st.qi;
+    /* primero el alumno dice la frase con lo que se ha elegido; luego la profesora corrige */
+    say(answerText(qi, i), function () {
+      say(feedbackText(qi, ok), null, "q" + qi + (ok ? "_ok" : "_no"), { who: "T" });
+    }, "q" + qi + "_a" + i, { who: "S", gap: 300 });
+  }
+  function nextQuestion() {
+    if (st.qi < QUIZ.length - 1) { st.qi++; renderQuiz(); askQuestion(st.qi); }
+    else goTo(LAST);
+  }
+  function togglePlay() {
+    warm();
+    if (st.playing) { hush(); st.playing = false; render(); return; }
+    st.playing = true; st.started = true;
+    var L = SCRIPT[st.scene];
+    if (st.scene === QUIZ_SCENE && st.beat >= L.length - 1) askQuestion(st.qi);
+    else if (st.scene === LAST && st.beat >= L.length - 1) goTo(0);
+    else runBeat(st.scene, Math.max(st.beat, 0));
+  }
+  function toggleVoice() {
+    hush();
+    st.voiceOn = !st.voiceOn;
+    render();
+    if (st.playing) {
+      if (st.scene === QUIZ_SCENE && st.beat >= 0) askQuestion(st.qi);
+      else runBeat(st.scene, Math.max(st.beat, 0));
+    }
+  }
+
+  /* ---------- pintar ---------- */
+  var chapEls = LABELS.map(function (label, i) {
+    var b = document.createElement("button");
+    b.className = "btn chap";
+    b.innerHTML = '<span class="chap-bar"><span class="chap-fill"></span></span><span class="chap-lab"></span>';
+    b.querySelector(".chap-lab").textContent = label;
+    b.setAttribute("aria-label", "Chapter: " + label);
+    b.addEventListener("click", function () { goTo(i); });
+    $("chaps").appendChild(b);
+    return b;
+  });
+
+  function paintVoiceUI() {
+    var rec = hasRecording();
+    /* con grabación el selector de voz sobra: desaparece */
+    $("voiceBox").hidden = rec || !voiceList.length;
+    $("noVoiceMsg").hidden = rec || voiceList.length > 0 || !voicesChecked;
+    var hint = $("hintText");
+    hint.textContent = rec ? "Recorded narration · sounds the same on every device"
+                           : "Turn your sound on — the lesson is narrated in English";
+    hint.parentNode.classList.toggle("rec", rec);
+    var sel = $("voicePick"), want = vKey(chosenVoice());
+    sel.innerHTML = "";
+    voiceList.forEach(function (v) {
+      var o = document.createElement("option");
+      o.value = vKey(v);
+      o.textContent = v.name + " (" + v.lang + ")" + (vQuality(v) === 3 ? " ★" : "");
+      if (o.value === want) o.selected = true;
+      sel.appendChild(o);
+    });
+  }
+
+  function render() {
+    var sc = st.scene, b = st.beat;
+    var cur = scenes[sc];
+    if (cur) cur.querySelectorAll("[data-b]").forEach(function (el) {
+      el.classList.toggle("on", b >= Number(el.dataset.b));
+    });
+    chapEls.forEach(function (el, i) {
+      var fill = "0%", cls = "";
+      if (i < sc) { fill = "100%"; cls = "done"; }
+      else if (i === sc) { cls = "active"; fill = (b < 0 ? 3 : Math.round(((b + 1) / SCRIPT[i].length) * 100)) + "%"; }
+      el.className = "btn chap " + cls;
+      el.querySelector(".chap-fill").style.width = fill;
+    });
+    $("startBox").hidden = st.started;
+    $("icPlay").style.display = st.playing ? "none" : "";
+    $("icPause").style.display = st.playing ? "" : "none";
+    $("play").classList.toggle("halo", !st.playing);
+    $("voiceLabel").textContent = st.voiceOn ? "Voice on" : "Voice off";
+    $("eq").classList.toggle("live", st.speaking && st.voiceOn);
+    if (sc === LAST) renderOutro();
+  }
+
+  function score() {
+    return Object.keys(st.answers).filter(function (k) { return st.answers[k] === QUIZ[k].a; }).length;
+  }
+
+  function renderQuiz() {
+    var q = QUIZ[st.qi], ans = st.answers[st.qi], answered = ans !== undefined, correct = answered && ans === q.a;
+    $("qdots").innerHTML = "";
+    QUIZ.forEach(function (_, i) {
+      var d = document.createElement("span");
+      d.className = "qdot " + (st.answers[i] === undefined ? (i === st.qi ? "cur" : "") : (st.answers[i] === QUIZ[i].a ? "ok" : "bad"));
+      $("qdots").appendChild(d);
+    });
+    $("qNum").textContent = st.qi + 1;
+    $("qTot").textContent = QUIZ.length;
+    $("qBefore").textContent = q.before;
+    $("qAfter").textContent = q.after;
+    var bl = $("blank");
+    bl.textContent = answered ? q.opts[ans] : " ";
+    bl.className = "blank " + (answered ? (correct ? "correct" : "wrong") : "");
+    $("opts").innerHTML = "";
+    q.opts.forEach(function (o, i) {
+      var btn = document.createElement("button");
+      btn.className = "btn opt " + (!answered ? "" : (i === q.a ? "correct" : (i === ans ? "wrong" : "dim")));
+      btn.innerHTML = '<span class="opt-l">' + "ABC"[i] + "</span>";
+      btn.appendChild(document.createTextNode(o));
+      btn.addEventListener("click", function () { pick(i); });
+      $("opts").appendChild(btn);
+    });
+    var cf = $("confetti");
+    cf.hidden = true;
+    if (correct) { void cf.offsetWidth; cf.hidden = false; }
+    var fb = $("fb");
+    fb.hidden = !answered;
+    if (answered) {
+      fb.className = "fb " + (correct ? "ok" : "no");
+      $("fbHead").textContent = correct ? "Correct!" : "Not quite — it's “" + q.opts[q.a] + "”.";
+      $("fbWhy").textContent = q.why;
+      $("nextLabel").textContent = st.qi < QUIZ.length - 1 ? "Next question" : "See my results";
+    }
+  }
+
+  function renderOutro() {
+    var s = score(), n = QUIZ.length;
+    $("score").textContent = s;
+    $("scoreTot").textContent = n;
+    $("scoreHead").textContent = s === n ? "Perfect score!" : s >= n / 2 ? "Great job!" : "Keep practising!";
+    $("ringArc").style.strokeDashoffset = (439.8 * (1 - s / n)).toFixed(1);
+  }
+
+  (function () {
+    var cf = $("confetti");
+    for (var i = 0; i < 16; i++) {
+      var p = document.createElement("span");
+      p.className = "cf";
+      p.style.left = (6 + i * 5.8) + "%";
+      p.style.setProperty("--dx", (i % 2 ? 1 : -1) * (20 + (i * 17) % 70) + "px");
+      p.style.animationDelay = ((i * 37) % 19) / 100 + "s";
+      cf.appendChild(p);
+    }
+  })();
+
+  /* ---------- botones ---------- */
+  $("startBtn").addEventListener("click", function () { goTo(0); });
+  $("play").addEventListener("click", togglePlay);
+  $("prev").addEventListener("click", function () { goTo(Math.max(0, st.scene - 1)); });
+  $("next").addEventListener("click", function () { goTo(Math.min(LAST, st.scene + 1)); });
+  $("voice").addEventListener("click", toggleVoice);
+  $("nextQ").addEventListener("click", nextQuestion);
+  $("replay").addEventListener("click", function () { goTo(0); });
+  $("retryQuiz").addEventListener("click", function () { goTo(QUIZ_SCENE); });
+  $("voicePick").addEventListener("change", function (e) { storageSet(VOICE_KEY, e.target.value); });
+  $("testVoice").addEventListener("click", function () {
+    var sy = window.speechSynthesis; if (!sy || !window.SpeechSynthesisUtterance) return;
+    try {
+      sy.cancel();
+      var u = new SpeechSynthesisUtterance("Hello! Welcome to Present Lab."), v = chosenVoice();
+      if (v) { u.voice = v; u.lang = v.lang; } else u.lang = "en-GB";
+      u.rate = RATE; u.pitch = 1; sy.speak(u);
+    } catch (e) {}
+  });
+
+  showScene(0);
+  renderQuiz();
+  render();
+
+  /* El botón de empezar espera a saber si hay grabación (como mucho 4 s):
+     así el primer toque ya reproduce el MP3, que es lo que iOS exige. */
+  var startBtn = $("startBtn");
+  startBtn.disabled = true;
+  loadManifest(function () { startBtn.disabled = false; paintVoiceUI(); });
+  if (window.speechSynthesis) {
+    loadVoices();
+    try { window.speechSynthesis.onvoiceschanged = loadVoices; } catch (e) {}
+    /* Safari e iOS publican la lista tarde */
+    setTimeout(loadVoices, 400);
+    setTimeout(function () { voicesChecked = true; loadVoices(); }, 1500);
+  } else {
+    voicesChecked = true;
+  }
+  paintVoiceUI();
+})();
+
+</script>
+</body>
+</html>

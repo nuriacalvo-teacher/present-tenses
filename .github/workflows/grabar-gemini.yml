@@ -1,0 +1,74 @@
+# Graba la narracion del video con las voces de Gemini (profesora + alumno)
+# y la sube al repositorio. Ver tools/gemini/grabar.py.
+#
+# Se lanza desde la pestaña "Actions" con "Run workflow", o sola al cambiar
+# (o crear) tools/gemini/GRABAR.txt en la rama de pruebas. Necesita el secreto GEMINI_API_KEY.
+#
+# El plan gratuito permite 10 peticiones al dia: una por capitulo y una para
+# el quiz. Solo se graba lo que ha cambiado o falta; si se acaba la cuota, se
+# guarda lo hecho y el resto se graba en la siguiente ejecucion.
+
+name: Grabar la narracion con Gemini
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/video-present-lab]
+    paths:
+      - 'tools/gemini/GRABAR.txt'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: grabar-audios
+  cancel-in-progress: false
+
+jobs:
+  grabar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar ffmpeg y Whisper
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python -m pip install --upgrade pip faster-whisper
+
+      - name: Recordar el modelo de Whisper entre ejecuciones
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: whisper-small-medium-en
+
+      - name: Grabar
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python3 tools/gemini/grabar.py
+
+      - name: Subir la narracion al repositorio
+        run: |
+          set -euo pipefail
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A video/audio
+          if git diff --staged --quiet; then
+            echo 'No hay narracion nueva que subir.'
+            exit 0
+          fi
+          git commit -m 'Narracion del video grabada con Gemini'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Guardar los capitulos que no se han podido cortar
+        if: ${{ always() && hashFiles('tools/gemini/salida/*') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: capitulos-sin-cortar
+          path: tools/gemini/salida/
+          retention-days: 7
