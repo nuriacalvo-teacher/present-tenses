@@ -108,12 +108,6 @@
    "t": "Correct! Last Saturday is a finished time, so we use the past simple, not the present perfect.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
-  "q3": {
-   "f": "q3.mp3",
-   "d": 8.76,
-   "t": "Question 4. I, blank, English for six years.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
   "q3_a0": {
    "f": "q3_a0.mp3",
    "d": 3.19,
@@ -138,18 +132,6 @@
    "t": "Not quite. The right answer is: have been studying. It's the duration of an activity with for, so we use have been, plus -ing.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
-  "q3_ok": {
-   "f": "q3_ok.mp3",
-   "d": 9.03,
-   "t": "Correct! It's the duration of an activity with for, so we use have been, plus -ing.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
-  "q4": {
-   "f": "q4.mp3",
-   "d": 7.78,
-   "t": "Question 5. I, blank, her since we were at school.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
   "q4_a0": {
    "f": "q4_a0.mp3",
    "d": 3.85,
@@ -167,18 +149,6 @@
    "d": 2.67,
    "t": "I have known her since we were at school.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
-  },
-  "q4_no": {
-   "f": "q4_no.mp3",
-   "d": 11.55,
-   "t": "Not quite. The right answer is: have known. Know is a state verb, so it never goes in the continuous: I have known her.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
-  "q4_ok": {
-   "f": "q4_ok.mp3",
-   "d": 8.21,
-   "t": "Correct! Know is a state verb, so it never goes in the continuous: I have known her.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
   "q5": {
    "f": "q5.mp3",
@@ -208,12 +178,6 @@
    "f": "q5_no.mp3",
    "d": 9.04,
    "t": "Not quite. The right answer is: hasn't opened. Yet goes with the present perfect: the shop hasn't opened yet.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
-  "q5_ok": {
-   "f": "q5_ok.mp3",
-   "d": 7.68,
-   "t": "Correct! Yet goes with the present perfect: the shop hasn't opened yet.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
   "s0_0_0": {
@@ -328,12 +292,6 @@
    "f": "s1_3_2.mp3",
    "d": 7.87,
    "t": "[firm] Careful! After doesn't, no s: Tom doesn't like coffee. And in questions: does she live here?",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
-  "s1_4_0": {
-   "f": "s1_4_0.mp3",
-   "d": 8.71,
-   "t": "Words like always, usually and never go before the verb, but after be.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
   "s1_4_1": {
@@ -474,12 +432,6 @@
    "t": "S: [curious] Have you ever eaten sushi?",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
   },
-  "s3_2_2": {
-   "f": "s3_2_2.mp3",
-   "d": 4.38,
-   "t": "[cheerful] Yes, I have! Many times.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
-  },
   "s3_3_0": {
    "f": "s3_3_0.mp3",
    "d": 7.17,
@@ -545,6 +497,72 @@
    "d": 3.02,
    "t": "S: [repeating carefully] I saw him yesterday.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_0_0": {
+   "f": "s4_0_0.mp3",
+   "d": 3.59,
+   "t": "Chapter four: the present perfect continuous!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_1_0": {
+   "f": "s4_1_0.mp3",
+   "d": 10.29,
+   "t": "The form is: have or has, plus been, plus a verb ending in -ing. It tells us how long an activity has been going on.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_1_1": {
+   "f": "s4_1_1.mp3",
+   "d": 3.21,
+   "t": "S: [proud] I've been studying English for six years!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_1_2": {
+   "f": "s4_1_2.mp3",
+   "d": 5.18,
+   "t": "[impressed] Great! For, since and how long are the clues.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_2_0": {
+   "f": "s4_2_0.mp3",
+   "d": 4.99,
+   "t": "We also use it for a recent activity with a visible effect.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_2_1": {
+   "f": "s4_2_1.mp3",
+   "d": 3.16,
+   "t": "S: [surprised] Your hands are dirty! What have you been doing?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_2_2": {
+   "f": "s4_2_2.mp3",
+   "d": 3.17,
+   "t": "[laughing] I've been painting all morning!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_3_0": {
+   "f": "s4_3_0.mp3",
+   "d": 6.42,
+   "t": "But if there's a quantity, use the present perfect simple.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_3_2": {
+   "f": "s4_3_2.mp3",
+   "d": 7.32,
+   "t": "[firm] No! There's a quantity, five emails. Say: we have written five emails.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_4_0": {
+   "f": "s4_4_0.mp3",
+   "d": 6.17,
+   "t": "And state verbs like know, like or want never go in the continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_4_2": {
+   "f": "s4_4_2.mp3",
+   "d": 3.46,
+   "t": "[firm] Careful! I have known her for years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
   "s5_0_0": {
    "f": "s5_0_0.mp3",
@@ -683,12 +701,6 @@
    "d": 1.88,
    "t": "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I am wanting a new phone.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
-  },
-  "s6_3_2": {
-   "f": "s6_3_2.mp3",
-   "d": 9.11,
-   "t": "[firm] No! I want a new phone.",
-   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
   "s6_4_0": {
    "f": "s6_4_0.mp3",

@@ -332,6 +332,18 @@ def transcribir(s, rate=24000):
     return out
 
 
+def sobra_en_bordes(oido, esperado):
+    """Palabras oidas que no son del guion al principio o al final del trozo
+    (la voz a veces anade "Precisely", "Try an example" o lee "long pause")."""
+    import difflib
+    if "long pause" in " ".join(oido):
+        return True
+    bl = [b for b in difflib.SequenceMatcher(None, esperado, oido, autojunk=False).get_matching_blocks() if b.size]
+    if not bl:
+        return bool(oido)
+    return bl[0].b > 0 or bl[-1].b + bl[-1].size < len(oido)
+
+
 def oir_exacto(s, a, b, texto, rate=24000):
     """Segunda opinion para una frase que tiene que sonar tal cual: se
     transcribe sola con un modelo mas grande."""
@@ -424,7 +436,8 @@ def cortar(s, clips, rate=24000):
                 ok, texto = oir_exacto(s, tramos[n][0], tramos[n][1], c[4], rate)
                 print("    %s %s: %s" % (c[0], "bien (medium.en)" if ok else "no se ha dicho tal cual", texto))
             buenos[n] = ok
-        elif buenos[n] and len(oido_n) > len(esperado) + max(2, int(0.12 * len(esperado))):
+        elif buenos[n] and (sobra_en_bordes(oido_n, esperado)
+                            or len(oido_n) > len(esperado) + max(2, int(0.12 * len(esperado)))):
             buenos[n] = False
             print("    %s lleva algo de mas: %s" % (c[0], " ".join(oido_n)))
     return tramos, buenos
