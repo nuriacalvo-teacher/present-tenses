@@ -257,7 +257,7 @@ DECENAS = {w: 10 * n for n, w in enumerate("_ _ twenty thirty forty fifty sixty 
 
 
 # Whisper escribe en ortografia americana.
-BRITANICO = {"neighbours": "neighbors", "neighbour": "neighbor", "colour": "color", "colours": "colors",
+BRITANICO = {"kalvo": "calvo","neighbours": "neighbors", "neighbour": "neighbor", "colour": "color", "colours": "colors",
              "favourite": "favorite", "programme": "program", "practise": "practice", "centre": "center",
              "theatre": "theater", "travelling": "traveling", "realise": "realize"}
 
@@ -298,17 +298,23 @@ def modelo(nombre):
 
 
 def transcribir_trozo(s, rate=24000, nombre="small.en", desde=0.0):
-    tmp = os.path.join(HERE, "_tmp.wav")
+    tmp = os.path.join(HERE, "_tmp%d.wav" % os.getpid())
     guardar_wav(s, tmp, rate)
     segs, _ = modelo(nombre).transcribe(tmp, language="en", word_timestamps=True, vad_filter=False,
                                         beam_size=5, condition_on_previous_text=False)
     out = []
     for seg in segs:
+        if re.sub(r"[^a-z ]", "", seg.text.lower()).strip() in INVENTADAS:
+            continue
         for w in seg.words or []:
             for p in palabras(w.word):
                 out.append((p, desde + w.start, desde + w.end))
     os.remove(tmp)
     return out
+
+
+# Frases que Whisper se inventa en los silencios.
+INVENTADAS = {"thanks for watching", "thank you for watching", "thank you so much for watching"}
 
 
 def transcribir(s, rate=24000):
@@ -340,8 +346,9 @@ def cortar(s, clips, rate=24000):
 
     Devuelve (tramos, buenos): buenos[n] es False si la frase n no se ha
     dicho tal cual (le faltan palabras, le sobran o, en las que llevan errores
-    a proposito, la voz los ha corregido); esas no se guardan. Lanza
-    ValueError si alguna frase no se encuentra y no se puede cortar."""
+    a proposito, la voz los ha corregido); esas no se guardan. Si la voz se
+    ha saltado una frase, esa sale como no buena y las demas se cortan igual.
+    Lanza ValueError si no se encuentra ninguna o no se puede cortar."""
     import difflib
     total = len(s) / float(rate)
     oido = transcribir(s, rate)
@@ -360,26 +367,30 @@ def cortar(s, clips, rate=24000):
             t_ini.setdefault(n, w[1])
             t_fin[n] = w[2]
             pos.setdefault(n, [blk.b + k, blk.b + k])[1] = blk.b + k
-    buenos = []
+    buenos, hay = [], []
     for n, c in enumerate(clips):
         tot = max(1, sum(1 for q in de_quien if q == n))
         if aciertos[n] < max(1, 0.5 * tot):
-            raise ValueError("la frase %s no se reconoce bien en el audio (%d de %d palabras)"
-                             % (c[0], aciertos[n], tot))
+            print("    %s no se oye en el audio (%d de %d palabras): se repetira" % (c[0], aciertos[n], tot))
+            buenos.append(False)
+            continue
+        hay.append(n)
         sobran = pos[n][1] - pos[n][0] + 1 - aciertos[n]
         if exacto(c[0], c[3]):
             ok = aciertos[n] == tot and sobran == 0
         else:
-            ok = aciertos[n] >= 0.8 * tot and sobran <= 2
+            ok = aciertos[n] >= 0.8 * tot and sobran <= max(2, int(0.12 * tot))
         if not ok and not exacto(c[0], c[3]):
             print("    %s no se ha dicho tal cual: %s" % (c[0], " ".join(w[0] for w in oido[pos[n][0]:pos[n][1] + 1])))
         buenos.append(ok)
+    if not hay:
+        raise ValueError("no se reconoce ninguna frase")
     sil = silencios(s, rate)
     cortes = []
-    for n in range(len(clips) - 1):
-        a, b = t_fin[n], t_ini[n + 1]
+    for n, m in zip(hay, hay[1:]):
+        a, b = t_fin[n], t_ini[m]
         if b < a:
-            raise ValueError("las frases %s y %s se solapan" % (clips[n][0], clips[n + 1][0]))
+            raise ValueError("las frases %s y %s se solapan" % (clips[n][0], clips[m][0]))
         hueco = [x for x in sil if x[1] > a - 0.05 and x[0] < b + 0.05]
         if hueco:
             x = max(hueco, key=lambda x: x[1] - x[0])
@@ -388,18 +399,34 @@ def cortar(s, clips, rate=24000):
             # frases pegadas: se corta en el momento de menos volumen
             x = punto_mas_bajo(s, a - 0.1, b + 0.1, rate)
             cortes.append((x, x))
-    ini0 = max(0.0, t_ini[0] - 0.3)
-    fin0 = min(total, t_fin[len(clips) - 1] + 0.5)
+    ini0 = max(0.0, t_ini[hay[0]] - 0.3)
+    fin0 = min(total, t_fin[hay[-1]] + 0.5)
     trozos, a = [], ini0
     for x in cortes:
         trozos.append((a, x[0]))
         a = x[1]
     trozos.append((a, fin0))
-    tramos = [(max(0.0, a - MARGEN), min(total, b + MARGEN)) for a, b in trozos]
-    for n, c in enumerate(clips):
-        if not buenos[n] and exacto(c[0], c[3]):
-            buenos[n], oido_n = oir_exacto(s, tramos[n][0], tramos[n][1], c[4], rate)
-            print("    %s %s: %s" % (c[0], "bien (medium.en)" if buenos[n] else "no se ha dicho tal cual", oido_n))
+    tramos = [(0.0, 0.0)] * len(clips)
+    for n, (a, b) in zip(hay, trozos):
+        tramos[n] = (max(0.0, a - MARGEN), min(total, b + MARGEN))
+    # Cada trozo se transcribe solo: la voz puede meter palabras que no estan
+    # en el guion justo antes o despues de una frase ("Okay, fantastic...").
+    # Las frases exactas tienen que coincidir palabra por palabra (con una
+    # segunda opinion de medium.en); a las demas no les puede sobrar casi nada.
+    for n in hay:
+        c = clips[n]
+        trozo = s[int(tramos[n][0] * rate):int(tramos[n][1] * rate)]
+        esperado = palabras(hablado(c[4]))
+        oido_n = [w[0] for w in transcribir_trozo(trozo, rate)]
+        if exacto(c[0], c[3]):
+            ok = oido_n == esperado
+            if not ok:
+                ok, texto = oir_exacto(s, tramos[n][0], tramos[n][1], c[4], rate)
+                print("    %s %s: %s" % (c[0], "bien (medium.en)" if ok else "no se ha dicho tal cual", texto))
+            buenos[n] = ok
+        elif buenos[n] and len(oido_n) > len(esperado) + max(2, int(0.12 * len(esperado))):
+            buenos[n] = False
+            print("    %s lleva algo de mas: %s" % (c[0], " ".join(oido_n)))
     return tramos, buenos
 
 
