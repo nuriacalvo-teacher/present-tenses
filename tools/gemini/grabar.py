@@ -38,8 +38,12 @@ KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 API = "https://generativelanguage.googleapis.com/v1beta/interactions"
 MODEL = "gemini-3.8-flash-tts"
 
-VOZ_PROFESORA = "Kore"
-VOZ_ALUMNO = "Puck"
+# Voces britanicas (GET /v1beta/voices?language_code=en-GB): profesora de 54 anos
+# y chico de 22, los dos con acento de Winchester (sur de Inglaterra).
+VOZ_PROFESORA = "en-gb-tutor-6"
+VOZ_ALUMNO = "en-gb-podcaster-4"
+# Si el modelo no admite esas voces, se pasa a estas.
+RESERVA = ("Kore", "Puck")
 
 PROFESORA = ("Energetic, firm and enthusiastic English teacher with a natural British accent "
              "(Southern England). Lively, clear and engaging, never sleepy.")
@@ -130,6 +134,23 @@ def firma(who):
 # Gemini
 # ---------------------------------------------------------------------------
 def pedir(clips):
+    global VOZ_PROFESORA, VOZ_ALUMNO
+    for n in range(2):
+        try:
+            return pedir_con_voces(clips)
+        except VozNoValida as e:
+            if (VOZ_PROFESORA, VOZ_ALUMNO) == RESERVA or n:
+                raise RuntimeError(str(e))
+            print("    El modelo no admite %s / %s (%s). Se usan %s / %s."
+                  % (VOZ_PROFESORA, VOZ_ALUMNO, str(e)[:200], RESERVA[0], RESERVA[1]))
+            VOZ_PROFESORA, VOZ_ALUMNO = RESERVA
+
+
+class VozNoValida(Exception):
+    pass
+
+
+def pedir_con_voces(clips):
     quienes = {c[2] for c in clips}
     dialogo = len(quienes) > 1
     content = []
@@ -164,6 +185,8 @@ def pedir(clips):
             msg = e.read().decode(errors="replace")[:600]
             if e.code == 429 and "per day" in msg:
                 raise SinCuota(msg)
+            if e.code in (400, 404) and "voice" in msg.lower():
+                raise VozNoValida(msg)
             if e.code in (429, 500, 503) and n < 3:
                 print("    (%d, espero 65 s) %s" % (e.code, msg[:160]))
                 time.sleep(65)
