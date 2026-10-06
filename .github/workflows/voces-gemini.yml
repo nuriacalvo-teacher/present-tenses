@@ -1,0 +1,44 @@
+# Consulta (sin sintetizar nada) que voces ofrece Gemini y si hay britanicas.
+# Imprime la respuesta tal cual en el log. Necesita el secreto GEMINI_API_KEY.
+
+name: Consultar las voces de Gemini
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/voces-gemini.yml'
+
+jobs:
+  voces:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Consultar
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then echo "FALTA EL SECRETO GEMINI_API_KEY"; exit 1; fi
+          B=https://generativelanguage.googleapis.com/v1beta/voices
+          for q in "" "?language_code=en-GB" "?languageCode=en-GB" "?accent=British" "?accent=british" \
+                   "?filter=language_code%3D%22en-GB%22" "?filter=accent%3D%22British%22" "?pageSize=1000"; do
+            echo "================ GET /v1beta/voices$q"
+            curl -sS -w '\n[HTTP %{http_code}]\n' -H "x-goog-api-key: $GEMINI_API_KEY" "$B$q" | head -c 30000
+            echo
+          done
+          echo "================ TODAS LAS VOCES en-GB (todas las paginas, resumidas)"
+          python3 - <<'PY'
+          import json, os, urllib.request
+          tok, n = "", 0
+          while True:
+              url = "https://generativelanguage.googleapis.com/v1beta/voices?language_code=en-GB" + ("&page_token=" + tok if tok else "")
+              d = json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})))
+              for v in d.get("voices", []):
+                  n += 1
+                  print("|".join([v["id"], v.get("gender", ""), v.get("pitch", ""), v.get("accent", ""), v.get("persona", ""), v.get("description", "")]))
+              tok = d.get("next_page_token", "")
+              if not tok:
+                  break
+          print("total en-GB:", n)
+          PY

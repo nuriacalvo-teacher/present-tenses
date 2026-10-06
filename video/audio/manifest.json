@@ -1,0 +1,862 @@
+{
+ "version": 2,
+ "voices": {
+  "profesora": "en-gb-tutor-6",
+  "alumno": "en-gb-podcaster-4",
+  "modelo": "gemini-3.8-flash-tts"
+ },
+ "clips": {
+  "q0": {
+   "f": "q0.mp3",
+   "d": 5.54,
+   "t": "Question 1. My sister, blank, the piano every afternoon.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q0_a0": {
+   "f": "q0_a0.mp3",
+   "d": 2.9,
+   "t": "My sister plays the piano every afternoon.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q0_a1": {
+   "f": "q0_a1.mp3",
+   "d": 3.23,
+   "t": "My sister play the piano every afternoon.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q0_a2": {
+   "f": "q0_a2.mp3",
+   "d": 3.56,
+   "t": "My sister is playing the piano every afternoon.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q0_no": {
+   "f": "q0_no.mp3",
+   "d": 10.43,
+   "t": "Not quite. The right answer is: plays. It's a routine, and my sister is third person, so we use the present simple with an s: plays.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q0_ok": {
+   "f": "q0_ok.mp3",
+   "d": 8.94,
+   "t": "Correct! It's a routine, and my sister is third person, so we use the present simple with an s: plays.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q1": {
+   "f": "q1.mp3",
+   "d": 5.04,
+   "t": "Question 2. Listen! The neighbours, blank, again.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q1_a0": {
+   "f": "q1_a0.mp3",
+   "d": 2.62,
+   "t": "Listen! The neighbours argue again.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q1_a1": {
+   "f": "q1_a1.mp3",
+   "d": 2.63,
+   "t": "Listen! The neighbours are arguing again.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q1_a2": {
+   "f": "q1_a2.mp3",
+   "d": 3.1,
+   "t": "Listen! The neighbours have argued again.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q1_no": {
+   "f": "q1_no.mp3",
+   "d": 9.3,
+   "t": "Not quite. The right answer is: are arguing. Listen! tells us it's happening right now, so we use the present continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q1_ok": {
+   "f": "q1_ok.mp3",
+   "d": 6.98,
+   "t": "Correct! Listen! tells us it's happening right now, so we use the present continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q2": {
+   "f": "q2.mp3",
+   "d": 6.04,
+   "t": "Question 3. I, blank, him at the party last Saturday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q2_a0": {
+   "f": "q2_a0.mp3",
+   "d": 2.33,
+   "t": "I have seen him at the party last Saturday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q2_a1": {
+   "f": "q2_a1.mp3",
+   "d": 2.31,
+   "t": "I see him at the party last Saturday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q2_a2": {
+   "f": "q2_a2.mp3",
+   "d": 2.33,
+   "t": "I saw him at the party last Saturday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q2_no": {
+   "f": "q2_no.mp3",
+   "d": 9.67,
+   "t": "Not quite. The right answer is: saw. Last Saturday is a finished time, so we use the past simple, not the present perfect.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q2_ok": {
+   "f": "q2_ok.mp3",
+   "d": 6.94,
+   "t": "Correct! Last Saturday is a finished time, so we use the past simple, not the present perfect.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q3": {
+   "f": "q3.mp3",
+   "d": 5.15,
+   "t": "Question 4. I, blank, English for six years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q3_a0": {
+   "f": "q3_a0.mp3",
+   "d": 3.19,
+   "t": "I am studying English for six years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q3_a1": {
+   "f": "q3_a1.mp3",
+   "d": 3.36,
+   "t": "I have been studying English for six years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q3_a2": {
+   "f": "q3_a2.mp3",
+   "d": 2.77,
+   "t": "I study English for six years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q3_no": {
+   "f": "q3_no.mp3",
+   "d": 10.4,
+   "t": "Not quite. The right answer is: have been studying. It's the duration of an activity with for, so we use have been, plus -ing.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q3_ok": {
+   "f": "q3_ok.mp3",
+   "d": 7.14,
+   "t": "Correct! It's the duration of an activity with for, so we use have been, plus -ing.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q4": {
+   "f": "q4.mp3",
+   "d": 6.26,
+   "t": "Question 5. I, blank, her since we were at school.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q4_a0": {
+   "f": "q4_a0.mp3",
+   "d": 3.85,
+   "t": "I have been knowing her since we were at school.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q4_a1": {
+   "f": "q4_a1.mp3",
+   "d": 3.58,
+   "t": "I am knowing her since we were at school.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q4_a2": {
+   "f": "q4_a2.mp3",
+   "d": 2.67,
+   "t": "I have known her since we were at school.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q4_no": {
+   "f": "q4_no.mp3",
+   "d": 8.59,
+   "t": "Not quite. The right answer is: have known. Know is a state verb, so it never goes in the continuous: I have known her.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q4_ok": {
+   "f": "q4_ok.mp3",
+   "d": 6.84,
+   "t": "Correct! Know is a state verb, so it never goes in the continuous: I have known her.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q5": {
+   "f": "q5.mp3",
+   "d": 6.18,
+   "t": "Question 6. The shop, blank, yet. We'll have to wait.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q5_a0": {
+   "f": "q5_a0.mp3",
+   "d": 3.3,
+   "t": "The shop hasn't opened yet. We'll have to wait.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q5_a1": {
+   "f": "q5_a1.mp3",
+   "d": 2.95,
+   "t": "The shop doesn't open yet. We'll have to wait.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q5_a2": {
+   "f": "q5_a2.mp3",
+   "d": 4.45,
+   "t": "The shop isn't opening yet. We'll have to wait.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "q5_no": {
+   "f": "q5_no.mp3",
+   "d": 9.04,
+   "t": "Not quite. The right answer is: hasn't opened. Yet goes with the present perfect: the shop hasn't opened yet.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q5_ok": {
+   "f": "q5_ok.mp3",
+   "d": 5.08,
+   "t": "Correct! Yet goes with the present perfect: the shop hasn't opened yet.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s0_0_0": {
+   "f": "s0_0_0.mp3",
+   "d": 2.96,
+   "t": "Hello, and welcome to Present Lab!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s0_0_1": {
+   "f": "s0_0_1.mp3",
+   "d": 1.43,
+   "t": "S: [cheerful, waving hello] Hi everyone!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s0_1_0": {
+   "f": "s0_1_0.mp3",
+   "d": 7.0,
+   "t": "This educational app has been made by Nuria Calvo, an English teacher at IES Goya, Zaragoza.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s0_2_0": {
+   "f": "s0_2_0.mp3",
+   "d": 5.24,
+   "t": "In English, there are four present tenses, and each one tells us something different.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s0_2_1": {
+   "f": "s0_2_1.mp3",
+   "d": 3.02,
+   "t": "S: [surprised] Four? I thought there was only one present!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s0_2_2": {
+   "f": "s0_2_2.mp3",
+   "d": 3.44,
+   "t": "[firm, smiling] Four! And by the end of this lesson, you'll know them all.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s0_3_0": {
+   "f": "s0_3_0.mp3",
+   "d": 9.18,
+   "t": "Today you'll learn the present simple, the present continuous, the present perfect and the present perfect continuous. And how to choose the right one!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s0_3_1": {
+   "f": "s0_3_1.mp3",
+   "d": 1.33,
+   "t": "S: [excited] Let's go!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s1_0_0": {
+   "f": "s1_0_0.mp3",
+   "d": 2.47,
+   "t": "Chapter one: the present simple!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_1_0": {
+   "f": "s1_1_0.mp3",
+   "d": 5.9,
+   "t": "We use it for routines, habits, general truths, timetables and states.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_1_1": {
+   "f": "s1_1_1.mp3",
+   "d": 2.78,
+   "t": "S: [trying it out] Like... I get up at seven every day?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s1_1_2": {
+   "f": "s1_1_2.mp3",
+   "d": 4.62,
+   "t": "Exactly! And water freezes at zero degrees.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_2_0": {
+   "f": "s1_2_0.mp3",
+   "d": 4.79,
+   "t": "Watch out for he, she and it: the verb takes an s.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_2_1": {
+   "f": "s1_2_1.mp3",
+   "d": 2.75,
+   "t": "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] My sister play the piano.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s1_2_2": {
+   "f": "s1_2_2.mp3",
+   "d": 3.81,
+   "t": "[firm, correcting at once] No! My sister plays. Add the s!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_2_3": {
+   "f": "s1_2_3.mp3",
+   "d": 2.54,
+   "t": "S: [repeating carefully] My sister plays the piano.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s1_3_0": {
+   "f": "s1_3_0.mp3",
+   "d": 4.0,
+   "t": "In negatives and questions, we use do and does.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_3_1": {
+   "f": "s1_3_1.mp3",
+   "d": 2.71,
+   "t": "S: [unsure, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] Tom doesn't likes coffee.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s1_3_2": {
+   "f": "s1_3_2.mp3",
+   "d": 7.87,
+   "t": "[firm] Careful! After doesn't, no s: Tom doesn't like coffee. And in questions: does she live here?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_4_0": {
+   "f": "s1_4_0.mp3",
+   "d": 6.96,
+   "t": "Words like always, usually and never go before the verb, but after be.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s1_4_1": {
+   "f": "s1_4_1.mp3",
+   "d": 4.71,
+   "t": "S: [trying it out] I always read at night. And she is never late!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s1_4_2": {
+   "f": "s1_4_2.mp3",
+   "d": 1.42,
+   "t": "Perfect!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_0_0": {
+   "f": "s2_0_0.mp3",
+   "d": 3.13,
+   "t": "Chapter two: the present continuous!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_1_0": {
+   "f": "s2_1_0.mp3",
+   "d": 6.42,
+   "t": "The form is: am, is or are, plus a verb ending in -ing.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_1_1": {
+   "f": "s2_1_1.mp3",
+   "d": 4.54,
+   "t": "S: [checking] I'm working, she's working, they're working?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s2_1_2": {
+   "f": "s2_1_2.mp3",
+   "d": 0.94,
+   "t": "That's it!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_2_0": {
+   "f": "s2_2_0.mp3",
+   "d": 4.12,
+   "t": "We use it for actions happening right now, at this moment.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_2_1": {
+   "f": "s2_2_1.mp3",
+   "d": 1.58,
+   "t": "S: [pointing out of the window] Look! It's raining!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s2_2_2": {
+   "f": "s2_2_2.mp3",
+   "d": 2.96,
+   "t": "Right! It's happening now.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_3_0": {
+   "f": "s2_3_0.mp3",
+   "d": 5.58,
+   "t": "And for temporary situations: things happening these days, but not exactly now.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_3_1": {
+   "f": "s2_3_1.mp3",
+   "d": 2.5,
+   "t": "S: [casual] I'm reading a great book these days.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s2_4_0": {
+   "f": "s2_4_0.mp3",
+   "d": 5.87,
+   "t": "We also use it for fixed plans in the future, and for changes in progress.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_4_1": {
+   "f": "s2_4_1.mp3",
+   "d": 2.0,
+   "t": "S: [excited] We're flying to Rome on Friday!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s2_4_2": {
+   "f": "s2_4_2.mp3",
+   "d": 2.62,
+   "t": "And the weather is getting warmer!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_5_0": {
+   "f": "s2_5_0.mp3",
+   "d": 1.69,
+   "t": "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] She working now.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s2_5_1": {
+   "f": "s2_5_1.mp3",
+   "d": 5.61,
+   "t": "[firm, stopping the student] Stop! Don't forget the verb be. She is working.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s2_5_2": {
+   "f": "s2_5_2.mp3",
+   "d": 3.35,
+   "t": "S: [proud] She is working. Easy!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_0_0": {
+   "f": "s3_0_0.mp3",
+   "d": 2.98,
+   "t": "Chapter three: the present perfect!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_1_0": {
+   "f": "s3_1_0.mp3",
+   "d": 9.37,
+   "t": "The form is: have or has, plus the past participle. It connects the past with the present, and we never say when.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_1_1": {
+   "f": "s3_1_1.mp3",
+   "d": 3.54,
+   "t": "S: [checking] I have seen, she has seen?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_1_2": {
+   "f": "s3_1_2.mp3",
+   "d": 1.32,
+   "t": "Exactly!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_2_0": {
+   "f": "s3_2_0.mp3",
+   "d": 5.39,
+   "t": "We use it for life experiences, often with ever and never.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_2_1": {
+   "f": "s3_2_1.mp3",
+   "d": 2.04,
+   "t": "S: [curious] Have you ever eaten sushi?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_2_2": {
+   "f": "s3_2_2.mp3",
+   "d": 2.96,
+   "t": "[cheerful] Yes, I have! Many times.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_3_0": {
+   "f": "s3_3_0.mp3",
+   "d": 7.17,
+   "t": "We also use it for a result we can see now, and with just, for something that has just happened.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_3_1": {
+   "f": "s3_3_1.mp3",
+   "d": 2.1,
+   "t": "S: [panicking] Oh no! I've lost my keys!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_3_2": {
+   "f": "s3_3_2.mp3",
+   "d": 2.63,
+   "t": "[calm] Don't panic. Your mum has just arrived.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_4_0": {
+   "f": "s3_4_0.mp3",
+   "d": 8.32,
+   "t": "And for situations up to now, with for and since. For a period of time, since a starting point.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_4_1": {
+   "f": "s3_4_1.mp3",
+   "d": 4.88,
+   "t": "S: [thinking it through] We've lived here for ten years. And I've known her since 2019.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_4_2": {
+   "f": "s3_4_2.mp3",
+   "d": 1.8,
+   "t": "Perfect!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_5_0": {
+   "f": "s3_5_0.mp3",
+   "d": 7.94,
+   "t": "Been or gone? He has been to Paris: he went and came back. He has gone to Paris: he's still there.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_5_1": {
+   "f": "s3_5_1.mp3",
+   "d": 3.6,
+   "t": "S: [understanding] So my brother has gone to the shops. He isn't here!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_6_0": {
+   "f": "s3_6_0.mp3",
+   "d": 2.44,
+   "t": "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have seen him yesterday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s3_6_1": {
+   "f": "s3_6_1.mp3",
+   "d": 8.21,
+   "t": "[firm] No! With a finished time, like yesterday or last week, never use the present perfect. Say: I saw him yesterday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s3_6_2": {
+   "f": "s3_6_2.mp3",
+   "d": 3.02,
+   "t": "S: [repeating carefully] I saw him yesterday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_0_0": {
+   "f": "s4_0_0.mp3",
+   "d": 3.59,
+   "t": "Chapter four: the present perfect continuous!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_1_0": {
+   "f": "s4_1_0.mp3",
+   "d": 10.29,
+   "t": "The form is: have or has, plus been, plus a verb ending in -ing. It tells us how long an activity has been going on.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_1_1": {
+   "f": "s4_1_1.mp3",
+   "d": 3.21,
+   "t": "S: [proud] I've been studying English for six years!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_1_2": {
+   "f": "s4_1_2.mp3",
+   "d": 5.18,
+   "t": "[impressed] Great! For, since and how long are the clues.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_2_0": {
+   "f": "s4_2_0.mp3",
+   "d": 4.99,
+   "t": "We also use it for a recent activity with a visible effect.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_2_1": {
+   "f": "s4_2_1.mp3",
+   "d": 3.16,
+   "t": "S: [surprised] Your hands are dirty! What have you been doing?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_2_2": {
+   "f": "s4_2_2.mp3",
+   "d": 3.17,
+   "t": "[laughing] I've been painting all morning!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_3_0": {
+   "f": "s4_3_0.mp3",
+   "d": 6.42,
+   "t": "But if there's a quantity, use the present perfect simple.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_3_1": {
+   "f": "s4_3_1.mp3",
+   "d": 2.53,
+   "t": "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] We have been writing five emails.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_3_2": {
+   "f": "s4_3_2.mp3",
+   "d": 7.32,
+   "t": "[firm] No! There's a quantity, five emails. Say: we have written five emails.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_4_0": {
+   "f": "s4_4_0.mp3",
+   "d": 6.17,
+   "t": "And state verbs like know, like or want never go in the continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s4_4_1": {
+   "f": "s4_4_1.mp3",
+   "d": 3.46,
+   "t": "S: [unsure, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have been knowing her for years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s4_4_2": {
+   "f": "s4_4_2.mp3",
+   "d": 3.46,
+   "t": "[firm] Careful! I have known her for years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_0_0": {
+   "f": "s5_0_0.mp3",
+   "d": 3.36,
+   "t": "Chapter five: simple or continuous?",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_1_0": {
+   "f": "s5_1_0.mp3",
+   "d": 5.0,
+   "t": "S: [confused] Simple, continuous, perfect... I always mix them up!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s5_1_1": {
+   "f": "s5_1_1.mp3",
+   "d": 3.08,
+   "t": "[energetic] Here's the trick: look at the time words.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_2_0": {
+   "f": "s5_2_0.mp3",
+   "d": 9.53,
+   "t": "Every day, usually and never take the present simple. Now, at the moment and look take the present continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_2_1": {
+   "f": "s5_2_1.mp3",
+   "d": 4.57,
+   "t": "S: [trying it out] I usually get up at seven, but this week I'm getting up at nine!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s5_2_2": {
+   "f": "s5_2_2.mp3",
+   "d": 1.1,
+   "t": "Perfect!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_3_0": {
+   "f": "s5_3_0.mp3",
+   "d": 10.17,
+   "t": "Ever, already, yet and just take the present perfect. How long, for and since with an activity take the present perfect continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_3_1": {
+   "f": "s5_3_1.mp3",
+   "d": 4.24,
+   "t": "S: [thinking] We've seen this film before. And it's been raining since Monday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s5_4_0": {
+   "f": "s5_4_0.mp3",
+   "d": 6.1,
+   "t": "And yesterday, last week or ago? None of the presents: that's the past simple!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_4_1": {
+   "f": "s5_4_1.mp3",
+   "d": 2.9,
+   "t": "S: [surprised] So: I visited my gran last weekend.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s5_5_0": {
+   "f": "s5_5_0.mp3",
+   "d": 5.46,
+   "t": "And remember: state verbs, like like, know and want, stay simple.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s5_5_1": {
+   "f": "s5_5_1.mp3",
+   "d": 2.4,
+   "t": "S: [confident, mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] She isn't liking chocolate.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s5_5_2": {
+   "f": "s5_5_2.mp3",
+   "d": 6.91,
+   "t": "[firm] Not quite! She doesn't like chocolate, but she's eating a piece right now.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_0_0": {
+   "f": "s6_0_0.mp3",
+   "d": 5.03,
+   "t": "Chapter six: the top five mistakes. Let's check them one by one!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_0_1": {
+   "f": "s6_0_1.mp3",
+   "d": 1.07,
+   "t": "S: [determined] Bring them on!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s6_1_0": {
+   "f": "s6_1_0.mp3",
+   "d": 3.79,
+   "t": "Mistake number one: forgetting the s.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_1_1": {
+   "f": "s6_1_1.mp3",
+   "d": 1.57,
+   "t": "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] He work in a bank.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s6_1_2": {
+   "f": "s6_1_2.mp3",
+   "d": 4.13,
+   "t": "[firm] He works! He, she, it: add the s.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_2_0": {
+   "f": "s6_2_0.mp3",
+   "d": 4.22,
+   "t": "Mistake number two: forgetting be in the continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_2_1": {
+   "f": "s6_2_1.mp3",
+   "d": 1.62,
+   "t": "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] They playing football now.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s6_2_2": {
+   "f": "s6_2_2.mp3",
+   "d": 5.53,
+   "t": "[firm] They are playing! Am, is or are, always.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_3_0": {
+   "f": "s6_3_0.mp3",
+   "d": 4.46,
+   "t": "Mistake number three: state verbs in the continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_3_1": {
+   "f": "s6_3_1.mp3",
+   "d": 1.88,
+   "t": "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I am wanting a new phone.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s6_3_2": {
+   "f": "s6_3_2.mp3",
+   "d": 3.08,
+   "t": "[firm] No! I want a new phone.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_4_0": {
+   "f": "s6_4_0.mp3",
+   "d": 5.25,
+   "t": "Mistake number four: the past instead of the participle after have.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_4_1": {
+   "f": "s6_4_1.mp3",
+   "d": 3.12,
+   "t": "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have saw that film.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s6_4_2": {
+   "f": "s6_4_2.mp3",
+   "d": 4.5,
+   "t": "[firm] I have seen that film. Have, plus the past participle!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_5_0": {
+   "f": "s6_5_0.mp3",
+   "d": 3.95,
+   "t": "And mistake number five: a hidden yesterday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_5_1": {
+   "f": "s6_5_1.mp3",
+   "d": 3.09,
+   "t": "S: [mistake: say it EXACTLY as written, word for word, keeping the grammar mistake] I have gone to the cinema yesterday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s6_5_2": {
+   "f": "s6_5_2.mp3",
+   "d": 4.31,
+   "t": "[firm] Yesterday is finished! I went to the cinema yesterday.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s6_5_3": {
+   "f": "s6_5_3.mp3",
+   "d": 2.65,
+   "t": "S: [proud] Got it! No more mistakes!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s7_0_0": {
+   "f": "s7_0_0.mp3",
+   "d": 4.13,
+   "t": "Time for a challenge! Choose the right tense for each sentence.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s7_0_1": {
+   "f": "s7_0_1.mp3",
+   "d": 1.7,
+   "t": "S: [determined, excited] I'm ready!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s8_0_0": {
+   "f": "s8_0_0.mp3",
+   "d": 2.0,
+   "t": "[delighted, proud] Fantastic work!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s8_0_1": {
+   "f": "s8_0_1.mp3",
+   "d": 1.36,
+   "t": "S: [proud] Thanks!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  },
+  "s8_1_0": {
+   "f": "s8_1_0.mp3",
+   "d": 8.94,
+   "t": "Now you know the four present tenses: the present simple, the present continuous, the present perfect and the present perfect continuous.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s8_2_0": {
+   "f": "s8_2_0.mp3",
+   "d": 12.04,
+   "t": "This educational app was made by Nuria Calvo, an English teacher at IES Goya, Zaragoza. Now it's your turn: click the button and practise with the exercises.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "s8_2_1": {
+   "f": "s8_2_1.mp3",
+   "d": 1.64,
+   "t": "S: [cheerful, waving goodbye] See you in class!",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-podcaster-4"
+  }
+ }
+}
