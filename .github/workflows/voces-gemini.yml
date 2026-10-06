@@ -6,7 +6,7 @@ name: Consultar las voces de Gemini
 on:
   workflow_dispatch:
   push:
-    branches: [claude/video-present-lab]
+    branches: [main]
     paths:
       - '.github/workflows/voces-gemini.yml'
 

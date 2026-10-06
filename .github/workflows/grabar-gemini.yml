@@ -2,7 +2,7 @@
 # y la sube al repositorio. Ver tools/gemini/grabar.py.
 #
 # Se lanza desde la pestaña "Actions" con "Run workflow", o sola al cambiar
-# (o crear) tools/gemini/GRABAR.txt en la rama de pruebas. Necesita el secreto GEMINI_API_KEY.
+# (o crear) tools/gemini/GRABAR.txt en main. Necesita el secreto GEMINI_API_KEY.
 #
 # El plan gratuito permite 10 peticiones al dia: una por capitulo y una para
 # el quiz. Solo se graba lo que ha cambiado o falta; si se acaba la cuota, se
@@ -13,7 +13,7 @@ name: Grabar la narracion con Gemini
 on:
   workflow_dispatch:
   push:
-    branches: [claude/video-present-lab]
+    branches: [main]
     paths:
       - 'tools/gemini/GRABAR.txt'
 

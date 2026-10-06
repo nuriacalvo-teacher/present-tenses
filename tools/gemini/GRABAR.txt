@@ -1,2 +1,2 @@
-Cambia o guarda este fichero en la rama de pruebas para lanzar la grabacion con Gemini.
+Cambia o guarda este fichero en main para lanzar la grabacion con Gemini.
 Ultima grabacion pedida: 2026-10-05 21:04 UTC
