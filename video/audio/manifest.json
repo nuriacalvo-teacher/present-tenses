@@ -114,6 +114,12 @@
    "t": "Correct! Last Saturday is a finished time, so we use the past simple, not the present perfect.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
+  "q3": {
+   "f": "q3.mp3",
+   "d": 5.15,
+   "t": "Question 4. I, blank, English for six years.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
   "q3_a0": {
    "f": "q3_a0.mp3",
    "d": 3.19,
@@ -172,6 +178,12 @@
    "f": "q4_no.mp3",
    "d": 8.59,
    "t": "Not quite. The right answer is: have known. Know is a state verb, so it never goes in the continuous: I have known her.",
+   "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
+  },
+  "q4_ok": {
+   "f": "q4_ok.mp3",
+   "d": 6.84,
+   "t": "Correct! Know is a state verb, so it never goes in the continuous: I have known her.",
    "v": "gemini:gemini-3.8-flash-tts:en-gb-tutor-6"
   },
   "q5": {
